@@ -43,8 +43,8 @@ internal object LightColorTokens {
     val OnSurface: Color = Color(0xFF121212)
     val SurfaceContainer: Color = Color(0xFFDADADA)
     val OnSurfaceContainer: Color = Color(0xFF121212)
-    val SurfaceVariant = Color(0xFFBDBDBD)
-    val OnSurfaceVariant = Color(0xFF121212)
+    val SurfaceVariant: Color = Color(0xFFBDBDBD)
+    val OnSurfaceVariant: Color = Color(0xFF121212)
     val Error: Color = Color(0xFFF44336)
     val OnError: Color = Color(0xFFF2F2F2)
     val ErrorContainer: Color = Color(0xFFFFEBEE)
@@ -57,11 +57,32 @@ internal object DarkColorTokens {
     val Surface: Color = Color(0xFF161616)
     val OnSurface: Color = Color(0xFFF2F2F2)
     val SurfaceContainer: Color = Color(0xFF2C2C2C)
-    val SurfaceVariant = Color(0xFF303030)
-    val OnSurfaceVariant = Color(0xFFF2F2F2)
+    val SurfaceVariant: Color = Color(0xFF303030)
+    val OnSurfaceVariant: Color = Color(0xFFF2F2F2)
     val Error: Color = Color(0xFFEF5350)
     val OnError: Color = Color(0xFF121212)
     val ErrorContainer: Color = Color(0xFFFFCDD2)
     val Scrim: Color = Color(0x4D000000)
+}
+
+// Semantic color roles
+internal object SemanticColorTokens {
+    // Success colors
+    val Success: Color = Color(0xFF4CAF50)
+    val OnSuccess: Color = Color(0xFFFFFFFF)
+    val SuccessContainer: Color = Color(0xFFE8F5E9)
+    val OnSuccessContainer: Color = Color(0xFF1B5E20)
+    
+    // Warning colors
+    val Warning: Color = Color(0xFFFF9800)
+    val OnWarning: Color = Color(0xFFFFFFFF)
+    val WarningContainer: Color = Color(0xFFFFF3E0)
+    val OnWarningContainer: Color = Color(0xFFE65100)
+    
+    // Info colors
+    val Info: Color = Color(0xFF2196F3)
+    val OnInfo: Color = Color(0xFFFFFFFF)
+    val InfoContainer: Color = Color(0xFFE3F2FD)
+    val OnInfoContainer: Color = Color(0xFF0D47A1)
 }
 

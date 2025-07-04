@@ -23,7 +23,21 @@ fun AppTheme(
         LocalSpacing provides Dimens(),
         LocalRadius provides Radius(),
         LocalShapes provides Shapes(),
-        LocalElevation provides Elevation()
+        LocalElevation provides Elevation(),
+        LocalExtendedColors provides ExtendedColors(
+            success = SemanticColorTokens.Success,
+            onSuccess = SemanticColorTokens.OnSuccess,
+            successContainer = SemanticColorTokens.SuccessContainer,
+            onSuccessContainer = SemanticColorTokens.OnSuccessContainer,
+            warning = SemanticColorTokens.Warning,
+            onWarning = SemanticColorTokens.OnWarning,
+            warningContainer = SemanticColorTokens.WarningContainer,
+            onWarningContainer = SemanticColorTokens.OnWarningContainer,
+            info = SemanticColorTokens.Info,
+            onInfo = SemanticColorTokens.OnInfo,
+            infoContainer = SemanticColorTokens.InfoContainer,
+            onInfoContainer = SemanticColorTokens.OnInfoContainer,
+        )
     ) {
         MaterialTheme(
             colorScheme = colorScheme
@@ -64,5 +78,10 @@ object AppTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalElevation.current
+
+    val extendedColors: ExtendedColors
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalExtendedColors.current
 
 }
