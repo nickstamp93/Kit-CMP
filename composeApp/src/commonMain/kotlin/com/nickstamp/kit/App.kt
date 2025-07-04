@@ -15,6 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import com.nickstamp.kit.di.appModule
 import com.nickstamp.kit.feature.settings.di.settingsModule
 import com.nickstamp.kit.feature.settings.presentation.SettingsScreenRoute
+import com.nickstamp.kit.feature.showcase.di.showcaseModule
+import com.nickstamp.kit.feature.showcase.presentation.ShowcaseScreenRoute
 import com.nickstamp.kit.presentation.theme.AppTheme
 import com.nickstamp.kit.shared.utils.EffectHandler
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -27,7 +29,8 @@ fun App() {
     KoinApplication(application = {
         modules(
             appModule,
-            settingsModule
+            settingsModule,
+            showcaseModule
         )
     }) {
         // Theme state management
@@ -48,7 +51,14 @@ fun App() {
                         SettingsScreenRoute(
                             effectHandler = effectHandler,
                             onThemeChange = { newTheme -> isDarkTheme = newTheme },
-                            currentTheme = isDarkTheme
+                            currentTheme = isDarkTheme,
+                            onNavigateToShowcase = { navController.navigate("showcase") }
+                        )
+                    }
+                    composable("showcase") {
+                        ShowcaseScreenRoute(
+                            onNavigateBack = { navController.popBackStack() },
+                            effectHandler = effectHandler
                         )
                     }
                 }

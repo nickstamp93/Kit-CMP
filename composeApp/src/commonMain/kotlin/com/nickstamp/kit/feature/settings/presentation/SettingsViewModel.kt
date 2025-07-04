@@ -9,6 +9,7 @@ class SettingsViewModel : BaseViewModel<SettingsContract.Event, SettingsContract
     override fun onEvent(event: SettingsContract.Event) {
         when (event) {
             is SettingsContract.Event.ToggleTheme -> toggleTheme()
+            is SettingsContract.Event.NavigateToShowcase -> navigateToShowcase()
         }
     }
     
@@ -23,5 +24,9 @@ class SettingsViewModel : BaseViewModel<SettingsContract.Event, SettingsContract
         setState { 
             copy(isDarkTheme = isDarkTheme)
         }
+    }
+    
+    private fun navigateToShowcase() {
+        setEffect(SettingsContract.Effect.NavigateToShowcase)
     }
 }

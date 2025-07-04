@@ -15,6 +15,7 @@ fun SettingsScreenRoute(
     effectHandler: EffectHandler,
     onThemeChange: (Boolean) -> Unit,
     currentTheme: Boolean,
+    onNavigateToShowcase: () -> Unit,
     viewModel: SettingsViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -33,7 +34,10 @@ fun SettingsScreenRoute(
         viewModel.effect.collect { effect ->
             when (effect) {
                 is SettingsContract.Effect.ShowMessage -> {
-                    // Handle showing message if needed
+                    // Handle showing message if needed - could show toast or snackbar
+                }
+                is SettingsContract.Effect.NavigateToShowcase -> {
+                    onNavigateToShowcase()
                 }
             }
         }
