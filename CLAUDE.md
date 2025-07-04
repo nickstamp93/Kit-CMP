@@ -271,3 +271,8 @@ This framework serves as a foundation for new CMP projects. Start by:
 3. Implement your first feature following the MVI pattern
 4. Set up DI modules for your feature
 5. Add navigation between screens
+
+## Development Memories
+
+### Code Principles
+- For new features and components always use the design system
