@@ -18,6 +18,10 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -34,10 +38,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.nickstamp.kit.presentation.theme.AppTheme
+import com.nickstamp.kit.shared.components.KitAppBar
+import com.nickstamp.kit.shared.components.KitAppBarIcon
 import com.nickstamp.kit.shared.components.KitIconButton
 import com.nickstamp.kit.shared.components.KitInfoLabel
 import com.nickstamp.kit.shared.components.KitKeyValueChip
+import com.nickstamp.kit.shared.components.KitNetworkImage
 import com.nickstamp.kit.shared.components.KitSkeletonItem
+import com.nickstamp.kit.shared.components.ImageSource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -153,7 +161,7 @@ fun ShowcaseScreen(
         // KitSkeletonItem Demo
         ComponentDemoCard(
             title = "KitSkeletonItem",
-            description = "Loading placeholders with various shapes"
+            description = "Animated loading placeholders with various shapes"
         ) {
             Column(
                 verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
@@ -183,6 +191,95 @@ fun ShowcaseScreen(
                     modifier = Modifier.fillMaxWidth(),
                     height = 100.dp,
                     shape = AppTheme.shapes.large
+                )
+            }
+        }
+
+        // KitAppBarIcon Demo
+        ComponentDemoCard(
+            title = "KitAppBarIcon",
+            description = "App bar navigation icons with custom styling"
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                KitAppBarIcon(
+                    imageVector = Icons.Default.Menu,
+                    onClickAction = { 
+                        onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBarIcon - Menu")) 
+                    },
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                KitAppBarIcon(
+                    imageVector = Icons.Default.Settings,
+                    onClickAction = { 
+                        onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBarIcon - Settings")) 
+                    },
+                    tint = MaterialTheme.colorScheme.secondary
+                )
+                KitAppBarIcon(
+                    imageVector = Icons.Default.Share,
+                    onClickAction = { 
+                        onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBarIcon - Share")) 
+                    },
+                    tint = MaterialTheme.colorScheme.tertiary
+                )
+            }
+        }
+
+        // KitNetworkImage Demo
+        ComponentDemoCard(
+            title = "KitNetworkImage",
+            description = "Network image loading with shape support"
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                KitNetworkImage(
+                    imageUrl = "https://picsum.photos/100/100?random=1",
+                    modifier = Modifier.height(80.dp).width(80.dp),
+                    shape = AppTheme.shapes.default
+                )
+                KitNetworkImage(
+                    imageUrl = "https://picsum.photos/100/100?random=2",
+                    modifier = Modifier.height(80.dp).width(80.dp),
+                    shape = CircleShape
+                )
+                KitNetworkImage(
+                    imageUrl = "https://picsum.photos/100/100?random=3",
+                    modifier = Modifier.height(80.dp).width(80.dp),
+                    shape = AppTheme.shapes.large
+                )
+            }
+        }
+
+        // KitAppBar Demo
+        ComponentDemoCard(
+            title = "KitAppBar",
+            description = "Complete app bar with navigation and actions"
+        ) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surface
+                )
+            ) {
+                KitAppBar(
+                    title = "Demo App Bar",
+                    navigateUp = { 
+                        onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBar - Navigation")) 
+                    },
+                    actions = {
+                        KitIconButton(
+                            imageVector = Icons.Default.Home,
+                            onClickAction = { 
+                                onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBar - Home Action")) 
+                            },
+                            tint = MaterialTheme.colorScheme.onPrimary
+                        )
+                    }
                 )
             }
         }
