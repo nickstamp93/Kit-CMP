@@ -62,6 +62,37 @@ composeApp/
 
 ## MVI Implementation Pattern
 
+### BaseViewModel
+All ViewModels must extend this base class:
+
+```kotlin
+// core/presentation/BaseViewModel.kt
+abstract class BaseViewModel<EVENT, EFFECT, STATE>(initialState: STATE) : ViewModel() {
+
+    private val _effect = Channel<EFFECT>()
+    val effect = _effect.receiveAsFlow()
+
+    private val _state: MutableStateFlow<STATE> = MutableStateFlow(initialState)
+    val state = _state.asStateFlow()
+
+    abstract fun onEvent(event: EVENT)
+
+    protected fun launchInViewModelScope(block: suspend CoroutineScope.() -> Unit) =
+        viewModelScope.launch(block = block)
+
+    protected fun setState(reduce: STATE.() -> STATE) = launchInViewModelScope {
+        val newState = _state.value.reduce()
+        _state.value = newState
+    }
+
+    protected fun setEffect(effect: EFFECT) {
+        viewModelScope.launch {
+            _effect.send(effect)
+        }
+    }
+}
+```
+
 ### Screen Structure
 Each screen must follow this exact structure:
 
@@ -75,9 +106,9 @@ interface [ScreenName]Contract {
         val error: String? = null
     )
     
-    sealed interface Intent {
-        data object LoadData : Intent
-        data class OnItemClick(val item: SomeData) : Intent
+    sealed interface Event {
+        data object LoadData : Event
+        data class OnItemClick(val item: SomeData) : Event
     }
     
     sealed interface Effect {
@@ -87,56 +118,74 @@ interface [ScreenName]Contract {
 }
 ```
 
-#### 2. ViewModel (handles state and business logic)
+#### 2. ViewModel (extends BaseViewModel)
 ```kotlin
 // presentation/[ScreenName]ViewModel.kt
 class [ScreenName]ViewModel(
     private val useCase: SomeUseCase, // DI injected
     private val mapper: SomeMapper    // DI injected
-) : ViewModel() {
+) : BaseViewModel<[ScreenName]Contract.Event, [ScreenName]Contract.Effect, [ScreenName]Contract.State>(
+    initialState = [ScreenName]Contract.State()
+) {
     
-    private val _state = MutableStateFlow([ScreenName]Contract.State())
-    val state = _state.asStateFlow()
+    override fun onEvent(event: [ScreenName]Contract.Event) {
+        when (event) {
+            is [ScreenName]Contract.Event.LoadData -> loadData()
+            is [ScreenName]Contract.Event.OnItemClick -> onItemClick(event.item)
+        }
+    }
     
-    private val _effect = Channel<[ScreenName]Contract.Effect>()
-    val effect = _effect.receiveAsFlow()
-    
-    fun handleIntent(intent: [ScreenName]Contract.Intent) {
-        when (intent) {
-            is [ScreenName]Contract.Intent.LoadData -> loadData()
-            is [ScreenName]Contract.Intent.OnItemClick -> onItemClick(intent.item)
+    private fun loadData() {
+        launchInViewModelScope {
+            setState { copy(isLoading = true) }
+            // Business logic here
         }
     }
 }
 ```
 
-#### 3. Composable (UI layer)
+#### 3. Screen Route (handles navigation and effects)
+```kotlin
+// presentation/[ScreenName]ScreenRoute.kt
+@Composable
+fun [ScreenName]ScreenRoute(
+    id: String,
+    onNavigateBack: () -> Unit,
+    effectHandler: EffectHandler,
+    viewModel: [ScreenName]ViewModel = koinViewModel()
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
+    LaunchedEffect(id) {
+        viewModel.onEvent([ScreenName]Contract.Event.LoadDetails(id))
+    }
+
+    LaunchedEffect(viewModel) {
+        viewModel.effect.collect { effect ->
+            when (effect) {
+                is [ScreenName]Contract.Effect.NavigateBack -> onNavigateBack()
+                is [ScreenName]Contract.Effect.ShowError -> effectHandler.showToast(ToastInfo(effect.message))
+            }
+        }
+    }
+
+    [ScreenName]Screen(
+        state = state,
+        onEvent = viewModel::onEvent
+    )
+}
+```
+
+#### 4. Screen Composable (pure UI)
 ```kotlin
 // presentation/[ScreenName]Screen.kt
 @Composable
 fun [ScreenName]Screen(
-    viewModel: [ScreenName]ViewModel = koinViewModel()
+    state: [ScreenName]Contract.State,
+    onEvent: ([ScreenName]Contract.Event) -> Unit
 ) {
-    val state by viewModel.state.collectAsState()
-    
-    LaunchedEffect(Unit) {
-        viewModel.effect.collect { effect ->
-            when (effect) {
-                is [ScreenName]Contract.Effect.NavigateToDetail -> {
-                    // Handle navigation
-                }
-                is [ScreenName]Contract.Effect.ShowError -> {
-                    // Handle error
-                }
-            }
-        }
-    }
-    
-    LaunchedEffect(Unit) {
-        viewModel.handleIntent([ScreenName]Contract.Intent.LoadData)
-    }
-    
-    // UI implementation
+    // Pure UI implementation
+    // No business logic, only UI state and event callbacks
 }
 ```
 
@@ -189,14 +238,17 @@ This framework includes a comprehensive set of dependencies for rapid developmen
 ### Code Organization Rules
 1. **Feature-based packages**: Never organize by technical layers (data, domain, presentation)
 2. **Dependency Injection**: All dependencies must be injected via Koin - no direct instantiation
-3. **MVI Pattern**: Every screen must have Contract, ViewModel, and Composable
-4. **Single Responsibility**: Each class should have one clear responsibility
-5. **Clean Architecture**: Strict separation between layers with dependency inversion
+3. **MVI Pattern**: Every screen must have Contract, ViewModel (extending BaseViewModel), ScreenRoute, and Screen
+4. **BaseViewModel**: All ViewModels must extend BaseViewModel<EVENT, EFFECT, STATE>
+5. **Separation of Concerns**: ScreenRoute handles navigation/effects, Screen handles pure UI
+6. **Single Responsibility**: Each class should have one clear responsibility
+7. **Clean Architecture**: Strict separation between layers with dependency inversion
 
 ### Naming Conventions
-- **Screens**: `[FeatureName]Screen.kt`
-- **ViewModels**: `[FeatureName]ViewModel.kt`
-- **Contracts**: `[FeatureName]Contract.kt`
+- **Screen Routes**: `[FeatureName]ScreenRoute.kt` (handles navigation and effects)
+- **Screen Composables**: `[FeatureName]Screen.kt` (pure UI)
+- **ViewModels**: `[FeatureName]ViewModel.kt` (extends BaseViewModel)
+- **Contracts**: `[FeatureName]Contract.kt` (Event, Effect, State)
 - **Use Cases**: `[Action][FeatureName]UseCase.kt`
 - **Repositories**: `[FeatureName]Repository.kt`
 - **Mappers**: `[FeatureName]Mapper.kt`
