@@ -1,6 +1,6 @@
 package com.nickstamp.kit.di
 
-import com.nickstamp.kit.feature.home.di.homeModule
+import com.nickstamp.kit.feature.settings.di.settingsModule
 import com.nickstamp.kit.network.httpClient
 import com.nickstamp.kit.shared.utils.DefaultEffectHandler
 import com.nickstamp.kit.shared.utils.EffectHandler
@@ -11,7 +11,7 @@ fun initKoin() {
     startKoin {
         modules(
             appModule,
-            homeModule
+            settingsModule
         )
     }
 }
