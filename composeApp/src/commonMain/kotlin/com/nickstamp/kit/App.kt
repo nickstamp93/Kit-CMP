@@ -1,6 +1,5 @@
 package com.nickstamp.kit
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -8,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.nickstamp.kit.di.appModule
 import com.nickstamp.kit.feature.home.di.homeModule
 import com.nickstamp.kit.feature.home.presentation.HomeScreenRoute
+import com.nickstamp.kit.presentation.theme.AppTheme
 import com.nickstamp.kit.shared.utils.EffectHandler
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinApplication
@@ -22,7 +22,7 @@ fun App() {
             homeModule
         )
     }) {
-        MaterialTheme {
+        AppTheme {
             val navController = rememberNavController()
             val effectHandler: EffectHandler = koinInject()
 
