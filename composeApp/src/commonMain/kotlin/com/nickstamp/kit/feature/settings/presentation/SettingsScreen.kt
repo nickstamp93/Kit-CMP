@@ -11,9 +11,6 @@ import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -24,7 +21,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.key.Key.Companion.R
 import com.nickstamp.kit.presentation.theme.AppTheme
+import kit_cmp.composeapp.generated.resources.Res
+import kit_cmp.composeapp.generated.resources.allDrawableResources
+import kit_cmp.composeapp.generated.resources.compose_multiplatform
+import kit_cmp.composeapp.generated.resources.ic_completed
+import kit_cmp.composeapp.generated.resources.ic_dark_mode
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun SettingsScreen(
@@ -63,7 +68,7 @@ fun SettingsScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Settings,
+                        painter = painterResource(Res.drawable.ic_dark_mode),
                         contentDescription = "Theme icon",
                         tint = MaterialTheme.colorScheme.primary
                     )
@@ -108,7 +113,7 @@ fun SettingsScreen(
                     modifier = Modifier.weight(1f)
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Build,
+                        painter = painterResource(Res.drawable.ic_completed),
                         contentDescription = "Components demo icon",
                         tint = MaterialTheme.colorScheme.secondary
                     )

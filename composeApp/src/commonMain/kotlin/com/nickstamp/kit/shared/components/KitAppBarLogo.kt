@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.nickstamp.kit.presentation.theme.AppTheme
+import com.nickstamp.kit.shared.components.ImageSource.Companion.toImageSource
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
@@ -30,7 +31,7 @@ fun KitAppBarLogo(
 
         is ImageSource.Url -> {
             KitNetworkImage(
-                imageUrl = imageSource.url,
+                imageSource = imageSource.url.toImageSource(),
                 contentScale = ContentScale.Fit,
                 shape = shape,
                 contentDescription = "App Logo",

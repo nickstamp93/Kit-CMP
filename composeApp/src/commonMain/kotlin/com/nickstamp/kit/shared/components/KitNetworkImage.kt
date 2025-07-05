@@ -10,14 +10,14 @@ import org.jetbrains.compose.resources.DrawableResource
 
 @Composable
 fun KitNetworkImage(
-    imageUrl: String,
+    imageSource: ImageSource,
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Crop,
     shape: Shape? = null,
     contentDescription: String? = null,
 ) {
     AsyncImage(
-        model = imageUrl,
+        model = imageSource.getData(),
         contentScale = contentScale,
         contentDescription = contentDescription,
         modifier = if (shape != null) {

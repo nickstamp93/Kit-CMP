@@ -1,0 +1,63 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <path
+        android:fillColor="#FF6D00"
+        android:pathData="M256,256m-200,0a200,200 0,1 1,400 0a200,200 0,1 1,-400 0" />
+
+    <group>
+
+        <clip-path android:pathData="M256,256m-200,0a200,200 0,1 1,400 0a200,200 0,1 1,-400 0" />
+
+        <path
+            android:fillColor="#FF6D00"
+            android:pathData="M427.41,256m-132.09,0a132.09,132.09 0,1 1,264.17 0a132.09,132.09 0,1 1,-264.17 0"
+            android:strokeWidth="8"
+            android:strokeColor="#424242" />
+
+    </group>
+
+    <group>
+
+        <clip-path android:pathData="M256,256m-200,0a200,200 0,1 1,400 0a200,200 0,1 1,-400 0" />
+
+        <path
+            android:fillColor="#FF6D00"
+            android:pathData="M85.41,256m-132.09,0a132.09,132.09 0,1 1,264.17 0a132.09,132.09 0,1 1,-264.17 0"
+            android:strokeWidth="8"
+            android:strokeColor="#424242" />
+
+    </group>
+
+    <group>
+
+        <clip-path android:pathData="M256,256m-200,0a200,200 0,1 1,400 0a200,200 0,1 1,-400 0" />
+
+        <path
+            android:fillColor="#FF6D00"
+            android:pathData="M256,61L256,451"
+            android:strokeWidth="8"
+            android:strokeColor="#424242" />
+
+    </group>
+
+    <group>
+
+        <clip-path android:pathData="M256,256m-200,0a200,200 0,1 1,400 0a200,200 0,1 1,-400 0" />
+
+        <path
+            android:fillColor="#FF6D00"
+            android:pathData="M64,256L449,256"
+            android:strokeWidth="8"
+            android:strokeColor="#424242" />
+
+    </group>
+
+    <path
+        android:fillColor="#424242"
+        android:pathData="M256,70c49.68,0 96.39,19.35 131.52,54.48S442,206.32 442,256s-19.35,96.39 -54.48,131.52S305.68,442 256,442s-96.39,-19.35 -131.52,-54.48S70,305.68 70,256s19.35,-96.39 54.48,-131.52S206.32,70 256,70M256,56C145.54,56 56,145.54 56,256s89.54,200 200,200s200,-89.54 200,-200S366.46,56 256,56L256,56z" />
+
+</vector>
