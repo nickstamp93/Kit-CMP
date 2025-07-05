@@ -25,7 +25,7 @@ import com.nickstamp.kit.presentation.theme.AppTheme.typography
 import com.nickstamp.kit.presentation.theme.highEmphasis
 
 @Composable
-fun SectionContainer(
+fun KitSectionContainer(
     title: String,
     content: @Composable () -> Unit,
     modifier: Modifier = Modifier,

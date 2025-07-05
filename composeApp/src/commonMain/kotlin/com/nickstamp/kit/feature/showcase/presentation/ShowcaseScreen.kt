@@ -21,6 +21,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -425,7 +426,7 @@ fun ComponentDemoCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
+            containerColor = colorScheme.surface
         )
     ) {
         Column(
@@ -434,12 +435,12 @@ fun ComponentDemoCard(
             Text(
                 text = title,
                 style = AppTheme.typography.bold16,
-                color = MaterialTheme.colorScheme.onSurface
+                color = colorScheme.onSurface
             )
             Text(
                 text = description,
                 style = AppTheme.typography.regular12,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(bottom = AppTheme.spacing.medium)
             )
             content()

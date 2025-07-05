@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import kotlin.math.roundToInt
 
 @Composable
-fun CollapsingLayout(
+fun KitCollapsingLayout(
     collapsingContent: @Composable BoxScope.() -> Unit,
     content: @Composable BoxScope.() -> Unit,
     modifier: Modifier = Modifier,

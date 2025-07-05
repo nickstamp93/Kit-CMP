@@ -24,7 +24,7 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun EmptyResultsMessage(
+fun KitEmptyResultsMessage(
     modifier: Modifier = Modifier,
     icon: DrawableResource = Res.drawable.ic_info,
     iconTint: Color = colorScheme.onBackground.highEmphasis()

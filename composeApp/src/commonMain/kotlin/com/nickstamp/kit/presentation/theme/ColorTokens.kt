@@ -47,14 +47,14 @@ internal object FlavorColorDarkTokens {
 }
 
 internal object LightColorTokens {
-    // Neutral colors with slight blue tint
-    val Background: Color = Color(0xFFFCFCFC)         // Near white with subtle warmth
+    // Neutral colors with better contrast
+    val Background: Color = Color(0xFFF8F9FA)         // Light gray background
     val OnBackground: Color = Color(0xFF1A1C1E)       // Near black with blue undertone
     val Surface: Color = Color(0xFFFFFFFF)            // Pure white
     val OnSurface: Color = Color(0xFF1A1C1E)          // Near black
-    val SurfaceContainer: Color = Color(0xFFF3F4F6)   // Light gray with blue hint
+    val SurfaceContainer: Color = Color(0xFFE9ECEF)   // Medium light gray
     val OnSurfaceContainer: Color = Color(0xFF1A1C1E) // Near black
-    val SurfaceVariant: Color = Color(0xFFE1E8F0)     // Light blue-gray
+    val SurfaceVariant: Color = Color(0xFFDEE2E6)     // Light blue-gray
     val OnSurfaceVariant: Color = Color(0xFF44474F)   // Medium gray
     val Error: Color = Color(0xFFDC2626)              // Red 600
     val OnError: Color = Color(0xFFFFFFFF)            // White

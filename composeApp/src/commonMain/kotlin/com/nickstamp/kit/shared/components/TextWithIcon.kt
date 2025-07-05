@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -28,7 +27,7 @@ fun KitTextWithIcon(
     text: String,
     icon: DrawableResource,
     modifier: Modifier = Modifier,
-    maxLines:Int = 2,
+    maxLines: Int = 2,
     tint: Color = colorScheme.onSurface,
     style: TextStyle = AppTheme.typography.regular14,
     iconGravity: IconGravity = IconGravity.START,

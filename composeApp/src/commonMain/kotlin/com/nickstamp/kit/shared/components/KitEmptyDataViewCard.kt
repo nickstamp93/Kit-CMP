@@ -27,7 +27,7 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun EmptyDataViewCard(
+fun KitEmptyDataViewCard(
     modifier: Modifier = Modifier,
     onTryAgainClick: (() -> Unit)? = null,
     text: String = "No data available",
@@ -41,7 +41,7 @@ fun EmptyDataViewCard(
             .wrapContentSize()
             .padding(spacing.large)
     ) {
-        EmptyDataView(
+        KitEmptyDataView(
             onActionClick = onTryAgainClick,
             text = text,
             icon = icon,
@@ -56,7 +56,7 @@ fun EmptyDataViewCard(
 }
 
 @Composable
-fun EmptyDataView(
+fun KitEmptyDataView(
     modifier: Modifier = Modifier,
     actionText: String = "Try again",
     onActionClick: (() -> Unit)? = null,

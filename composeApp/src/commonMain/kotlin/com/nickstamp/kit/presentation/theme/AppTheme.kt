@@ -1,10 +1,27 @@
 package com.nickstamp.kit.presentation.theme
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.Modifier
+
+@Composable
+fun PreviewWrapper(content: @Composable () -> Unit) {
+    AppTheme {
+        Box(
+            modifier = Modifier.fillMaxSize()
+                .background(color = colorScheme.background)
+        ) {
+            content()
+        }
+    }
+}
 
 @Composable
 fun AppTheme(

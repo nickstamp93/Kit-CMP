@@ -21,7 +21,7 @@ import com.nickstamp.kit.presentation.theme.AppTheme.typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TextModal(
+fun KitTextModal(
     title: String,
     text: String,
     onDismiss: () -> Unit

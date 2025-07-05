@@ -276,3 +276,7 @@ This framework serves as a foundation for new CMP projects. Start by:
 
 ### Code Principles
 - For new features and components always use the design system
+
+### Shared Components
+- When new shared components are added, always add them to ShowcaseScreen.kt
+- When new shared components are created always use the app's design system

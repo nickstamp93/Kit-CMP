@@ -18,7 +18,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.input.key.Key.Companion.R
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.nickstamp.kit.presentation.theme.AppTheme.shapes
@@ -30,7 +29,7 @@ import kit_cmp.composeapp.generated.resources.ic_arrow_down
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun FilterButton(
+fun KitFilterButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier

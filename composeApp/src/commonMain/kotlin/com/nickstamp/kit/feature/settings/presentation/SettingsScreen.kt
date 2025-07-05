@@ -15,21 +15,19 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.input.key.Key.Companion.R
 import com.nickstamp.kit.presentation.theme.AppTheme
+import com.nickstamp.kit.presentation.theme.PreviewWrapper
 import kit_cmp.composeapp.generated.resources.Res
-import kit_cmp.composeapp.generated.resources.allDrawableResources
-import kit_cmp.composeapp.generated.resources.compose_multiplatform
 import kit_cmp.composeapp.generated.resources.ic_completed
 import kit_cmp.composeapp.generated.resources.ic_dark_mode
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun SettingsScreen(
@@ -47,14 +45,14 @@ fun SettingsScreen(
         Text(
             text = "Settings",
             style = AppTheme.typography.bold24,
-            color = MaterialTheme.colorScheme.onSurface
+            color = colorScheme.onSurface
         )
-        
+
         // Theme Setting Card
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surface
+                containerColor = colorScheme.surface
             )
         ) {
             Row(
@@ -70,23 +68,23 @@ fun SettingsScreen(
                     Icon(
                         painter = painterResource(Res.drawable.ic_dark_mode),
                         contentDescription = "Theme icon",
-                        tint = MaterialTheme.colorScheme.primary
+                        tint = colorScheme.primary
                     )
                     Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
                     Column {
                         Text(
                             text = "Dark Theme",
                             style = AppTheme.typography.bold16,
-                            color = MaterialTheme.colorScheme.onSurface
+                            color = colorScheme.onSurface
                         )
                         Text(
                             text = if (state.isDarkTheme) "Dark mode is enabled" else "Light mode is enabled",
                             style = AppTheme.typography.regular14,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            color = colorScheme.onSurfaceVariant
                         )
                     }
                 }
-                
+
                 Switch(
                     checked = state.isDarkTheme,
                     onCheckedChange = { onEvent(SettingsContract.Event.ToggleTheme) }
@@ -98,7 +96,7 @@ fun SettingsScreen(
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surface
+                containerColor = colorScheme.surface
             )
         ) {
             Row(
@@ -115,23 +113,23 @@ fun SettingsScreen(
                     Icon(
                         painter = painterResource(Res.drawable.ic_completed),
                         contentDescription = "Components demo icon",
-                        tint = MaterialTheme.colorScheme.secondary
+                        tint = colorScheme.secondary
                     )
                     Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
                     Column {
                         Text(
                             text = "Kit Components Demo",
                             style = AppTheme.typography.bold16,
-                            color = MaterialTheme.colorScheme.onSurface
+                            color = colorScheme.onSurface
                         )
                         Text(
                             text = "View framework UI components",
                             style = AppTheme.typography.regular14,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            color = colorScheme.onSurfaceVariant
                         )
                     }
                 }
-                
+
                 Button(
                     onClick = { onEvent(SettingsContract.Event.NavigateToShowcase) }
                 ) {
@@ -143,3 +141,14 @@ fun SettingsScreen(
     }
 }
 
+
+@Preview
+@Composable
+private fun SettingsScreenPreview() {
+    PreviewWrapper {
+        SettingsScreen(
+            state = SettingsContract.State(),
+            onEvent = {},
+        )
+    }
+}

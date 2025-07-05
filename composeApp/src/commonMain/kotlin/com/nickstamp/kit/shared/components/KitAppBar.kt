@@ -66,7 +66,11 @@ fun KitAppBar(
                     Text(
                         text = subtitle,
                         maxLines = 1,
-                        style = AppTheme.typography.regular12.copy(color = onContainerColor.copy(alpha = 0.7f)),
+                        style = AppTheme.typography.regular12.copy(
+                            color = onContainerColor.copy(
+                                alpha = 0.7f
+                            )
+                        ),
                     )
                 }
             } else {

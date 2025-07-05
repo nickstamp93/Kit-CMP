@@ -45,7 +45,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun FooterCard(
+fun KitFooterCard(
     title: String,
     primaryActionIcon: DrawableResource,
     backgroundImageUrl: String,
@@ -168,7 +168,7 @@ fun FooterCard(
 @Composable
 private fun FooterCardPreview() {
     AppTheme {
-        FooterCard(
+        KitFooterCard(
             title = "Want more?",
             subtitle = "Browse the whole cinema catalog",
             primaryActionText = "Movie Catalog",

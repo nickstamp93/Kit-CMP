@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.input.key.Key.Companion.R
 import androidx.compose.ui.unit.dp
 import com.nickstamp.kit.presentation.theme.AppTheme
 import com.nickstamp.kit.presentation.theme.AppTheme.shapes
@@ -36,7 +35,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchCatalogButtonRow(
+fun KitSearchCatalogButtonRow(
     hintText: String,
     onSearchClick: () -> Unit,
     catalogIconRes: DrawableResource,
@@ -101,7 +100,7 @@ fun SearchCatalogButtonRow(
 @Composable
 private fun SearchCatalogButtonRowPreview() {
     AppTheme {
-        SearchCatalogButtonRow(
+        KitSearchCatalogButtonRow(
             hintText = "Search",
             onSearchClick = {},
             catalogIconRes = Res.drawable.ic_search,
