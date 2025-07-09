@@ -9,14 +9,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.nickstamp.kit.navigation.AppNavigation
 import com.nickstamp.kit.di.appModule
 import com.nickstamp.kit.feature.settings.di.settingsModule
-import com.nickstamp.kit.feature.settings.presentation.SettingsScreenRoute
 import com.nickstamp.kit.feature.showcase.di.showcaseModule
-import com.nickstamp.kit.feature.showcase.presentation.ShowcaseScreenRoute
 import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.utils.EffectHandler
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -43,25 +40,12 @@ fun App() {
             Scaffold(
                 modifier = Modifier.background(colorScheme.background)
             ) {
-                NavHost(
+                AppNavigation(
                     navController = navController,
-                    startDestination = "settings"
-                ) {
-                    composable("settings") {
-                        SettingsScreenRoute(
-                            effectHandler = effectHandler,
-                            onThemeChange = { newTheme -> isDarkTheme = newTheme },
-                            currentTheme = isDarkTheme,
-                            onNavigateToShowcase = { navController.navigate("showcase") }
-                        )
-                    }
-                    composable("showcase") {
-                        ShowcaseScreenRoute(
-                            onNavigateBack = { navController.popBackStack() },
-                            effectHandler = effectHandler
-                        )
-                    }
-                }
+                    effectHandler = effectHandler,
+                    onThemeChange = { newTheme -> isDarkTheme = newTheme },
+                    currentTheme = isDarkTheme
+                )
             }
         }
     }
