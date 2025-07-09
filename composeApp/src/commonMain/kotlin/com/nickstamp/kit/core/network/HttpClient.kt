@@ -11,10 +11,7 @@ expect fun httpClient(): HttpClient
 fun createHttpClient(): HttpClient {
     return HttpClient {
         install(ContentNegotiation) {
-            json(Json {
-                ignoreUnknownKeys = true
-                isLenient = true
-            })
+            JsonConfig.instance
         }
         install(Logging) {
             level = LogLevel.INFO

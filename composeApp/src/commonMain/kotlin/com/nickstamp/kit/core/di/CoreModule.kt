@@ -1,0 +1,22 @@
+package com.nickstamp.kit.core.di
+
+import com.nickstamp.kit.core.helpers.DateTimeHelper
+import com.nickstamp.kit.core.helpers.impl.DateTimeHelperImpl
+import com.nickstamp.kit.core.network.ApiService
+import com.nickstamp.kit.core.network.httpClient
+import com.nickstamp.kit.core.storage.DatastoreManager
+import com.nickstamp.kit.core.storage.DatastoreManagerImpl
+import com.nickstamp.kit.core.storage.createDataStore
+import com.nickstamp.kit.core.storage.example.DefaultDatastoreManager
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
+import org.koin.dsl.module
+
+val coreModule = module {
+    single { httpClient() }
+    singleOf(::ApiService)
+    single { createDataStore() }
+    single<DatastoreManager> { DatastoreManagerImpl(get()) }
+    singleOf(::DefaultDatastoreManager)
+    singleOf(::DateTimeHelperImpl) bind DateTimeHelper::class
+}

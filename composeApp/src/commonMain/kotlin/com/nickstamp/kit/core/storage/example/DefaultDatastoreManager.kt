@@ -3,10 +3,10 @@ package com.nickstamp.kit.core.storage.example
 import com.nickstamp.kit.core.storage.DatastoreManager
 import kotlinx.coroutines.flow.Flow
 
-class UserPreferences(
+class DefaultDatastoreManager(
     private val datastoreManager: DatastoreManager
 ) {
-    companion object {
+    companion object Companion {
         private const val KEY_USER_ID = "user_id"
         private const val KEY_USER_NAME = "user_name"
         private const val KEY_USER_EMAIL = "user_email"

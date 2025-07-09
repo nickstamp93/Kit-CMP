@@ -22,6 +22,13 @@ fun ShowcaseScreenRoute(
                 is ShowcaseContract.Effect.ShowMessage -> {
                     effectHandler.showToast(ToastInfo(effect.message))
                 }
+
+                is ShowcaseContract.Effect.ShowConfigurationError -> {
+                    effectHandler.showToast(ToastInfo(effect.error))
+                }
+                is ShowcaseContract.Effect.ShowConfigurationFetched -> {
+                    effectHandler.showToast(ToastInfo(effect.configuration.toString()))
+                }
             }
         }
     }

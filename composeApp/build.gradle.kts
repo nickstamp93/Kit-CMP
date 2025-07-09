@@ -41,6 +41,8 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.coil.network.okhttp)
+            implementation(libs.koin.android)
+            implementation(libs.datastore.preferences.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
