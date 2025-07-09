@@ -1,25 +1,13 @@
 package com.nickstamp.kit.di
 
 import com.nickstamp.kit.core.network.ApiService
-import com.nickstamp.kit.presentation.feature.settings.di.settingsModule
-import com.nickstamp.kit.presentation.feature.showcase.di.showcaseModule
+import com.nickstamp.kit.feature.settings.di.settingsModule
+import com.nickstamp.kit.feature.showcase.di.showcaseModule
 import com.nickstamp.kit.core.network.httpClient
-import com.nickstamp.kit.shared.utils.DefaultEffectHandler
-import com.nickstamp.kit.shared.utils.EffectHandler
+import com.nickstamp.kit.ui.utils.DefaultEffectHandler
+import com.nickstamp.kit.ui.utils.EffectHandler
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
-
-fun initKoin() {
-    startKoin {
-        modules(
-            appModule,
-            networkModule,
-            storageModule,
-            settingsModule,
-            showcaseModule
-        )
-    }
-}
 
 val appModule = module {
     single { httpClient() }
