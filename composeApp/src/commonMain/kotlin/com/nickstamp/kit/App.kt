@@ -13,10 +13,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nickstamp.kit.di.appModule
-import com.nickstamp.kit.feature.settings.di.settingsModule
-import com.nickstamp.kit.feature.settings.presentation.SettingsScreenRoute
-import com.nickstamp.kit.feature.showcase.di.showcaseModule
-import com.nickstamp.kit.feature.showcase.presentation.ShowcaseScreenRoute
+import com.nickstamp.kit.presentation.feature.settings.di.settingsModule
+import com.nickstamp.kit.presentation.feature.settings.SettingsScreenRoute
+import com.nickstamp.kit.presentation.feature.showcase.di.showcaseModule
+import com.nickstamp.kit.presentation.feature.showcase.ShowcaseScreenRoute
 import com.nickstamp.kit.presentation.theme.AppTheme
 import com.nickstamp.kit.shared.utils.EffectHandler
 import org.jetbrains.compose.ui.tooling.preview.Preview
