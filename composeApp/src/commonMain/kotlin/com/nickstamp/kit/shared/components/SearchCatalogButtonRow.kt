@@ -96,9 +96,23 @@ fun KitSearchCatalogButtonRow(
     }
 }
 
+@Composable
+fun SearchCatalogButtonRow(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    KitSearchCatalogButtonRow(
+        hintText = "Search movies...",
+        onSearchClick = onClick,
+        catalogIconRes = Res.drawable.ic_search,
+        onCatalogClick = onClick,
+        modifier = modifier
+    )
+}
+
 @Preview
 @Composable
-private fun SearchCatalogButtonRowPreview() {
+private fun KitSearchCatalogButtonRowPreview() {
     AppTheme {
         KitSearchCatalogButtonRow(
             hintText = "Search",

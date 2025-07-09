@@ -36,16 +36,29 @@ import com.nickstamp.kit.shared.components.ImageSource.Companion.toImageSource
 import com.nickstamp.kit.shared.components.KitAppBar
 import com.nickstamp.kit.shared.components.KitAppBarIcon
 import com.nickstamp.kit.shared.components.KitBannerAdPlaceholder
+import com.nickstamp.kit.shared.components.KitButtonGroupRow
+import com.nickstamp.kit.shared.components.KitEmptyDataViewCard
+import com.nickstamp.kit.shared.components.KitEmptyResultsMessage
 import com.nickstamp.kit.shared.components.KitFavoriteButton
+import com.nickstamp.kit.shared.components.KitFilterButton
+import com.nickstamp.kit.shared.components.KitFooterCard
+import com.nickstamp.kit.shared.components.KitGroupButton
+import com.nickstamp.kit.shared.components.KitGroupButtonSize
+import com.nickstamp.kit.shared.components.KitGroupIconButton
+import com.nickstamp.kit.shared.components.KitHorizontalProgressBar
 import com.nickstamp.kit.shared.components.KitIconButton
 import com.nickstamp.kit.shared.components.KitInfoLabel
 import com.nickstamp.kit.shared.components.KitKeyValueChip
 import com.nickstamp.kit.shared.components.KitLabel
 import com.nickstamp.kit.shared.components.KitNetworkImage
 import com.nickstamp.kit.shared.components.KitPulsatingCircle
+import com.nickstamp.kit.shared.components.KitSectionContainer
 import com.nickstamp.kit.shared.components.KitSkeletonItem
+import com.nickstamp.kit.shared.components.KitTextInput
 import com.nickstamp.kit.shared.components.KitTextWithIcon
+import com.nickstamp.kit.shared.components.KitVerticalProgressBar
 import com.nickstamp.kit.shared.components.LabelSize
+import com.nickstamp.kit.shared.components.SearchCatalogButtonRow
 import com.nickstamp.kit.shared.composables.animatedSkeletonColor
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.ic_back
@@ -402,6 +415,247 @@ fun ShowcaseScreen(
                         color = MaterialTheme.colorScheme.error.copy(alpha = 0.3f)
                     )
                 }
+            }
+
+            // KitTextInput Demo
+            ComponentDemoCard(
+                title = "KitTextInput",
+                description = "Customizable text input with various configurations"
+            ) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                ) {
+                    KitTextInput(
+                        value = "Sample text",
+                        onValueChange = {},
+                        placeHolder = { Text("Enter text...") }
+                    )
+                    KitTextInput(
+                        value = "",
+                        onValueChange = {},
+                        placeHolder = { Text("With icons...") },
+                        leadingIcon = {
+                            KitIconButton(
+                                icon = Res.drawable.ic_info,
+                                onClickAction = {}
+                            )
+                        },
+                        trailingIcon = {
+                            KitIconButton(
+                                icon = Res.drawable.ic_settings,
+                                onClickAction = {}
+                            )
+                        }
+                    )
+                }
+            }
+
+            // KitVerticalProgressBar Demo
+            ComponentDemoCard(
+                title = "KitVerticalProgressBar",
+                description = "Vertical progress indicators with animation"
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    KitVerticalProgressBar(
+                        progress = { 0.3f },
+                        modifier = Modifier.height(100.dp)
+                    )
+                    KitVerticalProgressBar(
+                        progress = { 0.7f },
+                        modifier = Modifier.height(100.dp),
+                        animate = true,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                    KitVerticalProgressBar(
+                        progress = { 1.0f },
+                        modifier = Modifier.height(100.dp),
+                        width = 20.dp,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
+            }
+
+            // KitHorizontalProgressBar Demo
+            ComponentDemoCard(
+                title = "KitHorizontalProgressBar",
+                description = "Horizontal progress indicators with animation"
+            ) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                ) {
+                    KitHorizontalProgressBar(
+                        progress = { 0.3f },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    KitHorizontalProgressBar(
+                        progress = { 0.7f },
+                        modifier = Modifier.fillMaxWidth(),
+                        animate = true,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                    KitHorizontalProgressBar(
+                        progress = { 1.0f },
+                        modifier = Modifier.fillMaxWidth(),
+                        height = 20.dp,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
+            }
+
+            // KitButtonGroup Demo
+            ComponentDemoCard(
+                title = "KitButtonGroup",
+                description = "Grouped buttons with selection states"
+            ) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium)
+                ) {
+                    KitButtonGroupRow {
+                        KitGroupButton(
+                            text = "Option 1",
+                            selected = true,
+                            size = KitGroupButtonSize.Small,
+                            onClick = {
+                                onEvent(ShowcaseContract.Event.OnDemoButtonClick("ButtonGroup - Option 1"))
+                            }
+                        )
+                        KitGroupButton(
+                            text = "Option 2",
+                            selected = false,
+                            size = KitGroupButtonSize.Small,
+                            onClick = {
+                                onEvent(ShowcaseContract.Event.OnDemoButtonClick("ButtonGroup - Option 2"))
+                            }
+                        )
+                        KitGroupButton(
+                            text = "Option 3",
+                            selected = false,
+                            size = KitGroupButtonSize.Small,
+                            onClick = {
+                                onEvent(ShowcaseContract.Event.OnDemoButtonClick("ButtonGroup - Option 3"))
+                            }
+                        )
+                    }
+                    
+                    Text("Icon buttons require Material Icons which are not available in commonMain")
+                }
+            }
+
+            // KitFilterButton Demo
+            ComponentDemoCard(
+                title = "KitFilterButton",
+                description = "Filter buttons with dropdown indicator"
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                ) {
+                    KitFilterButton(
+                        text = "Filter",
+                        onClick = {
+                            onEvent(ShowcaseContract.Event.OnDemoButtonClick("FilterButton - Filter"))
+                        }
+                    )
+                    KitFilterButton(
+                        text = "Sort",
+                        onClick = {
+                            onEvent(ShowcaseContract.Event.OnDemoButtonClick("FilterButton - Sort"))
+                        }
+                    )
+                }
+            }
+
+            // KitEmptyResultsMessage Demo
+            ComponentDemoCard(
+                title = "KitEmptyResultsMessage",
+                description = "Empty state message with icon"
+            ) {
+                KitEmptyResultsMessage(
+                    icon = Res.drawable.ic_star_empty,
+                    iconTint = MaterialTheme.colorScheme.primary
+                )
+            }
+
+            // KitEmptyDataViewCard Demo
+            ComponentDemoCard(
+                title = "KitEmptyDataViewCard",
+                description = "Empty data view with action button"
+            ) {
+                KitEmptyDataViewCard(
+                    text = "No data available",
+                    icon = Res.drawable.ic_info,
+                    onTryAgainClick = {
+                        onEvent(ShowcaseContract.Event.OnDemoButtonClick("EmptyDataView - Try Again"))
+                    }
+                )
+            }
+
+            // KitSectionContainer Demo
+            ComponentDemoCard(
+                title = "KitSectionContainer",
+                description = "Section container with title and optional action"
+            ) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium)
+                ) {
+                    KitSectionContainer(
+                        title = "Simple Section",
+                        content = {
+                            Text("Section content goes here")
+                        }
+                    )
+                    
+                    KitSectionContainer(
+                        title = "Section with Action",
+                        action = {
+                            Text(
+                                "View All",
+                                color = MaterialTheme.colorScheme.primary,
+                                style = MaterialTheme.typography.labelMedium
+                            )
+                        },
+                        content = {
+                            Text("Section with action content")
+                        }
+                    )
+                }
+            }
+
+            // SearchCatalogButtonRow Demo
+            ComponentDemoCard(
+                title = "SearchCatalogButtonRow",
+                description = "Search and catalog button combination"
+            ) {
+                SearchCatalogButtonRow(
+                    onClick = {
+                        onEvent(ShowcaseContract.Event.OnDemoButtonClick("SearchCatalogButtonRow - Search"))
+                    }
+                )
+            }
+
+            // KitFooterCard Demo
+            ComponentDemoCard(
+                title = "KitFooterCard",
+                description = "Footer card with background image and actions"
+            ) {
+                KitFooterCard(
+                    title = "Want more?",
+                    subtitle = "Browse the whole catalog",
+                    primaryActionText = "Browse",
+                    primaryActionIcon = Res.drawable.ic_info,
+                    onPrimaryAction = {
+                        onEvent(ShowcaseContract.Event.OnDemoButtonClick("FooterCard - Browse"))
+                    },
+                    secondaryActionIcon = Res.drawable.ic_settings,
+                    secondaryActionText = "Search",
+                    onSecondaryActionText = {
+                        onEvent(ShowcaseContract.Event.OnDemoButtonClick("FooterCard - Search"))
+                    },
+                    backgroundImageUrl = "",
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
 
             // Interactive Demo Button
