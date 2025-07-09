@@ -14,6 +14,7 @@ import com.nickstamp.kit.navigation.AppNavigation
 import com.nickstamp.kit.di.appModule
 import com.nickstamp.kit.feature.settings.di.settingsModule
 import com.nickstamp.kit.feature.showcase.di.showcaseModule
+import com.nickstamp.kit.core.helpers.di.helpersModule
 import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.utils.EffectHandler
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -26,6 +27,7 @@ fun App() {
     KoinApplication(application = {
         modules(
             appModule,
+            helpersModule,
             settingsModule,
             showcaseModule
         )
