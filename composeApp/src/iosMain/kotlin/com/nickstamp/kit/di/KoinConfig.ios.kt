@@ -12,6 +12,7 @@ actual fun KoinConfig(content: @Composable () -> Unit) {
     // iOS uses MainViewController startKoin, but provide fallback for previews
     KoinApplication(application = {
         modules(
+            iosModule,
             appModule,
             coreModule,
             configModule,

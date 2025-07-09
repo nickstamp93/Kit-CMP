@@ -14,7 +14,7 @@ fun createHttpClient(): HttpClient {
             JsonConfig.instance
         }
         install(Logging) {
-            level = LogLevel.INFO
+            level = LogLevel.ALL
         }
     }
 }

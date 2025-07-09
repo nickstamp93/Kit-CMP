@@ -20,6 +20,7 @@ class Configurator(
             // Return cached configuration if it's still valid
             cachedConfiguration?.let { cached ->
                 if (isCacheValid()) {
+                    println("Returning cached configuration")
                     return@withLock cached
                 }
             }
@@ -29,6 +30,7 @@ class Configurator(
             cachedConfiguration = freshConfiguration
             lastFetchTime = dateTimeHelper.getCurrentTimeInMillis()
 
+            println("Returning fresh configuration")
             freshConfiguration
         }
     }

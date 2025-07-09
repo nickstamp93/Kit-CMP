@@ -13,14 +13,14 @@ class ShowcaseViewModel(
     
     override fun onEvent(event: ShowcaseContract.Event) {
         when (event) {
-            is ShowcaseContract.Event.OnDemoButtonClick -> onRefreshConfigurationClick()
+            is ShowcaseContract.Event.OnDemoButtonClick -> onDemoButtonClick(event.componentName)
             is ShowcaseContract.Event.OnFetchConfigurationClick -> onFetchConfigurationClick()
             is ShowcaseContract.Event.OnRefreshConfigurationClick -> onRefreshConfigurationClick()
         }
     }
     
     private fun onDemoButtonClick(componentName: String) {
-        setEffect(ShowcaseContract.Effect.ShowMessage("Demo button clicked: $componentName"))
+        setEffect(ShowcaseContract.Effect.ShowMessage(componentName))
     }
     
     private fun onFetchConfigurationClick() {

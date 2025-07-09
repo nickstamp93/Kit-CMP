@@ -16,6 +16,7 @@ actual fun KoinConfig(content: @Composable () -> Unit) {
     KoinApplication(application = {
         androidContext(context)
         modules(
+            androidModule,
             appModule,
             coreModule,
             configModule,

@@ -643,6 +643,7 @@ fun ShowcaseScreen(
                     title = "Want more?",
                     subtitle = "Browse the whole catalog",
                     primaryActionText = "Browse",
+                    backgroundImageUrl = "https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
                     primaryActionIcon = Res.drawable.ic_info,
                     onPrimaryAction = {
                         onEvent(ShowcaseContract.Event.OnDemoButtonClick("FooterCard - Browse"))
@@ -652,7 +653,6 @@ fun ShowcaseScreen(
                     onSecondaryActionText = {
                         onEvent(ShowcaseContract.Event.OnDemoButtonClick("FooterCard - Search"))
                     },
-                    backgroundImageUrl = "",
                     modifier = Modifier.fillMaxWidth()
                 )
             }
@@ -660,11 +660,19 @@ fun ShowcaseScreen(
             // Interactive Demo Button
             Button(
                 onClick = {
-                    onEvent(ShowcaseContract.Event.OnDemoButtonClick("All Components Demonstrated!"))
+                    onEvent(ShowcaseContract.Event.OnFetchConfigurationClick)
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Test Component Interactions")
+                Text("FETCH CONFIG")
+            }
+            Button(
+                onClick = {
+                    onEvent(ShowcaseContract.Event.OnRefreshConfigurationClick)
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("REFRESH CONFIG")
             }
         }
     }
