@@ -27,13 +27,13 @@ import com.nickstamp.kit.ui.theme.highEmphasis
 @Composable
 fun KitSectionContainer(
     title: String,
-    content: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     titleHorizontalPadding: Dp = spacing.large,
     contentHorizontalPadding: Dp = spacing.none,
     action: @Composable (() -> Unit)? = null,
     iconRes: ImageVector? = null,
     iconTint: Color = colorScheme.onBackground.highEmphasis(),
+    content: @Composable () -> Unit,
 ) {
     Column(
         modifier = modifier
@@ -56,7 +56,7 @@ fun KitSectionContainer(
                 text = title,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                style = typography.bold16.copy(color = colorScheme.onBackground.highEmphasis()),
+                style = typography.bold18.copy(color = colorScheme.onBackground.highEmphasis()),
                 modifier = Modifier.weight(1f)
             )
 
