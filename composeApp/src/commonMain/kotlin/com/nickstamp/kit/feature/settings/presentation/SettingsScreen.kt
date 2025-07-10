@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import com.nickstamp.kit.ui.components.ImageSource.Companion.toImageSource
 import com.nickstamp.kit.ui.components.KitAppBar
 import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.PreviewWrapper
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.compose_multiplatform
@@ -54,96 +55,97 @@ fun SettingsScreen(
             verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.large)
         ) {
 
-        // Theme Setting Card
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = colorScheme.surface
-            )
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(AppTheme.spacing.large),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+            // Theme Setting Card
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = colorScheme.surface
+                )
             ) {
                 Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(AppTheme.spacing.large),
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(
-                        painter = painterResource(Res.drawable.ic_dark_mode),
-                        contentDescription = "Theme icon",
-                        tint = colorScheme.primary
-                    )
-                    Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
-                    Column {
-                        Text(
-                            text = "Dark Theme",
-                            style = AppTheme.typography.bold16,
-                            color = colorScheme.onSurface
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            painter = painterResource(Res.drawable.ic_dark_mode),
+                            contentDescription = "Theme icon",
+                            tint = colorScheme.primary
                         )
-                        Text(
-                            text = if (state.isDarkTheme) "Dark mode is enabled" else "Light mode is enabled",
-                            style = AppTheme.typography.regular14,
-                            color = colorScheme.onSurfaceVariant
-                        )
+                        Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
+                        Column {
+                            Text(
+                                text = "Dark Theme",
+                                style = AppTheme.typography.bold16,
+                                color = colorScheme.onSurface
+                            )
+                            Text(
+                                text = if (state.isDarkTheme) "Dark mode is enabled" else "Light mode is enabled",
+                                style = AppTheme.typography.regular14,
+                                color = colorScheme.onSurfaceVariant
+                            )
+                        }
                     }
+
+                    Switch(
+                        checked = state.isDarkTheme,
+                        onCheckedChange = { onEvent(SettingsContract.Event.ToggleTheme) }
+                    )
                 }
-
-                Switch(
-                    checked = state.isDarkTheme,
-                    onCheckedChange = { onEvent(SettingsContract.Event.ToggleTheme) }
-                )
             }
-        }
 
 
-        // Developer Tools Navigation
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = colorScheme.surface
-            )
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(AppTheme.spacing.large),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+            // Developer Tools Navigation
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = colorScheme.surface
+                )
             ) {
                 Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(AppTheme.spacing.large),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(
-                        painter = painterResource(Res.drawable.ic_completed),
-                        contentDescription = "Developer tools icon",
-                        tint = colorScheme.secondary
-                    )
-                    Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
-                    Column {
-                        Text(
-                            text = "Developer Tools",
-                            style = AppTheme.typography.bold16,
-                            color = colorScheme.onSurface
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Icon(
+                            painter = painterResource(Res.drawable.ic_completed),
+                            contentDescription = "Developer tools icon",
+                            tint = colorScheme.secondary
                         )
-                        Text(
-                            text = "Access development features and utilities",
-                            style = AppTheme.typography.regular14,
-                            color = colorScheme.onSurfaceVariant
-                        )
+                        Spacer(modifier = Modifier.width(spacing.medium))
+                        Column {
+                            Text(
+                                text = "Developer Tools",
+                                style = AppTheme.typography.bold16,
+                                color = colorScheme.onSurface
+                            )
+                            Text(
+                                text = "Access development features and utilities",
+                                style = AppTheme.typography.regular14,
+                                color = colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(spacing.default))
+
+                    Button(
+                        onClick = { onEvent(SettingsContract.Event.NavigateToDeveloperTools) }
+                    ) {
+                        Text("Open")
                     }
                 }
-
-                Button(
-                    onClick = { onEvent(SettingsContract.Event.NavigateToDeveloperTools) }
-                ) {
-                    Text("Open")
-                }
             }
-        }
         }
     }
 }

@@ -4,14 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.nickstamp.kit.di.KoinConfig
 import com.nickstamp.kit.navigation.AppNavigation
+import com.nickstamp.kit.di.KoinConfig
+import com.nickstamp.kit.feature.settings.domain.usecase.GetAppThemeUseCase
 import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.utils.EffectHandler
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -27,7 +26,10 @@ fun App() {
 
 @Composable
 private fun AppContent() {
-    var isDarkTheme by remember { mutableStateOf(false) }
+    val getAppThemeUseCase: GetAppThemeUseCase = koinInject()
+
+    // Load theme from preferences directly
+    val isDarkTheme by getAppThemeUseCase.getThemeFlow().collectAsState(initial = false)
 
     AppTheme(useDarkTheme = isDarkTheme) {
         val navController = rememberNavController()
@@ -39,7 +41,7 @@ private fun AppContent() {
             AppNavigation(
                 navController = navController,
                 effectHandler = effectHandler,
-                onThemeChange = { newTheme -> isDarkTheme = newTheme },
+                onThemeChange = { /* Theme changes handled by DataStore */ },
                 currentTheme = isDarkTheme
             )
         }

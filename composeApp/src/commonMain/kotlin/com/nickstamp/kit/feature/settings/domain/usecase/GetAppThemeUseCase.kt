@@ -13,4 +13,8 @@ class GetAppThemeUseCase(
             false
         }
     }
+
+    fun getThemeFlow(): Flow<Boolean> {
+        return defaultDatastoreManager.isDarkThemeFlow()
+    }
 }
