@@ -52,6 +52,7 @@ class DeveloperToolsViewModel(
                 )
             }
         } catch (e: Exception) {
+            println("Error loading configuration: ${e.message}")
             setEffect(DeveloperToolsContract.Effect.ShowToast("Error loading configuration: ${e.message}"))
         }
     }

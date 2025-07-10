@@ -1,5 +1,8 @@
 package com.nickstamp.kit.feature.config.domain.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class AppUpdateConfig(
     val minimumRequiredVersion: Int,
     val latestVersionGoogle: Int,

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -174,7 +175,9 @@ fun DeveloperToolsScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .fillMaxHeight(0.8f)
                         .padding(AppTheme.spacing.large)
+                        .verticalScroll(rememberScrollState())
                 ) {
                     Text(
                         text = "Current Configuration",
@@ -197,15 +200,6 @@ fun DeveloperToolsScreen(
                                 .fillMaxWidth()
                                 .padding(AppTheme.spacing.medium)
                         )
-                    }
-                    
-                    Spacer(modifier = Modifier.height(AppTheme.spacing.large))
-                    
-                    Button(
-                        onClick = { onEvent(DeveloperToolsContract.Event.HideConfiguration) },
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text("Close")
                     }
                     
                     Spacer(modifier = Modifier.height(AppTheme.spacing.large))
