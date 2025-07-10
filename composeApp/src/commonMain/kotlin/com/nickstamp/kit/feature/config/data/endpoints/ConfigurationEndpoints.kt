@@ -5,8 +5,8 @@ import com.nickstamp.kit.core.network.EndpointBuilder
 object ConfigurationEndpoints {
     // Endpoint constants
     const val BASE_URL =
-        "https://gist.githubusercontent.com/nickstamp93/eecc35645ec891c0260ceb038fd07514/raw/"
-    const val CONFIGURATION = "config_gr.json"
+        "https://gist.githubusercontent.com/nickstamp93/30e67698a5417b970f64352b37082da9/raw/"
+    const val CONFIGURATION = "config.json"
 
     // Factory methods for complex endpoints
     fun getConfiguration(): EndpointBuilder {

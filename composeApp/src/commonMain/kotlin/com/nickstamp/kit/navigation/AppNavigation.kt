@@ -53,7 +53,6 @@ fun AppNavigation(
             AppLauncherScreenRoute(
                 onNavigateToHome = { navController.navigate(AppRoutes.Settings) },
                 onNavigateToIntro = { navController.navigate(AppRoutes.Intro) },
-                onOpenWebUrl = { /* Handle web URL opening */ },
                 effectHandler = effectHandler
             )
         }

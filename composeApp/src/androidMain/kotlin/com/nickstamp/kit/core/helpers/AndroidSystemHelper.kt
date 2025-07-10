@@ -10,6 +10,7 @@ class AndroidSystemHelper(
     override fun getCurrentVersion(): Int {
         return try {
             val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
+            @Suppress("DEPRECATION")
             packageInfo.versionCode
         } catch (e: PackageManager.NameNotFoundException) {
             1 // Default version

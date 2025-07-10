@@ -10,6 +10,7 @@ import com.nickstamp.kit.feature.config.domain.Configurator
 import com.nickstamp.kit.feature.config.domain.model.Announcement
 import com.nickstamp.kit.feature.config.domain.model.AppUpdateConfig
 import com.nickstamp.kit.feature.intro.domain.usecase.IsIntroSeenUseCase
+import kotlinx.coroutines.delay
 
 class AppLauncherViewModel(
     private val configurator: Configurator,

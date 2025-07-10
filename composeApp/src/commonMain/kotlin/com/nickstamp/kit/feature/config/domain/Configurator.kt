@@ -35,7 +35,7 @@ class Configurator(
         }
     }
 
-    suspend fun refreshConfiguration(): Configuration {
+    suspend fun getFreshConfiguration(): Configuration {
         return mutex.withLock {
             val freshConfiguration = configurationRepository.refreshConfiguration()
             cachedConfiguration = freshConfiguration

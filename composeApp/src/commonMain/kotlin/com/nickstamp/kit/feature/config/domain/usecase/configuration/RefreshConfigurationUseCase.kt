@@ -7,6 +7,6 @@ class RefreshConfigurationUseCase(
     private val configurator: Configurator
 ) {
     suspend operator fun invoke(): Configuration {
-        return configurator.refreshConfiguration()
+        return configurator.getFreshConfiguration()
     }
 }

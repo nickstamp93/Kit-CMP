@@ -17,4 +17,11 @@
     <string name="text_update_mandatory_message">You are using an outdated version of the app. To continue using the app without problems, please update to the latest version.</string>
     <string name="text_update_optional">Optional Update</string>
     <string name="text_update_optional_message">A new version of the app is available. Would you like to update now?</string>
+
+    <string name="ok_caps">OK</string>
+    <string name="announcement">Announcement</string>
+    <string name="update_now">Update Now</string>
+    <string name="later">Later</string>
+    <string name="close_app">Close App</string>
+    <string name="try_again">Try Again</string>
 </resources>

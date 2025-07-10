@@ -11,5 +11,5 @@ enum class ToastDuration {
 
 interface EffectHandler {
     fun showToast(toastInfo: ToastInfo)
-    fun showSnackbar(message: String)
+    fun closeApp()
 }
