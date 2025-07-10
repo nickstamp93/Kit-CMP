@@ -8,13 +8,11 @@ interface SettingsContract {
     
     sealed interface Event {
         data object ToggleTheme : Event
-        data object NavigateToShowcase : Event
-        data object NavigateToIntro : Event
+        data object NavigateToDeveloperTools : Event
     }
     
     sealed interface Effect {
         data class ShowMessage(val message: String) : Effect
-        data object NavigateToShowcase : Effect
-        data object NavigateToIntro : Effect
+        data object NavigateToDeveloperTools : Effect
     }
 }

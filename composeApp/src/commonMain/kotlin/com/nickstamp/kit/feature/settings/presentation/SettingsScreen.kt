@@ -92,7 +92,8 @@ fun SettingsScreen(
             }
         }
 
-        // Component Demo Navigation
+
+        // Developer Tools Navigation
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(
@@ -112,18 +113,18 @@ fun SettingsScreen(
                 ) {
                     Icon(
                         painter = painterResource(Res.drawable.ic_completed),
-                        contentDescription = "Components demo icon",
+                        contentDescription = "Developer tools icon",
                         tint = colorScheme.secondary
                     )
                     Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
                     Column {
                         Text(
-                            text = "Kit Components Demo",
+                            text = "Developer Tools",
                             style = AppTheme.typography.bold16,
                             color = colorScheme.onSurface
                         )
                         Text(
-                            text = "View framework UI components",
+                            text = "Access development features and utilities",
                             style = AppTheme.typography.regular14,
                             color = colorScheme.onSurfaceVariant
                         )
@@ -131,55 +132,9 @@ fun SettingsScreen(
                 }
 
                 Button(
-                    onClick = { onEvent(SettingsContract.Event.NavigateToShowcase) }
+                    onClick = { onEvent(SettingsContract.Event.NavigateToDeveloperTools) }
                 ) {
-                    Text("View")
-                }
-            }
-        }
-
-        // Intro Screen Navigation
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = colorScheme.surface
-            )
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(AppTheme.spacing.large),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.weight(1f)
-                ) {
-                    Icon(
-                        painter = painterResource(Res.drawable.ic_completed),
-                        contentDescription = "Intro icon",
-                        tint = colorScheme.tertiary
-                    )
-                    Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
-                    Column {
-                        Text(
-                            text = "App Introduction",
-                            style = AppTheme.typography.bold16,
-                            color = colorScheme.onSurface
-                        )
-                        Text(
-                            text = "View the app onboarding flow",
-                            style = AppTheme.typography.regular14,
-                            color = colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-
-                Button(
-                    onClick = { onEvent(SettingsContract.Event.NavigateToIntro) }
-                ) {
-                    Text("View")
+                    Text("Open")
                 }
             }
         }

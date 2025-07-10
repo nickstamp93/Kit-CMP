@@ -12,8 +12,7 @@ fun SettingsScreenRoute(
     effectHandler: EffectHandler,
     onThemeChange: (Boolean) -> Unit,
     currentTheme: Boolean,
-    onNavigateToShowcase: () -> Unit,
-    onNavigateToIntro: () -> Unit,
+    onNavigateToDeveloperTools: () -> Unit,
     viewModel: SettingsViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -34,11 +33,8 @@ fun SettingsScreenRoute(
                 is SettingsContract.Effect.ShowMessage -> {
                     // Handle showing message if needed - could show toast or snackbar
                 }
-                is SettingsContract.Effect.NavigateToShowcase -> {
-                    onNavigateToShowcase()
-                }
-                is SettingsContract.Effect.NavigateToIntro -> {
-                    onNavigateToIntro()
+                is SettingsContract.Effect.NavigateToDeveloperTools -> {
+                    onNavigateToDeveloperTools()
                 }
             }
         }

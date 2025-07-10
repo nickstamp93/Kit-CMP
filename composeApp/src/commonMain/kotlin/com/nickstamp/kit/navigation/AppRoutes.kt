@@ -15,4 +15,7 @@ sealed class AppRoutes {
     
     @Serializable
     data object Intro : AppRoutes()
+    
+    @Serializable
+    data object DeveloperTools : AppRoutes()
 }

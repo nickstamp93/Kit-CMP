@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.nickstamp.kit.feature.applauncher.presentation.AppLauncherScreenRoute
+import com.nickstamp.kit.feature.developertools.presentation.DeveloperToolsScreenRoute
 import com.nickstamp.kit.feature.intro.presentation.IntroScreenRoute
 import com.nickstamp.kit.feature.settings.presentation.SettingsScreenRoute
 import com.nickstamp.kit.feature.showcase.presentation.ShowcaseScreenRoute
@@ -26,11 +27,8 @@ fun AppNavigation(
                 effectHandler = effectHandler,
                 onThemeChange = onThemeChange,
                 currentTheme = currentTheme,
-                onNavigateToShowcase = {
-                    navController.navigate(AppRoutes.Showcase)
-                },
-                onNavigateToIntro = {
-                    navController.navigate(AppRoutes.Intro)
+                onNavigateToDeveloperTools = {
+                    navController.navigate(AppRoutes.DeveloperTools)
                 }
             )
         }
@@ -49,6 +47,19 @@ fun AppNavigation(
                         popUpTo(0) { inclusive = true }
                         launchSingleTop = true
                     }
+                },
+                effectHandler = effectHandler
+            )
+        }
+
+        composable<AppRoutes.DeveloperTools> {
+            DeveloperToolsScreenRoute(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToShowcase = {
+                    navController.navigate(AppRoutes.Showcase)
+                },
+                onNavigateToIntro = {
+                    navController.navigate(AppRoutes.Intro)
                 },
                 effectHandler = effectHandler
             )
