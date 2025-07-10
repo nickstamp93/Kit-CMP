@@ -2,13 +2,13 @@ package com.nickstamp.kit.feature.developertools.presentation
 
 import com.nickstamp.kit.core.arch.BaseViewModel
 import com.nickstamp.kit.core.storage.example.DefaultDatastoreManager
-import com.nickstamp.kit.feature.config.domain.Configurator
+import com.nickstamp.kit.feature.config.domain.usecase.GetConfigurationUseCase
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class DeveloperToolsViewModel(
     private val defaultDatastoreManager: DefaultDatastoreManager,
-    private val configurator: Configurator
+    private val getConfigurationUseCase: GetConfigurationUseCase
 ) : BaseViewModel<DeveloperToolsContract.Event, DeveloperToolsContract.Effect, DeveloperToolsContract.State>(
     initialState = DeveloperToolsContract.State()
 ) {
@@ -47,7 +47,7 @@ class DeveloperToolsViewModel(
     
     private fun showConfiguration() = launchInViewModelScope {
         try {
-            val config = configurator.getConfiguration()
+            val config = getConfigurationUseCase()
             val json = Json { prettyPrint = true }
             val configJson = json.encodeToString(config)
             setState { 

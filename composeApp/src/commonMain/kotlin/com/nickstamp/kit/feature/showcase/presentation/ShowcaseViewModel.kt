@@ -1,13 +1,9 @@
 package com.nickstamp.kit.feature.showcase.presentation
 
 import com.nickstamp.kit.core.arch.BaseViewModel
-import com.nickstamp.kit.feature.config.domain.usecase.configuration.GetConfigurationUseCase
-import com.nickstamp.kit.feature.config.domain.usecase.configuration.RefreshConfigurationUseCase
+import com.nickstamp.kit.feature.config.domain.usecase.GetConfigurationUseCase
 
-class ShowcaseViewModel(
-    private val getConfigurationUseCase: GetConfigurationUseCase,
-    private val refreshConfigurationUseCase: RefreshConfigurationUseCase
-) : BaseViewModel<ShowcaseContract.Event, ShowcaseContract.Effect, ShowcaseContract.State>(
+class ShowcaseViewModel() : BaseViewModel<ShowcaseContract.Event, ShowcaseContract.Effect, ShowcaseContract.State>(
     initialState = ShowcaseContract.State()
 ) {
     
@@ -15,8 +11,6 @@ class ShowcaseViewModel(
         when (event) {
             is ShowcaseContract.Event.OnBack -> navigateBack()
             is ShowcaseContract.Event.OnDemoButtonClick -> onDemoButtonClick(event.componentName)
-            is ShowcaseContract.Event.OnFetchConfigurationClick -> onFetchConfigurationClick()
-            is ShowcaseContract.Event.OnRefreshConfigurationClick -> onRefreshConfigurationClick()
         }
     }
     
@@ -27,58 +21,5 @@ class ShowcaseViewModel(
     private fun onDemoButtonClick(componentName: String) {
         setEffect(ShowcaseContract.Effect.ShowMessage(componentName))
     }
-    
-    private fun onFetchConfigurationClick() {
-        launchInViewModelScope {
-            setState { copy(isConfigLoading = true, configError = null) }
-            
-            try {
-                val configuration = getConfigurationUseCase()
-                setState { 
-                    copy(
-                        isConfigLoading = false,
-                        configuration = configuration,
-                        configError = null
-                    )
-                }
-                setEffect(ShowcaseContract.Effect.ShowConfigurationFetched(configuration))
-            } catch (e: Exception) {
-                val errorMessage = e.message ?: "Failed to fetch configuration"
-                setState { 
-                    copy(
-                        isConfigLoading = false,
-                        configError = errorMessage
-                    )
-                }
-                setEffect(ShowcaseContract.Effect.ShowConfigurationError(errorMessage))
-            }
-        }
-    }
-    
-    private fun onRefreshConfigurationClick() {
-        launchInViewModelScope {
-            setState { copy(isConfigLoading = true, configError = null) }
-            
-            try {
-                val configuration = refreshConfigurationUseCase()
-                setState { 
-                    copy(
-                        isConfigLoading = false,
-                        configuration = configuration,
-                        configError = null
-                    )
-                }
-                setEffect(ShowcaseContract.Effect.ShowConfigurationFetched(configuration))
-            } catch (e: Exception) {
-                val errorMessage = e.message ?: "Failed to refresh configuration"
-                setState { 
-                    copy(
-                        isConfigLoading = false,
-                        configError = errorMessage
-                    )
-                }
-                setEffect(ShowcaseContract.Effect.ShowConfigurationError(errorMessage))
-            }
-        }
-    }
+
 }

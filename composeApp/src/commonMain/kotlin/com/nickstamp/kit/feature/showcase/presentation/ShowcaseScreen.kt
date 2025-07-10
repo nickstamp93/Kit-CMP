@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -645,24 +644,6 @@ fun ShowcaseScreen(
                     },
                     modifier = Modifier.fillMaxWidth()
                 )
-            }
-
-            // Interactive Demo Button
-            Button(
-                onClick = {
-                    onEvent(ShowcaseContract.Event.OnFetchConfigurationClick)
-                },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text("FETCH CONFIG")
-            }
-            Button(
-                onClick = {
-                    onEvent(ShowcaseContract.Event.OnRefreshConfigurationClick)
-                },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text("REFRESH CONFIG")
             }
         }
     }

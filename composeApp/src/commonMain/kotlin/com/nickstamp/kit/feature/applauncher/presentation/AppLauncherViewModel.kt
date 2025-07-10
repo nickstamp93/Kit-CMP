@@ -6,14 +6,13 @@ import com.nickstamp.kit.feature.applauncher.helper.AppUpdateHelper
 import com.nickstamp.kit.feature.applauncher.presentation.AppLauncherContract.Effect
 import com.nickstamp.kit.feature.applauncher.presentation.AppLauncherContract.Event
 import com.nickstamp.kit.feature.applauncher.presentation.AppLauncherContract.State
-import com.nickstamp.kit.feature.config.domain.Configurator
 import com.nickstamp.kit.feature.config.domain.model.Announcement
 import com.nickstamp.kit.feature.config.domain.model.AppUpdateConfig
+import com.nickstamp.kit.feature.config.domain.usecase.GetConfigurationUseCase
 import com.nickstamp.kit.feature.intro.domain.usecase.IsIntroSeenUseCase
-import kotlinx.coroutines.delay
 
 class AppLauncherViewModel(
-    private val configurator: Configurator,
+    private val getConfigurationUseCase: GetConfigurationUseCase,
     private val updateHelper: AppUpdateHelper,
     private val isIntroSeen: IsIntroSeenUseCase
 ) : BaseViewModel<Event, Effect, State>(
@@ -37,7 +36,7 @@ class AppLauncherViewModel(
     private fun fetchConfiguration() = launchInViewModelScope {
         setState { State.Loading }
         try {
-            val config = configurator.getConfiguration()
+            getConfigurationUseCase(forceFetch = true)
             checkForAnnouncements(
                 onAnnouncementsNotFound = {
                     checkForUpdates()
@@ -51,7 +50,7 @@ class AppLauncherViewModel(
     private fun checkForAnnouncements(
         onAnnouncementsNotFound: () -> Unit
     ) = launchInViewModelScope {
-        val config = configurator.getConfiguration()
+        val config = getConfigurationUseCase()
         val announcement = config.appLaunchAnnouncement
         if (announcement.message.isNotBlank())
             setState { State.AnnouncementAvailable(announcement) }
@@ -60,7 +59,7 @@ class AppLauncherViewModel(
     }
 
     private fun checkForUpdates() = launchInViewModelScope {
-        val config = configurator.getConfiguration()
+        val config = getConfigurationUseCase()
         val updateConfig = config.appUpdateConfig
         when (val updateStatus = updateHelper.getAppUpdateStatus(updateConfig)) {
 
@@ -85,7 +84,7 @@ class AppLauncherViewModel(
     }
 
     private fun goToAppIntroOrMainApp() = launchInViewModelScope {
-        val config = configurator.getConfiguration()
+        val config = getConfigurationUseCase()
         val appIntroConfig = config.appIntroConfig
         val introSeen = isIntroSeen()
         if (appIntroConfig.enabled && !introSeen) {

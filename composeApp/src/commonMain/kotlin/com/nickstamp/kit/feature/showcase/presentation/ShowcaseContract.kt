@@ -13,8 +13,6 @@ interface ShowcaseContract {
     sealed interface Event {
         data object OnBack : Event
         data class OnDemoButtonClick(val componentName: String) : Event
-        data object OnFetchConfigurationClick : Event
-        data object OnRefreshConfigurationClick : Event
     }
     
     sealed interface Effect {

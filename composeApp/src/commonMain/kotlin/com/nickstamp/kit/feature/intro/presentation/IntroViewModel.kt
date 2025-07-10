@@ -2,7 +2,7 @@ package com.nickstamp.kit.feature.intro.presentation
 
 import com.nickstamp.kit.core.arch.BaseViewModel
 import com.nickstamp.kit.feature.config.domain.AppConfigDefaults
-import com.nickstamp.kit.feature.config.domain.Configurator
+import com.nickstamp.kit.feature.config.domain.usecase.GetConfigurationUseCase
 import com.nickstamp.kit.feature.intro.domain.model.IntroPage
 import com.nickstamp.kit.feature.intro.domain.usecase.SetIntroSeenUseCase
 import com.nickstamp.kit.feature.intro.presentation.IntroContract.Effect
@@ -11,7 +11,7 @@ import com.nickstamp.kit.feature.intro.presentation.IntroContract.State
 import com.nickstamp.kit.ui.utils.ToastInfo
 
 class IntroViewModel(
-    private val configurator: Configurator,
+    private val getConfigurationUseCase: GetConfigurationUseCase,
     private val setIntroSeen: SetIntroSeenUseCase,
 ) : BaseViewModel<Event, Effect, State>(
     initialState = State()
@@ -62,7 +62,7 @@ class IntroViewModel(
 
     private fun updateTerms() = launchInViewModelScope {
         try {
-            val introConfig = configurator.getConfiguration().appIntroConfig
+            val introConfig = getConfigurationUseCase().appIntroConfig
             val termsText = introConfig.termsText.ifEmpty { AppConfigDefaults.DEFAULT_TERMS_TEXT }
             setState {
                 copy(

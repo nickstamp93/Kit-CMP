@@ -1,4 +1,4 @@
-package com.nickstamp.kit.feature.config.domain
+package com.nickstamp.kit.feature.config.domain.usecase
 
 import com.nickstamp.kit.core.helpers.DateTimeHelper
 import com.nickstamp.kit.feature.config.domain.model.Configuration
@@ -6,7 +6,7 @@ import com.nickstamp.kit.feature.config.domain.repository.ConfigurationRepositor
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
-class Configurator(
+class GetConfigurationUseCase(
     private val configurationRepository: ConfigurationRepository,
     private val dateTimeHelper: DateTimeHelper
 ) {
@@ -15,40 +15,30 @@ class Configurator(
     private var lastFetchTime: Long = 0
     private val cacheValidityMinutes = 30 // 30 minutes
 
-    suspend fun getConfiguration(): Configuration {
+    suspend operator fun invoke(forceFetch: Boolean = false): Configuration {
         return mutex.withLock {
+            // If force fetch is requested, always fetch fresh configuration
+            if (forceFetch) {
+                return@withLock fetchFreshConfiguration()
+            }
+
             // Return cached configuration if it's still valid
             cachedConfiguration?.let { cached ->
                 if (isCacheValid()) {
-                    println("Returning cached configuration")
                     return@withLock cached
                 }
             }
 
             // Fetch new configuration from repository
-            val freshConfiguration = configurationRepository.getConfiguration()
-            cachedConfiguration = freshConfiguration
-            lastFetchTime = dateTimeHelper.getCurrentTimeInMillis()
-
-            println("Returning fresh configuration")
-            freshConfiguration
+            fetchFreshConfiguration()
         }
     }
 
-    suspend fun getFreshConfiguration(): Configuration {
-        return mutex.withLock {
-            val freshConfiguration = configurationRepository.refreshConfiguration()
-            cachedConfiguration = freshConfiguration
-            lastFetchTime = dateTimeHelper.getCurrentTimeInMillis()
-
-            freshConfiguration
-        }
-    }
-
-    suspend fun getCachedConfiguration(): Configuration? {
-        return mutex.withLock {
-            cachedConfiguration
-        }
+    private suspend fun fetchFreshConfiguration(): Configuration {
+        val freshConfiguration = configurationRepository.getConfiguration()
+        cachedConfiguration = freshConfiguration
+        lastFetchTime = dateTimeHelper.getCurrentTimeInMillis()
+        return freshConfiguration
     }
 
     private fun isCacheValid(): Boolean {
@@ -61,10 +51,10 @@ class Configurator(
         
         return (currentTime - lastFetchTime) < cacheValidityMillis
     }
-    
-    suspend fun isCacheValidPublic(): Boolean {
+
+    suspend fun getCachedConfiguration(): Configuration? {
         return mutex.withLock {
-            isCacheValid()
+            cachedConfiguration
         }
     }
 
@@ -74,18 +64,7 @@ class Configurator(
             lastFetchTime = 0
         }
     }
-    
-    suspend fun getCachedConfigurationOrFetch(): Configuration {
-        return mutex.withLock {
-            cachedConfiguration?.takeIf { isCacheValid() } ?: run {
-                val freshConfiguration = configurationRepository.getConfiguration()
-                cachedConfiguration = freshConfiguration
-                lastFetchTime = dateTimeHelper.getCurrentTimeInMillis()
-                freshConfiguration
-            }
-        }
-    }
-    
+
     suspend fun getCacheInfo(): CacheInfo {
         return mutex.withLock {
             CacheInfo(
