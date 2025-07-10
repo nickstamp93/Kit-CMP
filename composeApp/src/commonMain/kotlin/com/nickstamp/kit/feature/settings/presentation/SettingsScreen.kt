@@ -138,6 +138,52 @@ fun SettingsScreen(
             }
         }
 
+        // Intro Screen Navigation
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = colorScheme.surface
+            )
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(AppTheme.spacing.large),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Icon(
+                        painter = painterResource(Res.drawable.ic_completed),
+                        contentDescription = "Intro icon",
+                        tint = colorScheme.tertiary
+                    )
+                    Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
+                    Column {
+                        Text(
+                            text = "App Introduction",
+                            style = AppTheme.typography.bold16,
+                            color = colorScheme.onSurface
+                        )
+                        Text(
+                            text = "View the app onboarding flow",
+                            style = AppTheme.typography.regular14,
+                            color = colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+
+                Button(
+                    onClick = { onEvent(SettingsContract.Event.NavigateToIntro) }
+                ) {
+                    Text("View")
+                }
+            }
+        }
+
     }
 }
 

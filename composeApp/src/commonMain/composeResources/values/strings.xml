@@ -1,0 +1,9 @@
+<resources>
+    <string name="empty" />
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="accept_terms_caps">ACCEPT TERMS</string>
+    <string name="intro_page_title_1">Welcome!</string>
+    <string name="intro_page_title_2">Channels</string>
+    <string name="intro_page_content_1">Welcome to Greek TV Lite, the fastest and easiest way to watch Greek TV!</string>
+    <string name="intro_page_content_2">Watch more than 250+ Greek TV channels on the go!</string>
+</resources>

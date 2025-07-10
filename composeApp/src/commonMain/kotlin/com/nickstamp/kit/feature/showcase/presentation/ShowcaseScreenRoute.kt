@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.nickstamp.kit.core.model.UiText.Companion.toUiText
 import com.nickstamp.kit.ui.utils.EffectHandler
 import com.nickstamp.kit.ui.utils.ToastInfo
 import org.koin.compose.koinInject

@@ -13,6 +13,7 @@ fun SettingsScreenRoute(
     onThemeChange: (Boolean) -> Unit,
     currentTheme: Boolean,
     onNavigateToShowcase: () -> Unit,
+    onNavigateToIntro: () -> Unit,
     viewModel: SettingsViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -35,6 +36,9 @@ fun SettingsScreenRoute(
                 }
                 is SettingsContract.Effect.NavigateToShowcase -> {
                     onNavigateToShowcase()
+                }
+                is SettingsContract.Effect.NavigateToIntro -> {
+                    onNavigateToIntro()
                 }
             }
         }

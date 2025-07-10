@@ -9,4 +9,7 @@ sealed class AppRoutes {
     
     @Serializable
     data object Showcase : AppRoutes()
+    
+    @Serializable
+    data object Intro : AppRoutes()
 }

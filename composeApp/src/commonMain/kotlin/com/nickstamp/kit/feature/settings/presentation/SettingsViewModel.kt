@@ -10,6 +10,7 @@ class SettingsViewModel : BaseViewModel<SettingsContract.Event, SettingsContract
         when (event) {
             is SettingsContract.Event.ToggleTheme -> toggleTheme()
             is SettingsContract.Event.NavigateToShowcase -> navigateToShowcase()
+            is SettingsContract.Event.NavigateToIntro -> navigateToIntro()
         }
     }
     
@@ -28,5 +29,9 @@ class SettingsViewModel : BaseViewModel<SettingsContract.Event, SettingsContract
     
     private fun navigateToShowcase() {
         setEffect(SettingsContract.Effect.NavigateToShowcase)
+    }
+    
+    private fun navigateToIntro() {
+        setEffect(SettingsContract.Effect.NavigateToIntro)
     }
 }
