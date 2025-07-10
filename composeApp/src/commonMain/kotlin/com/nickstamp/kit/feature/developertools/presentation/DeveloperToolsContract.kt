@@ -8,6 +8,7 @@ interface DeveloperToolsContract {
     )
     
     sealed interface Event {
+        data object OnBack : Event
         data object NavigateToShowcase : Event
         data object NavigateToIntro : Event
         data object ClearAllPreferences : Event

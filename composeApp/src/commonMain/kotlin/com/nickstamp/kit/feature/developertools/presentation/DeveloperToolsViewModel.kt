@@ -15,12 +15,17 @@ class DeveloperToolsViewModel(
     
     override fun onEvent(event: DeveloperToolsContract.Event) {
         when (event) {
+            is DeveloperToolsContract.Event.OnBack -> navigateBack()
             is DeveloperToolsContract.Event.NavigateToShowcase -> navigateToShowcase()
             is DeveloperToolsContract.Event.NavigateToIntro -> navigateToIntro()
             is DeveloperToolsContract.Event.ClearAllPreferences -> clearAllPreferences()
             is DeveloperToolsContract.Event.ShowConfiguration -> showConfiguration()
             is DeveloperToolsContract.Event.HideConfiguration -> hideConfiguration()
         }
+    }
+    
+    private fun navigateBack() {
+        setEffect(DeveloperToolsContract.Effect.NavigateBack)
     }
     
     private fun navigateToShowcase() {

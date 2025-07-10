@@ -13,10 +13,15 @@ class ShowcaseViewModel(
     
     override fun onEvent(event: ShowcaseContract.Event) {
         when (event) {
+            is ShowcaseContract.Event.OnBack -> navigateBack()
             is ShowcaseContract.Event.OnDemoButtonClick -> onDemoButtonClick(event.componentName)
             is ShowcaseContract.Event.OnFetchConfigurationClick -> onFetchConfigurationClick()
             is ShowcaseContract.Event.OnRefreshConfigurationClick -> onRefreshConfigurationClick()
         }
+    }
+    
+    private fun navigateBack() {
+        setEffect(ShowcaseContract.Effect.NavigateBack)
     }
     
     private fun onDemoButtonClick(componentName: String) {

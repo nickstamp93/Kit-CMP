@@ -18,19 +18,16 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.shared.composables.animatedSkeletonColor
 import com.nickstamp.kit.ui.components.IconGravity
 import com.nickstamp.kit.ui.components.ImageSource.Companion.toImageSource
 import com.nickstamp.kit.ui.components.KitAppBar
@@ -58,35 +55,28 @@ import com.nickstamp.kit.ui.components.KitTextWithIcon
 import com.nickstamp.kit.ui.components.KitVerticalProgressBar
 import com.nickstamp.kit.ui.components.LabelSize
 import com.nickstamp.kit.ui.components.SearchCatalogButtonRow
-import com.nickstamp.kit.shared.composables.animatedSkeletonColor
+import com.nickstamp.kit.ui.theme.AppTheme
 import kit_cmp.composeapp.generated.resources.Res
+import kit_cmp.composeapp.generated.resources.compose_multiplatform
 import kit_cmp.composeapp.generated.resources.ic_back
 import kit_cmp.composeapp.generated.resources.ic_info
 import kit_cmp.composeapp.generated.resources.ic_settings
 import kit_cmp.composeapp.generated.resources.ic_share
 import kit_cmp.composeapp.generated.resources.ic_star_empty
 import kit_cmp.composeapp.generated.resources.ic_star_filled
-import org.jetbrains.compose.resources.painterResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ShowcaseScreen(
     state: ShowcaseContract.State,
-    onEvent: (ShowcaseContract.Event) -> Unit,
-    onNavigateBack: () -> Unit
+    onEvent: (ShowcaseContract.Event) -> Unit
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("Kit Components") },
-                navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
-                        Icon(
-                            painter = painterResource(Res.drawable.ic_back),
-                            contentDescription = "Back"
-                        )
-                    }
-                }
+            KitAppBar(
+                title = "Kit Components",
+                onBack = { onEvent(ShowcaseContract.Event.OnBack) },
+                logo = Res.drawable.compose_multiplatform.toImageSource()
             )
         }
     ) { paddingValues ->
@@ -294,7 +284,7 @@ fun ShowcaseScreen(
                 ) {
                     KitAppBar(
                         title = "Demo App Bar",
-                        navigateUp = {
+                        onBack = {
                             onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBar - Navigation"))
                         },
                         actions = {
@@ -538,7 +528,7 @@ fun ShowcaseScreen(
                             }
                         )
                     }
-                    
+
                     Text("Icon buttons require Material Icons which are not available in commonMain")
                 }
             }
@@ -605,7 +595,7 @@ fun ShowcaseScreen(
                             Text("Section content goes here")
                         }
                     )
-                    
+
                     KitSectionContainer(
                         title = "Section with Action",
                         action = {

@@ -20,10 +20,12 @@ fun ShowcaseScreenRoute(
     LaunchedEffect(viewModel) {
         viewModel.effect.collect { effect ->
             when (effect) {
+                is ShowcaseContract.Effect.NavigateBack -> {
+                    onNavigateBack()
+                }
                 is ShowcaseContract.Effect.ShowMessage -> {
                     effectHandler.showToast(ToastInfo(effect.message))
                 }
-
                 is ShowcaseContract.Effect.ShowConfigurationError -> {
                     effectHandler.showToast(ToastInfo(effect.error))
                 }
@@ -36,7 +38,6 @@ fun ShowcaseScreenRoute(
 
     ShowcaseScreen(
         state = state,
-        onEvent = viewModel::onEvent,
-        onNavigateBack = onNavigateBack
+        onEvent = viewModel::onEvent
     )
 }
