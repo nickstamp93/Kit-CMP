@@ -43,6 +43,7 @@ import com.nickstamp.kit.feature.intro.presentation.IntroContract.State
 import com.nickstamp.kit.feature.intro.presentation.components.AcceptTermsButton
 import com.nickstamp.kit.feature.intro.presentation.components.IntroNavButton
 import com.nickstamp.kit.feature.intro.presentation.components.PagerIndicator
+import com.nickstamp.kit.ui.components.HtmlWebView
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
@@ -291,9 +292,8 @@ private fun TermsPageContent(
                     shape = shapes.large
                 )
         ) {
-            Text(
-                text = htmlText,
-                style = typography.regular14.copy(color = colorScheme.onSurface),
+            HtmlWebView(
+                html = htmlText,
                 modifier = Modifier
                     .padding(spacing.xlarge)
                     .verticalScroll(rememberScrollState())
