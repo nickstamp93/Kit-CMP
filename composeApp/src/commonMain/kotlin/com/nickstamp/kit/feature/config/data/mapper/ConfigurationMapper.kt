@@ -28,10 +28,10 @@ fun ConfigurationDto.toDomain(): Configuration {
 
 fun AppUpdateConfigDto.toDomain(): AppUpdateConfig {
     return AppUpdateConfig(
-        minimumRequiredVersion = minimumRequiredVersion,
-        latestVersionGoogle = latestVersionGoogle,
-        latestVersionHuawei = latestVersionHuawei,
-        latestVersionCDN = latestVersionCDN,
+        minimumRequiredVersion = 0,
+        latestVersionGoogle = 0,
+        latestVersionApple = latestVersionApple,
+        latestVersionCDN = 0,
         cdnApkUrl = cdnApkUrl
     )
 }
@@ -55,7 +55,7 @@ fun AdPlacementConfigDto.toDomain(): AdPlacementConfig {
 
 fun AnnouncementDto.toDomain(): Announcement {
     return Announcement(
-        message = message,
+        message = "Test message",
         action = action.toDomain()
     )
 }
@@ -69,8 +69,8 @@ fun AppIntroConfigDto.toDomain(): AppIntroConfig {
 
 fun CtaActionDto.toDomain(): CtaAction {
     return CtaAction(
-        text = text,
-        url = url,
-        enabled = enabled
+        text = "CTA test",
+        url = "www.epiplastampoulis.gr",
+        enabled = true
     )
 }

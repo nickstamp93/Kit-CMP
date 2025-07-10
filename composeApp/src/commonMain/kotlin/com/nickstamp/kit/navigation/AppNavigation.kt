@@ -4,9 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.nickstamp.kit.feature.applauncher.presentation.AppLauncherScreenRoute
+import com.nickstamp.kit.feature.intro.presentation.IntroScreenRoute
 import com.nickstamp.kit.feature.settings.presentation.SettingsScreenRoute
 import com.nickstamp.kit.feature.showcase.presentation.ShowcaseScreenRoute
-import com.nickstamp.kit.feature.intro.presentation.IntroScreenRoute
 import com.nickstamp.kit.ui.utils.EffectHandler
 
 @Composable
@@ -18,7 +19,7 @@ fun AppNavigation(
 ) {
     NavHost(
         navController = navController,
-        startDestination = AppRoutes.Settings
+        startDestination = AppRoutes.AppLauncher
     ) {
         composable<AppRoutes.Settings> {
             SettingsScreenRoute(
@@ -44,6 +45,15 @@ fun AppNavigation(
         composable<AppRoutes.Intro> {
             IntroScreenRoute(
                 onNavigateToHome = { navController.navigate(AppRoutes.Settings) },
+                effectHandler = effectHandler
+            )
+        }
+
+        composable<AppRoutes.AppLauncher> {
+            AppLauncherScreenRoute(
+                onNavigateToHome = { navController.navigate(AppRoutes.Settings) },
+                onNavigateToIntro = { navController.navigate(AppRoutes.Intro) },
+                onOpenWebUrl = { /* Handle web URL opening */ },
                 effectHandler = effectHandler
             )
         }
