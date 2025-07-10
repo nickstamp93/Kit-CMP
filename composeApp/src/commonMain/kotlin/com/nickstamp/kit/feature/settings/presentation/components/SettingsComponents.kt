@@ -23,10 +23,22 @@ import com.nickstamp.kit.feature.settings.presentation.SettingsContract
 import com.nickstamp.kit.ui.theme.AppTheme
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.app_name
-import kit_cmp.composeapp.generated.resources.ic_completed
 import kit_cmp.composeapp.generated.resources.ic_dark_mode
 import kit_cmp.composeapp.generated.resources.ic_info
 import kit_cmp.composeapp.generated.resources.ic_settings
+import kit_cmp.composeapp.generated.resources.settings_app_info_developer
+import kit_cmp.composeapp.generated.resources.settings_app_info_icon_content_description
+import kit_cmp.composeapp.generated.resources.settings_app_info_name
+import kit_cmp.composeapp.generated.resources.settings_app_info_title
+import kit_cmp.composeapp.generated.resources.settings_app_info_version
+import kit_cmp.composeapp.generated.resources.settings_dark_theme_disabled
+import kit_cmp.composeapp.generated.resources.settings_dark_theme_enabled
+import kit_cmp.composeapp.generated.resources.settings_dark_theme_title
+import kit_cmp.composeapp.generated.resources.settings_developer_tools_button
+import kit_cmp.composeapp.generated.resources.settings_developer_tools_description
+import kit_cmp.composeapp.generated.resources.settings_developer_tools_icon_content_description
+import kit_cmp.composeapp.generated.resources.settings_developer_tools_title
+import kit_cmp.composeapp.generated.resources.settings_theme_icon_content_description
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -53,18 +65,20 @@ fun ThemeSettingsCard(
             ) {
                 Icon(
                     painter = painterResource(Res.drawable.ic_dark_mode),
-                    contentDescription = "Theme icon",
+                    contentDescription = stringResource(Res.string.settings_theme_icon_content_description),
                     tint = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
                 Column {
                     Text(
-                        text = "Dark Theme",
+                        text = stringResource(Res.string.settings_dark_theme_title),
                         style = AppTheme.typography.bold16,
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        text = if (isDarkTheme) "Dark mode is enabled" else "Light mode is enabled",
+                        text = if (isDarkTheme) stringResource(Res.string.settings_dark_theme_enabled) else stringResource(
+                            Res.string.settings_dark_theme_disabled
+                        ),
                         style = AppTheme.typography.regular14,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -100,12 +114,12 @@ fun AppInfoCard(
             ) {
                 Icon(
                     painter = painterResource(Res.drawable.ic_info),
-                    contentDescription = "App info icon",
+                    contentDescription = stringResource(Res.string.settings_app_info_icon_content_description),
                     tint = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
                 Text(
-                    text = "App Information",
+                    text = stringResource(Res.string.settings_app_info_title),
                     style = AppTheme.typography.bold16,
                     color = MaterialTheme.colorScheme.onSurface
                 )
@@ -121,7 +135,7 @@ fun AppInfoCard(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "App Name:",
+                        text = stringResource(Res.string.settings_app_info_name),
                         style = AppTheme.typography.regular14,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -137,7 +151,7 @@ fun AppInfoCard(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "Version:",
+                        text = stringResource(Res.string.settings_app_info_version),
                         style = AppTheme.typography.regular14,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -151,7 +165,7 @@ fun AppInfoCard(
                 Spacer(modifier = Modifier.height(AppTheme.spacing.small))
 
                 Text(
-                    text = "Developed by Nick Stampoulis",
+                    text = stringResource(Res.string.settings_app_info_developer),
                     style = AppTheme.typography.bold14,
                     color = MaterialTheme.colorScheme.primary,
                     textAlign = TextAlign.Center,
@@ -185,18 +199,18 @@ fun DeveloperToolsCard(
             ) {
                 Icon(
                     painter = painterResource(Res.drawable.ic_settings),
-                    contentDescription = "Developer tools icon",
+                    contentDescription = stringResource(Res.string.settings_developer_tools_icon_content_description),
                     tint = MaterialTheme.colorScheme.secondary
                 )
                 Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
                 Column {
                     Text(
-                        text = "Developer Tools",
+                        text = stringResource(Res.string.settings_developer_tools_title),
                         style = AppTheme.typography.bold16,
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        text = "Access development features and utilities",
+                        text = stringResource(Res.string.settings_developer_tools_description),
                         style = AppTheme.typography.regular14,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -207,7 +221,7 @@ fun DeveloperToolsCard(
             Button(
                 onClick = { onNavigateToDeveloperTools() }
             ) {
-                Text("Open")
+                Text(stringResource(Res.string.settings_developer_tools_button))
             }
         }
     }

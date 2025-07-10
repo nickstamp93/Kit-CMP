@@ -20,6 +20,8 @@ import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.theme.PreviewWrapper
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.compose_multiplatform
+import kit_cmp.composeapp.generated.resources.settings_developer_tools_title
+import kit_cmp.composeapp.generated.resources.settings_title
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -31,7 +33,7 @@ fun SettingsScreen(
     Scaffold(
         topBar = {
             KitAppBar(
-                title = "Settings",
+                title = stringResource(Res.string.settings_title),
                 logo = Res.drawable.compose_multiplatform.toImageSource()
             )
         }
@@ -54,7 +56,7 @@ fun SettingsScreen(
             )
 
             KitSectionContainer(
-                title = "Developer Tools"
+                title = stringResource(Res.string.settings_developer_tools_title)
             ) {
                 DeveloperToolsCard(
                     onNavigateToDeveloperTools = { onEvent(SettingsContract.Event.NavigateToDeveloperTools) }

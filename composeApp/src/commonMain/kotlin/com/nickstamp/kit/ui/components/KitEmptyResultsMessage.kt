@@ -19,9 +19,13 @@ import com.nickstamp.kit.ui.theme.AppTheme.typography
 import com.nickstamp.kit.ui.theme.highEmphasis
 import com.nickstamp.kit.ui.theme.mediumEmphasis
 import kit_cmp.composeapp.generated.resources.Res
+import kit_cmp.composeapp.generated.resources.no_data
+import kit_cmp.composeapp.generated.resources.no_results
+import kit_cmp.composeapp.generated.resources.try_new_search
 import kit_cmp.composeapp.generated.resources.ic_info
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun KitEmptyResultsMessage(
@@ -37,14 +41,14 @@ fun KitEmptyResultsMessage(
         Icon(
             painter = painterResource(icon),
             tint = iconTint,
-            contentDescription = "No data",
+            contentDescription = stringResource(Res.string.no_data),
             modifier = Modifier.size(64.dp)
         )
 
         Spacer(modifier = Modifier.height(spacing.large))
 
         Text(
-            text = "Sorry, no results found",
+            text = stringResource(Res.string.no_results),
             textAlign = TextAlign.Center,
             style = typography.bold16.copy(color = colorScheme.onBackground.highEmphasis())
         )
@@ -52,7 +56,7 @@ fun KitEmptyResultsMessage(
         Spacer(modifier = Modifier.height(spacing.default))
 
         Text(
-            text = "Try a new search",
+            text = stringResource(Res.string.try_new_search),
             style = typography.regular12.copy(color = colorScheme.onBackground.mediumEmphasis())
         )
 

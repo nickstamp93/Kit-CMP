@@ -22,15 +22,18 @@ import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
 import com.nickstamp.kit.ui.theme.mediumEmphasis
 import kit_cmp.composeapp.generated.resources.Res
+import kit_cmp.composeapp.generated.resources.no_data_available
+import kit_cmp.composeapp.generated.resources.try_again
 import kit_cmp.composeapp.generated.resources.ic_info
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun KitEmptyDataViewCard(
     modifier: Modifier = Modifier,
     onTryAgainClick: (() -> Unit)? = null,
-    text: String = "No data available",
+    text: String = stringResource(Res.string.no_data_available),
     icon: DrawableResource = Res.drawable.ic_info,
     tint: Color = colorScheme.onBackground.mediumEmphasis()
 ) {
@@ -58,9 +61,9 @@ fun KitEmptyDataViewCard(
 @Composable
 fun KitEmptyDataView(
     modifier: Modifier = Modifier,
-    actionText: String = "Try again",
+    actionText: String = stringResource(Res.string.try_again),
     onActionClick: (() -> Unit)? = null,
-    text: String = "No data available",
+    text: String = stringResource(Res.string.no_data_available),
     icon: DrawableResource = Res.drawable.ic_info,
     tint: Color = colorScheme.onBackground.mediumEmphasis()
 ) {

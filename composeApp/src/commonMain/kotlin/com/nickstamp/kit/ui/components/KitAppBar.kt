@@ -31,6 +31,10 @@ import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.compose_multiplatform
 import kit_cmp.composeapp.generated.resources.ic_back
 import kit_cmp.composeapp.generated.resources.ic_dark_mode
+import kit_cmp.composeapp.generated.resources.preview_long_title
+import kit_cmp.composeapp.generated.resources.preview_subtitle
+import kit_cmp.composeapp.generated.resources.preview_title
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -114,7 +118,7 @@ private fun XAppBarPreview() {
 
             Spacer(modifier = Modifier.height(spacing.default))
             KitAppBar(
-                title = "Title",
+                title = stringResource(Res.string.preview_title),
                 onBack = null,
                 logo = null
             )
@@ -122,35 +126,35 @@ private fun XAppBarPreview() {
 
             Spacer(modifier = Modifier.height(spacing.default))
             KitAppBar(
-                title = "Title",
+                title = stringResource(Res.string.preview_title),
                 onBack = null,
                 logo = Res.drawable.compose_multiplatform.toImageSource()
             )
 
             Spacer(modifier = Modifier.height(spacing.default))
             KitAppBar(
-                title = "Title",
+                title = stringResource(Res.string.preview_title),
                 onBack = { },
                 logo = null
             )
 
             Spacer(modifier = Modifier.height(spacing.default))
             KitAppBar(
-                title = "Title",
+                title = stringResource(Res.string.preview_title),
                 onBack = { },
                 logo = Res.drawable.compose_multiplatform.toImageSource()
             )
 
             Spacer(modifier = Modifier.height(spacing.default))
             KitAppBar(
-                title = "Title",
-                subtitle = AnnotatedString("Subtitle"),
+                title = stringResource(Res.string.preview_title),
+                subtitle = AnnotatedString(stringResource(Res.string.preview_subtitle)),
                 onBack = { },
             )
 
             Spacer(modifier = Modifier.height(spacing.default))
             KitAppBar(
-                title = "Really long text for the title to be",
+                title = stringResource(Res.string.preview_long_title),
                 onBack = { },
                 actions = {
                     KitAppBarIcon(
@@ -163,8 +167,8 @@ private fun XAppBarPreview() {
 
             Spacer(modifier = Modifier.height(spacing.default))
             KitAppBar(
-                title = "Really long text for the title to be",
-                subtitle = AnnotatedString("Subtitle"),
+                title = stringResource(Res.string.preview_long_title),
+                subtitle = AnnotatedString(stringResource(Res.string.preview_subtitle)),
                 onBack = { },
                 actions = {
                     KitAppBarIcon(

@@ -31,8 +31,21 @@ import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.theme.PreviewWrapper
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.compose_multiplatform
+import kit_cmp.composeapp.generated.resources.developer_tools_actions_title
+import kit_cmp.composeapp.generated.resources.developer_tools_app_introduction_description
+import kit_cmp.composeapp.generated.resources.developer_tools_app_introduction_title
+import kit_cmp.composeapp.generated.resources.developer_tools_clear_all_preferences_button
+import kit_cmp.composeapp.generated.resources.developer_tools_components_demo_icon_content_description
+import kit_cmp.composeapp.generated.resources.developer_tools_current_configuration_title
+import kit_cmp.composeapp.generated.resources.developer_tools_intro_icon_content_description
+import kit_cmp.composeapp.generated.resources.developer_tools_kit_components_demo_description
+import kit_cmp.composeapp.generated.resources.developer_tools_kit_components_demo_title
+import kit_cmp.composeapp.generated.resources.developer_tools_title
+import kit_cmp.composeapp.generated.resources.developer_tools_view_button
+import kit_cmp.composeapp.generated.resources.developer_tools_view_configuration_button
 import kit_cmp.composeapp.generated.resources.ic_completed
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,7 +57,7 @@ fun DeveloperToolsScreen(
     Scaffold(
         topBar = {
             KitAppBar(
-                title = "Developer Tools",
+                title = stringResource(Res.string.developer_tools_title),
                 onBack = { onEvent(DeveloperToolsContract.Event.OnBack) },
                 logo = Res.drawable.compose_multiplatform.toImageSource()
             )
@@ -79,18 +92,18 @@ fun DeveloperToolsScreen(
                 ) {
                     Icon(
                         painter = painterResource(Res.drawable.ic_completed),
-                        contentDescription = "Components demo icon",
+                        contentDescription = stringResource(Res.string.developer_tools_components_demo_icon_content_description),
                         tint = colorScheme.secondary
                     )
                     Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
                     Column {
                         Text(
-                            text = "Kit Components Demo",
+                            text = stringResource(Res.string.developer_tools_kit_components_demo_title),
                             style = AppTheme.typography.bold16,
                             color = colorScheme.onSurface
                         )
                         Text(
-                            text = "View framework UI components",
+                            text = stringResource(Res.string.developer_tools_kit_components_demo_description),
                             style = AppTheme.typography.regular14,
                             color = colorScheme.onSurfaceVariant
                         )
@@ -100,7 +113,7 @@ fun DeveloperToolsScreen(
                 Button(
                     onClick = { onEvent(DeveloperToolsContract.Event.NavigateToShowcase) }
                 ) {
-                    Text("View")
+                    Text(stringResource(Res.string.developer_tools_view_button))
                 }
             }
         }
@@ -125,18 +138,18 @@ fun DeveloperToolsScreen(
                 ) {
                     Icon(
                         painter = painterResource(Res.drawable.ic_completed),
-                        contentDescription = "Intro icon",
+                        contentDescription = stringResource(Res.string.developer_tools_intro_icon_content_description),
                         tint = colorScheme.tertiary
                     )
                     Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
                     Column {
                         Text(
-                            text = "App Introduction",
+                            text = stringResource(Res.string.developer_tools_app_introduction_title),
                             style = AppTheme.typography.bold16,
                             color = colorScheme.onSurface
                         )
                         Text(
-                            text = "View the app onboarding flow",
+                            text = stringResource(Res.string.developer_tools_app_introduction_description),
                             style = AppTheme.typography.regular14,
                             color = colorScheme.onSurfaceVariant
                         )
@@ -146,13 +159,13 @@ fun DeveloperToolsScreen(
                 Button(
                     onClick = { onEvent(DeveloperToolsContract.Event.NavigateToIntro) }
                 ) {
-                    Text("View")
+                    Text(stringResource(Res.string.developer_tools_view_button))
                 }
             }
         }
 
         Text(
-            text = "Actions",
+            text = stringResource(Res.string.developer_tools_actions_title),
             style = AppTheme.typography.bold20,
             color = colorScheme.onSurface
         )
@@ -162,7 +175,7 @@ fun DeveloperToolsScreen(
             onClick = { onEvent(DeveloperToolsContract.Event.ClearAllPreferences) },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Clear All Preferences")
+            Text(stringResource(Res.string.developer_tools_clear_all_preferences_button))
         }
 
         // Configuration Button
@@ -170,7 +183,7 @@ fun DeveloperToolsScreen(
             onClick = { onEvent(DeveloperToolsContract.Event.ShowConfiguration) },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("View Configuration")
+            Text(stringResource(Res.string.developer_tools_view_configuration_button))
         }
 
         // Configuration Bottom Sheet
@@ -187,7 +200,7 @@ fun DeveloperToolsScreen(
                         .verticalScroll(rememberScrollState())
                 ) {
                     Text(
-                        text = "Current Configuration",
+                        text = stringResource(Res.string.developer_tools_current_configuration_title),
                         style = AppTheme.typography.bold20,
                         color = colorScheme.onSurface,
                         modifier = Modifier.padding(bottom = AppTheme.spacing.medium)

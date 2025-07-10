@@ -63,6 +63,87 @@ import kit_cmp.composeapp.generated.resources.ic_settings
 import kit_cmp.composeapp.generated.resources.ic_share
 import kit_cmp.composeapp.generated.resources.ic_star_empty
 import kit_cmp.composeapp.generated.resources.ic_star_filled
+import kit_cmp.composeapp.generated.resources.showcase_kit_app_bar_demo_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_app_bar_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_app_bar_icon_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_app_bar_icon_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_app_bar_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_banner_ad_placeholder_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_banner_ad_placeholder_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_button_group_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_button_group_material_icons_error
+import kit_cmp.composeapp.generated.resources.showcase_kit_button_group_option1
+import kit_cmp.composeapp.generated.resources.showcase_kit_button_group_option2
+import kit_cmp.composeapp.generated.resources.showcase_kit_button_group_option3
+import kit_cmp.composeapp.generated.resources.showcase_kit_button_group_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_empty_data_view_card_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_empty_data_view_card_no_data
+import kit_cmp.composeapp.generated.resources.showcase_kit_empty_data_view_card_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_empty_results_message_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_empty_results_message_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_favorite_button_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_favorite_button_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_filter_button_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_filter_button_filter
+import kit_cmp.composeapp.generated.resources.showcase_kit_filter_button_sort
+import kit_cmp.composeapp.generated.resources.showcase_kit_filter_button_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_footer_card_browse
+import kit_cmp.composeapp.generated.resources.showcase_kit_footer_card_browse_catalog
+import kit_cmp.composeapp.generated.resources.showcase_kit_footer_card_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_footer_card_search
+import kit_cmp.composeapp.generated.resources.showcase_kit_footer_card_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_footer_card_want_more
+import kit_cmp.composeapp.generated.resources.showcase_kit_horizontal_progress_bar_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_horizontal_progress_bar_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_icon_button_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_icon_button_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_info_label_beta
+import kit_cmp.composeapp.generated.resources.showcase_kit_info_label_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_info_label_hot
+import kit_cmp.composeapp.generated.resources.showcase_kit_info_label_new
+import kit_cmp.composeapp.generated.resources.showcase_kit_info_label_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_key_value_chip_build_caption
+import kit_cmp.composeapp.generated.resources.showcase_kit_key_value_chip_build_value
+import kit_cmp.composeapp.generated.resources.showcase_kit_key_value_chip_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_key_value_chip_status_caption
+import kit_cmp.composeapp.generated.resources.showcase_kit_key_value_chip_status_value
+import kit_cmp.composeapp.generated.resources.showcase_kit_key_value_chip_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_key_value_chip_version_caption
+import kit_cmp.composeapp.generated.resources.showcase_kit_key_value_chip_version_value
+import kit_cmp.composeapp.generated.resources.showcase_kit_label_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_label_large
+import kit_cmp.composeapp.generated.resources.showcase_kit_label_small
+import kit_cmp.composeapp.generated.resources.showcase_kit_label_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_label_with_icon
+import kit_cmp.composeapp.generated.resources.showcase_kit_network_image_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_network_image_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_pulsating_circle_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_pulsating_circle_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_section_container_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_section_container_simple_section
+import kit_cmp.composeapp.generated.resources.showcase_kit_section_container_simple_section_content
+import kit_cmp.composeapp.generated.resources.showcase_kit_section_container_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_section_container_with_action
+import kit_cmp.composeapp.generated.resources.showcase_kit_section_container_with_action_content
+import kit_cmp.composeapp.generated.resources.showcase_kit_section_container_with_action_view_all
+import kit_cmp.composeapp.generated.resources.showcase_kit_skeleton_item_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_skeleton_item_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_text_input_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_text_input_placeholder
+import kit_cmp.composeapp.generated.resources.showcase_kit_text_input_sample_text
+import kit_cmp.composeapp.generated.resources.showcase_kit_text_input_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_text_input_with_icons
+import kit_cmp.composeapp.generated.resources.showcase_kit_text_with_icon_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_text_with_icon_end
+import kit_cmp.composeapp.generated.resources.showcase_kit_text_with_icon_start
+import kit_cmp.composeapp.generated.resources.showcase_kit_text_with_icon_title
+import kit_cmp.composeapp.generated.resources.showcase_kit_vertical_progress_bar_description
+import kit_cmp.composeapp.generated.resources.showcase_kit_vertical_progress_bar_title
+import kit_cmp.composeapp.generated.resources.showcase_search_catalog_button_row_description
+import kit_cmp.composeapp.generated.resources.showcase_search_catalog_button_row_title
+import kit_cmp.composeapp.generated.resources.showcase_subtitle
+import kit_cmp.composeapp.generated.resources.showcase_title
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -73,7 +154,7 @@ fun ShowcaseScreen(
     Scaffold(
         topBar = {
             KitAppBar(
-                title = "Kit Components",
+                title = stringResource(Res.string.showcase_title),
                 onBack = { onEvent(ShowcaseContract.Event.OnBack) },
                 logo = Res.drawable.compose_multiplatform.toImageSource()
             )
@@ -88,7 +169,7 @@ fun ShowcaseScreen(
             verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.large)
         ) {
             Text(
-                text = "Kit Framework Components",
+                text = stringResource(Res.string.showcase_subtitle),
                 style = AppTheme.typography.bold24,
                 color = colorScheme.onSurface
             )
@@ -100,21 +181,21 @@ fun ShowcaseScreen(
 
             // KitInfoLabel Demo
             ComponentDemoCard(
-                title = "KitInfoLabel",
-                description = "Styled labels for information display"
+                title = stringResource(Res.string.showcase_kit_info_label_title),
+                description = stringResource(Res.string.showcase_kit_info_label_description)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.small),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    KitInfoLabel(text = "NEW")
+                    KitInfoLabel(text = stringResource(Res.string.showcase_kit_info_label_new))
                     KitInfoLabel(
-                        text = "BETA",
+                        text = stringResource(Res.string.showcase_kit_info_label_beta),
                         backgroundColor = colorScheme.secondary,
                         textColor = colorScheme.onSecondary
                     )
                     KitInfoLabel(
-                        text = "HOT",
+                        text = stringResource(Res.string.showcase_kit_info_label_hot),
                         backgroundColor = colorScheme.error,
                         textColor = colorScheme.onError
                     )
@@ -123,22 +204,31 @@ fun ShowcaseScreen(
 
             // KitKeyValueChip Demo
             ComponentDemoCard(
-                title = "KitKeyValueChip",
-                description = "Key-value pairs with styled containers"
+                title = stringResource(Res.string.showcase_kit_key_value_chip_title),
+                description = stringResource(Res.string.showcase_kit_key_value_chip_description)
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
                 ) {
-                    KitKeyValueChip(caption = "Status", value = "Active")
-                    KitKeyValueChip(caption = "Version", value = "1.0.0")
-                    KitKeyValueChip(caption = "Build", value = "Release")
+                    KitKeyValueChip(
+                        caption = stringResource(Res.string.showcase_kit_key_value_chip_status_caption),
+                        value = stringResource(Res.string.showcase_kit_key_value_chip_status_value)
+                    )
+                    KitKeyValueChip(
+                        caption = stringResource(Res.string.showcase_kit_key_value_chip_version_caption),
+                        value = stringResource(Res.string.showcase_kit_key_value_chip_version_value)
+                    )
+                    KitKeyValueChip(
+                        caption = stringResource(Res.string.showcase_kit_key_value_chip_build_caption),
+                        value = stringResource(Res.string.showcase_kit_key_value_chip_build_value)
+                    )
                 }
             }
 
             // KitIconButton Demo
             ComponentDemoCard(
-                title = "KitIconButton",
-                description = "Interactive icon buttons with ripple effects"
+                title = stringResource(Res.string.showcase_kit_icon_button_title),
+                description = stringResource(Res.string.showcase_kit_icon_button_description)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
@@ -170,8 +260,8 @@ fun ShowcaseScreen(
 
             // KitSkeletonItem Demo
             ComponentDemoCard(
-                title = "KitSkeletonItem",
-                description = "Animated loading placeholders with various shapes"
+                title = stringResource(Res.string.showcase_kit_skeleton_item_title),
+                description = stringResource(Res.string.showcase_kit_skeleton_item_description)
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
@@ -212,8 +302,8 @@ fun ShowcaseScreen(
 
             // KitAppBarIcon Demo
             ComponentDemoCard(
-                title = "KitAppBarIcon",
-                description = "App bar navigation icons with custom styling"
+                title = stringResource(Res.string.showcase_kit_app_bar_icon_title),
+                description = stringResource(Res.string.showcase_kit_app_bar_icon_description)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
@@ -245,8 +335,8 @@ fun ShowcaseScreen(
 
             // KitNetworkImage Demo
             ComponentDemoCard(
-                title = "KitNetworkImage",
-                description = "Network image loading with shape support"
+                title = stringResource(Res.string.showcase_kit_network_image_title),
+                description = stringResource(Res.string.showcase_kit_network_image_description)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
@@ -272,8 +362,8 @@ fun ShowcaseScreen(
 
             // KitAppBar Demo
             ComponentDemoCard(
-                title = "KitAppBar",
-                description = "Complete app bar with navigation and actions"
+                title = stringResource(Res.string.showcase_kit_app_bar_title),
+                description = stringResource(Res.string.showcase_kit_app_bar_description)
             ) {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
@@ -282,7 +372,7 @@ fun ShowcaseScreen(
                     )
                 ) {
                     KitAppBar(
-                        title = "Demo App Bar",
+                        title = stringResource(Res.string.showcase_kit_app_bar_demo_title),
                         onBack = {
                             onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBar - Navigation"))
                         },
@@ -301,8 +391,8 @@ fun ShowcaseScreen(
 
             // KitFavoriteButton Demo
             ComponentDemoCard(
-                title = "KitFavoriteButton",
-                description = "Animated favorite button with rotation and scale effects"
+                title = stringResource(Res.string.showcase_kit_favorite_button_title),
+                description = stringResource(Res.string.showcase_kit_favorite_button_description)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
@@ -325,8 +415,8 @@ fun ShowcaseScreen(
 
             // KitLabel Demo
             ComponentDemoCard(
-                title = "KitLabel",
-                description = "Styled labels with icons and different sizes"
+                title = stringResource(Res.string.showcase_kit_label_title),
+                description = stringResource(Res.string.showcase_kit_label_description)
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
@@ -335,20 +425,26 @@ fun ShowcaseScreen(
                         horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.small),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        KitLabel(text = "Small", size = LabelSize.SMALL)
-                        KitLabel(text = "Large", size = LabelSize.LARGE)
                         KitLabel(
-                            text = "With Icon",
+                            text = stringResource(Res.string.showcase_kit_label_small),
+                            size = LabelSize.SMALL
+                        )
+                        KitLabel(
+                            text = stringResource(Res.string.showcase_kit_label_large),
+                            size = LabelSize.LARGE
+                        )
+                        KitLabel(
+                            text = stringResource(Res.string.showcase_kit_label_with_icon),
                             iconStart = Res.drawable.ic_star_filled,
                             size = LabelSize.SMALL
                         )
                         KitLabel(
-                            text = "With Icon",
+                            text = stringResource(Res.string.showcase_kit_label_with_icon),
                             iconEnd = Res.drawable.ic_star_filled,
                             size = LabelSize.SMALL
                         )
                         KitLabel(
-                            text = "With Icon",
+                            text = stringResource(Res.string.showcase_kit_label_with_icon),
                             iconStart = Res.drawable.ic_star_filled,
                             iconEnd = Res.drawable.ic_star_filled,
                             size = LabelSize.SMALL
@@ -359,19 +455,19 @@ fun ShowcaseScreen(
 
             // KitTextWithIcon Demo
             ComponentDemoCard(
-                title = "KitTextWithIcon",
-                description = "Text with icons in different positions"
+                title = stringResource(Res.string.showcase_kit_text_with_icon_title),
+                description = stringResource(Res.string.showcase_kit_text_with_icon_description)
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
                 ) {
                     KitTextWithIcon(
-                        text = "Icon Start",
+                        text = stringResource(Res.string.showcase_kit_text_with_icon_start),
                         icon = Res.drawable.ic_back,
                         iconGravity = IconGravity.START
                     )
                     KitTextWithIcon(
-                        text = "Icon End",
+                        text = stringResource(Res.string.showcase_kit_text_with_icon_end),
                         icon = Res.drawable.ic_info,
                         iconGravity = IconGravity.END
                     )
@@ -380,16 +476,16 @@ fun ShowcaseScreen(
 
             // KitBannerAdPlaceholder Demo
             ComponentDemoCard(
-                title = "KitBannerAdPlaceholder",
-                description = "Simple advertisement placeholder"
+                title = stringResource(Res.string.showcase_kit_banner_ad_placeholder_title),
+                description = stringResource(Res.string.showcase_kit_banner_ad_placeholder_description)
             ) {
                 KitBannerAdPlaceholder()
             }
 
             // KitPulsatingCircle Demo
             ComponentDemoCard(
-                title = "KitPulsatingCircle",
-                description = "Animated pulsating circle effect"
+                title = stringResource(Res.string.showcase_kit_pulsating_circle_title),
+                description = stringResource(Res.string.showcase_kit_pulsating_circle_description)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
@@ -407,21 +503,21 @@ fun ShowcaseScreen(
 
             // KitTextInput Demo
             ComponentDemoCard(
-                title = "KitTextInput",
-                description = "Customizable text input with various configurations"
+                title = stringResource(Res.string.showcase_kit_text_input_title),
+                description = stringResource(Res.string.showcase_kit_text_input_description)
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
                 ) {
                     KitTextInput(
-                        value = "Sample text",
+                        value = stringResource(Res.string.showcase_kit_text_input_sample_text),
                         onValueChange = {},
-                        placeHolder = { Text("Enter text...") }
+                        placeHolder = { Text(stringResource(Res.string.showcase_kit_text_input_placeholder)) }
                     )
                     KitTextInput(
                         value = "",
                         onValueChange = {},
-                        placeHolder = { Text("With icons...") },
+                        placeHolder = { Text(stringResource(Res.string.showcase_kit_text_input_with_icons)) },
                         leadingIcon = {
                             KitIconButton(
                                 icon = Res.drawable.ic_info,
@@ -440,8 +536,8 @@ fun ShowcaseScreen(
 
             // KitVerticalProgressBar Demo
             ComponentDemoCard(
-                title = "KitVerticalProgressBar",
-                description = "Vertical progress indicators with animation"
+                title = stringResource(Res.string.showcase_kit_vertical_progress_bar_title),
+                description = stringResource(Res.string.showcase_kit_vertical_progress_bar_description)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
@@ -468,8 +564,8 @@ fun ShowcaseScreen(
 
             // KitHorizontalProgressBar Demo
             ComponentDemoCard(
-                title = "KitHorizontalProgressBar",
-                description = "Horizontal progress indicators with animation"
+                title = stringResource(Res.string.showcase_kit_horizontal_progress_bar_title),
+                description = stringResource(Res.string.showcase_kit_horizontal_progress_bar_description)
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
@@ -495,15 +591,15 @@ fun ShowcaseScreen(
 
             // KitButtonGroup Demo
             ComponentDemoCard(
-                title = "KitButtonGroup",
-                description = "Grouped buttons with selection states"
+                title = stringResource(Res.string.showcase_kit_button_group_title),
+                description = stringResource(Res.string.showcase_kit_button_group_description)
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium)
                 ) {
                     KitButtonGroupRow {
                         KitGroupButton(
-                            text = "Option 1",
+                            text = stringResource(Res.string.showcase_kit_button_group_option1),
                             selected = true,
                             size = KitGroupButtonSize.Small,
                             onClick = {
@@ -511,7 +607,7 @@ fun ShowcaseScreen(
                             }
                         )
                         KitGroupButton(
-                            text = "Option 2",
+                            text = stringResource(Res.string.showcase_kit_button_group_option2),
                             selected = false,
                             size = KitGroupButtonSize.Small,
                             onClick = {
@@ -519,7 +615,7 @@ fun ShowcaseScreen(
                             }
                         )
                         KitGroupButton(
-                            text = "Option 3",
+                            text = stringResource(Res.string.showcase_kit_button_group_option3),
                             selected = false,
                             size = KitGroupButtonSize.Small,
                             onClick = {
@@ -528,26 +624,26 @@ fun ShowcaseScreen(
                         )
                     }
 
-                    Text("Icon buttons require Material Icons which are not available in commonMain")
+                    Text(stringResource(Res.string.showcase_kit_button_group_material_icons_error))
                 }
             }
 
             // KitFilterButton Demo
             ComponentDemoCard(
-                title = "KitFilterButton",
-                description = "Filter buttons with dropdown indicator"
+                title = stringResource(Res.string.showcase_kit_filter_button_title),
+                description = stringResource(Res.string.showcase_kit_filter_button_description)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
                 ) {
                     KitFilterButton(
-                        text = "Filter",
+                        text = stringResource(Res.string.showcase_kit_filter_button_filter),
                         onClick = {
                             onEvent(ShowcaseContract.Event.OnDemoButtonClick("FilterButton - Filter"))
                         }
                     )
                     KitFilterButton(
-                        text = "Sort",
+                        text = stringResource(Res.string.showcase_kit_filter_button_sort),
                         onClick = {
                             onEvent(ShowcaseContract.Event.OnDemoButtonClick("FilterButton - Sort"))
                         }
@@ -557,8 +653,8 @@ fun ShowcaseScreen(
 
             // KitEmptyResultsMessage Demo
             ComponentDemoCard(
-                title = "KitEmptyResultsMessage",
-                description = "Empty state message with icon"
+                title = stringResource(Res.string.showcase_kit_empty_results_message_title),
+                description = stringResource(Res.string.showcase_kit_empty_results_message_description)
             ) {
                 KitEmptyResultsMessage(
                     icon = Res.drawable.ic_star_empty,
@@ -568,11 +664,11 @@ fun ShowcaseScreen(
 
             // KitEmptyDataViewCard Demo
             ComponentDemoCard(
-                title = "KitEmptyDataViewCard",
-                description = "Empty data view with action button"
+                title = stringResource(Res.string.showcase_kit_empty_data_view_card_title),
+                description = stringResource(Res.string.showcase_kit_empty_data_view_card_description)
             ) {
                 KitEmptyDataViewCard(
-                    text = "No data available",
+                    text = stringResource(Res.string.showcase_kit_empty_data_view_card_no_data),
                     icon = Res.drawable.ic_info,
                     onTryAgainClick = {
                         onEvent(ShowcaseContract.Event.OnDemoButtonClick("EmptyDataView - Try Again"))
@@ -582,30 +678,30 @@ fun ShowcaseScreen(
 
             // KitSectionContainer Demo
             ComponentDemoCard(
-                title = "KitSectionContainer",
-                description = "Section container with title and optional action"
+                title = stringResource(Res.string.showcase_kit_section_container_title),
+                description = stringResource(Res.string.showcase_kit_section_container_description)
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium)
                 ) {
                     KitSectionContainer(
-                        title = "Simple Section",
+                        title = stringResource(Res.string.showcase_kit_section_container_simple_section),
                         content = {
-                            Text("Section content goes here")
+                            Text(stringResource(Res.string.showcase_kit_section_container_simple_section_content))
                         }
                     )
 
                     KitSectionContainer(
-                        title = "Section with Action",
+                        title = stringResource(Res.string.showcase_kit_section_container_with_action),
                         action = {
                             Text(
-                                "View All",
+                                stringResource(Res.string.showcase_kit_section_container_with_action_view_all),
                                 color = colorScheme.primary,
                                 style = MaterialTheme.typography.labelMedium
                             )
                         },
                         content = {
-                            Text("Section with action content")
+                            Text(stringResource(Res.string.showcase_kit_section_container_with_action_content))
                         }
                     )
                 }
@@ -613,8 +709,8 @@ fun ShowcaseScreen(
 
             // SearchCatalogButtonRow Demo
             ComponentDemoCard(
-                title = "SearchCatalogButtonRow",
-                description = "Search and catalog button combination"
+                title = stringResource(Res.string.showcase_search_catalog_button_row_title),
+                description = stringResource(Res.string.showcase_search_catalog_button_row_description)
             ) {
                 SearchCatalogButtonRow(
                     onClick = {
@@ -625,20 +721,20 @@ fun ShowcaseScreen(
 
             // KitFooterCard Demo
             ComponentDemoCard(
-                title = "KitFooterCard",
-                description = "Footer card with background image and actions"
+                title = stringResource(Res.string.showcase_kit_footer_card_title),
+                description = stringResource(Res.string.showcase_kit_footer_card_description)
             ) {
                 KitFooterCard(
-                    title = "Want more?",
-                    subtitle = "Browse the whole catalog",
-                    primaryActionText = "Browse",
+                    title = stringResource(Res.string.showcase_kit_footer_card_want_more),
+                    subtitle = stringResource(Res.string.showcase_kit_footer_card_browse_catalog),
+                    primaryActionText = stringResource(Res.string.showcase_kit_footer_card_browse),
                     backgroundImageUrl = "https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
                     primaryActionIcon = Res.drawable.ic_info,
                     onPrimaryAction = {
                         onEvent(ShowcaseContract.Event.OnDemoButtonClick("FooterCard - Browse"))
                     },
                     secondaryActionIcon = Res.drawable.ic_settings,
-                    secondaryActionText = "Search",
+                    secondaryActionText = stringResource(Res.string.showcase_kit_footer_card_search),
                     onSecondaryActionText = {
                         onEvent(ShowcaseContract.Event.OnDemoButtonClick("FooterCard - Search"))
                     },
