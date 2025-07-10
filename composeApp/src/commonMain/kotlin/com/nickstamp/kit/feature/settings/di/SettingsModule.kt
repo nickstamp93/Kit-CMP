@@ -9,5 +9,5 @@ import org.koin.dsl.module
 val settingsModule = module {
     single { GetAppThemeUseCase(get()) }
     single { SetAppThemeUseCase(get()) }
-    viewModel { SettingsViewModel(get(), get()) }
+    viewModel { SettingsViewModel(get(), get(), get()) }
 }

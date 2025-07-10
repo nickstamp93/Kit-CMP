@@ -1,18 +1,20 @@
 package com.nickstamp.kit.feature.settings.presentation
 
 import com.nickstamp.kit.core.arch.BaseViewModel
+import com.nickstamp.kit.core.helpers.SystemHelper
 import com.nickstamp.kit.feature.settings.domain.usecase.GetAppThemeUseCase
 import com.nickstamp.kit.feature.settings.domain.usecase.SetAppThemeUseCase
 
 class SettingsViewModel(
     private val getAppThemeUseCase: GetAppThemeUseCase,
-    private val setAppThemeUseCase: SetAppThemeUseCase
+    private val setAppThemeUseCase: SetAppThemeUseCase,
+    private val systemHelper: SystemHelper
 ) : BaseViewModel<SettingsContract.Event, SettingsContract.Effect, SettingsContract.State>(
     initialState = SettingsContract.State()
 ) {
 
     init {
-        loadThemePreference()
+        loadInitialData()
     }
 
     override fun onEvent(event: SettingsContract.Event) {
@@ -22,11 +24,15 @@ class SettingsViewModel(
         }
     }
 
-    private fun loadThemePreference() {
+    private fun loadInitialData() {
         launchInViewModelScope {
             val savedTheme = getAppThemeUseCase()
+            val appVersion = systemHelper.getCurrentVersionName()
             setState {
-                copy(isDarkTheme = savedTheme)
+                copy(
+                    isDarkTheme = savedTheme,
+                    appVersion = appVersion
+                )
             }
         }
     }

@@ -17,6 +17,15 @@ class AndroidSystemHelper(
         }
     }
 
+    override fun getCurrentVersionName(): String {
+        return try {
+            val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
+            packageInfo.versionName ?: "1.0"
+        } catch (e: PackageManager.NameNotFoundException) {
+            "1.0" // Default version name
+        }
+    }
+
     override fun getAppStoreUrl(): String {
         return "https://play.google.com/store/apps/details?id=${context.packageName}"
     }

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -21,16 +22,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import com.nickstamp.kit.ui.components.ImageSource.Companion.toImageSource
 import com.nickstamp.kit.ui.components.KitAppBar
 import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.PreviewWrapper
 import kit_cmp.composeapp.generated.resources.Res
+import kit_cmp.composeapp.generated.resources.app_name
 import kit_cmp.composeapp.generated.resources.compose_multiplatform
 import kit_cmp.composeapp.generated.resources.ic_completed
 import kit_cmp.composeapp.generated.resources.ic_dark_mode
+import kit_cmp.composeapp.generated.resources.ic_info
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -99,6 +104,84 @@ fun SettingsScreen(
                 }
             }
 
+            // App Info Card
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = colorScheme.surface
+                )
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(AppTheme.spacing.large),
+                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            painter = painterResource(Res.drawable.ic_info),
+                            contentDescription = "App info icon",
+                            tint = colorScheme.primary
+                        )
+                        Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
+                        Text(
+                            text = "App Information",
+                            style = AppTheme.typography.bold16,
+                            color = colorScheme.onSurface
+                        )
+                    }
+                    
+                    Spacer(modifier = Modifier.height(AppTheme.spacing.small))
+                    
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                    ) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(
+                                text = "App Name:",
+                                style = AppTheme.typography.regular14,
+                                color = colorScheme.onSurfaceVariant
+                            )
+                            Text(
+                                text = stringResource(Res.string.app_name),
+                                style = AppTheme.typography.bold14,
+                                color = colorScheme.onSurface
+                            )
+                        }
+                        
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(
+                                text = "Version:",
+                                style = AppTheme.typography.regular14,
+                                color = colorScheme.onSurfaceVariant
+                            )
+                            Text(
+                                text = state.appVersion,
+                                style = AppTheme.typography.bold14,
+                                color = colorScheme.onSurface
+                            )
+                        }
+                        
+                        Spacer(modifier = Modifier.height(AppTheme.spacing.small))
+                        
+                        Text(
+                            text = "Developed by Nick Stampoulis",
+                            style = AppTheme.typography.bold14,
+                            color = colorScheme.primary,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
+            }
 
             // Developer Tools Navigation
             Card(

@@ -13,6 +13,15 @@ class IosSystemHelper : SystemHelper {
         }
     }
 
+    override fun getCurrentVersionName(): String {
+        return try {
+            val version = NSBundle.mainBundle.objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
+            version ?: "1.0"
+        } catch (e: Exception) {
+            "1.0" // Default version name
+        }
+    }
+
     override fun getAppStoreUrl(): String {
         val bundleId = NSBundle.mainBundle.bundleIdentifier ?: "unknown"
         return "https://apps.apple.com/app/id123456789" // Replace with actual App Store URL
