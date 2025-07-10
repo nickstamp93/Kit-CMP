@@ -26,6 +26,7 @@ import com.nickstamp.kit.ui.components.ImageSource.Companion.toImageSource
 import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
+import com.nickstamp.kit.ui.theme.PreviewWrapper
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.compose_multiplatform
 import kit_cmp.composeapp.generated.resources.ic_back
@@ -107,7 +108,7 @@ fun KitAppBar(
 @Preview
 @Composable
 private fun XAppBarPreview() {
-    AppTheme {
+    PreviewWrapper {
         Column {
             KitAppBar()
 

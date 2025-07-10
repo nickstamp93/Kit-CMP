@@ -1,13 +1,13 @@
 package com.nickstamp.kit.feature.developertools.presentation
 
 import com.nickstamp.kit.core.arch.BaseViewModel
-import com.nickstamp.kit.core.storage.DatastoreManager
+import com.nickstamp.kit.core.storage.example.DefaultDatastoreManager
 import com.nickstamp.kit.feature.config.domain.Configurator
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class DeveloperToolsViewModel(
-    private val datastoreManager: DatastoreManager,
+    private val defaultDatastoreManager: DefaultDatastoreManager,
     private val configurator: Configurator
 ) : BaseViewModel<DeveloperToolsContract.Event, DeveloperToolsContract.Effect, DeveloperToolsContract.State>(
     initialState = DeveloperToolsContract.State()
@@ -38,7 +38,7 @@ class DeveloperToolsViewModel(
     
     private fun clearAllPreferences() = launchInViewModelScope {
         try {
-            datastoreManager.clear()
+            defaultDatastoreManager.clearAllData()
             setEffect(DeveloperToolsContract.Effect.ShowToast("All preferences cleared"))
         } catch (e: Exception) {
             setEffect(DeveloperToolsContract.Effect.ShowToast("Error clearing preferences: ${e.message}"))

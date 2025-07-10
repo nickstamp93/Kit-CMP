@@ -10,8 +10,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.nickstamp.kit.navigation.AppNavigation
 import com.nickstamp.kit.di.KoinConfig
+import com.nickstamp.kit.navigation.AppNavigation
 import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.utils.EffectHandler
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -27,7 +27,6 @@ fun App() {
 
 @Composable
 private fun AppContent() {
-    // Theme state management
     var isDarkTheme by remember { mutableStateOf(false) }
 
     AppTheme(useDarkTheme = isDarkTheme) {

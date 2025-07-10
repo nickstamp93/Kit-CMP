@@ -21,10 +21,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
+import com.nickstamp.kit.ui.theme.PreviewWrapper
 import com.nickstamp.kit.ui.theme.highEmphasis
 import com.nickstamp.kit.ui.theme.lowEmphasis
 import com.nickstamp.kit.ui.theme.mediumEmphasis
@@ -113,7 +113,7 @@ fun SearchCatalogButtonRow(
 @Preview
 @Composable
 private fun KitSearchCatalogButtonRowPreview() {
-    AppTheme {
+    PreviewWrapper {
         KitSearchCatalogButtonRow(
             hintText = "Search",
             onSearchClick = {},

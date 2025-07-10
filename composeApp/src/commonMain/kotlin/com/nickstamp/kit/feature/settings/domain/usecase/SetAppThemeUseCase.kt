@@ -1,13 +1,13 @@
-package com.nickstamp.kit.feature.intro.domain.usecase
+package com.nickstamp.kit.feature.settings.domain.usecase
 
 import com.nickstamp.kit.core.storage.example.DefaultDatastoreManager
 
-class SetIntroSeenUseCase(
+class SetAppThemeUseCase(
     private val defaultDatastoreManager: DefaultDatastoreManager
 ) {
-    suspend operator fun invoke(seen: Boolean): Result<Unit> {
+    suspend operator fun invoke(isDarkTheme: Boolean): Result<Unit> {
         return try {
-            defaultDatastoreManager.setIntroSeen(seen)
+            defaultDatastoreManager.saveDarkTheme(isDarkTheme)
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)

@@ -37,6 +37,7 @@ import com.nickstamp.kit.ui.theme.highEmphasis
 import com.nickstamp.kit.ui.theme.highestEmphasis
 import com.nickstamp.kit.ui.theme.mediumEmphasis
 import com.nickstamp.kit.ui.components.ImageSource.Companion.toImageSource
+import com.nickstamp.kit.ui.theme.PreviewWrapper
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.ic_info
 import kit_cmp.composeapp.generated.resources.ic_next
@@ -167,7 +168,7 @@ fun KitFooterCard(
 @Preview
 @Composable
 private fun FooterCardPreview() {
-    AppTheme {
+    PreviewWrapper {
         KitFooterCard(
             title = "Want more?",
             subtitle = "Browse the whole cinema catalog",

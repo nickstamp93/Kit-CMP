@@ -11,6 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.shapes
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
 
 @Composable
 fun KitInfoLabel(
@@ -18,8 +20,8 @@ fun KitInfoLabel(
     modifier: Modifier = Modifier,
     backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
     textColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
-    shape: Shape = AppTheme.shapes.default,
-    padding: Dp = AppTheme.spacing.small,
+    shape: Shape = shapes.default,
+    padding: Dp = spacing.small,
 ) {
     Text(
         text = text,
