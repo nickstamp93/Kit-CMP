@@ -44,15 +44,30 @@ fun AppNavigation(
 
         composable<AppRoutes.Intro> {
             IntroScreenRoute(
-                onNavigateToHome = { navController.navigate(AppRoutes.Settings) },
+                onNavigateToHome = {
+                    navController.navigate(AppRoutes.Settings) {
+                        popUpTo(0) { inclusive = true }
+                        launchSingleTop = true
+                    }
+                },
                 effectHandler = effectHandler
             )
         }
 
         composable<AppRoutes.AppLauncher> {
             AppLauncherScreenRoute(
-                onNavigateToHome = { navController.navigate(AppRoutes.Settings) },
-                onNavigateToIntro = { navController.navigate(AppRoutes.Intro) },
+                onNavigateToHome = {
+                    navController.navigate(AppRoutes.Settings) {
+                        popUpTo(0) { inclusive = true }
+                        launchSingleTop = true
+                    }
+                },
+                onNavigateToIntro = { 
+                    navController.navigate(AppRoutes.Intro) {
+                        popUpTo(AppRoutes.AppLauncher) { inclusive = true }
+                        launchSingleTop = true
+                    }
+                },
                 effectHandler = effectHandler
             )
         }
