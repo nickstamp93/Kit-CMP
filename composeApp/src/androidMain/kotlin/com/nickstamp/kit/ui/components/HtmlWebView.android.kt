@@ -14,17 +14,18 @@ import com.nickstamp.kit.ui.theme.highEmphasis
 @Composable
 actual fun HtmlWebView(
     html: String,
-    modifier: Modifier
+    modifier: Modifier,
+    textSize: Int,
+    textColor: Color
 ) {
     val spannedText = remember(html) {
         HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_COMPACT)
     }
-    val textColor = Color.Black.highEmphasis().toArgb()
-    val textSize = 14
+    val actualColor = textColor.toArgb()
     AndroidView(
         factory = { context ->
             TextView(context).apply {
-                setTextColor(textColor)
+                setTextColor(actualColor)
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize.toFloat())
             }
         },

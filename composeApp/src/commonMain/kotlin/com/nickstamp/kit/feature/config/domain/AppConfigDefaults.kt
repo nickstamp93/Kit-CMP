@@ -6,7 +6,7 @@ object AppConfigDefaults {
         <!DOCTYPE html>
         <html lang="en">
         <body>
-            <h1>Terms of Use - BU</h1>
+            <h1>Terms of Use - Backup</h1>
             <p>Welcome to <strong>TV Lite</strong>. By using this app, you agree to the following terms. Please read them carefully.</p>
         
             <br/>

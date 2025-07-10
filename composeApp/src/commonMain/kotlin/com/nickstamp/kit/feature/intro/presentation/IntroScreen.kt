@@ -295,6 +295,7 @@ private fun TermsPageContent(
             HtmlWebView(
                 html = htmlText,
                 modifier = Modifier
+                    .fillMaxSize()
                     .padding(spacing.xlarge)
                     .verticalScroll(rememberScrollState())
             )
