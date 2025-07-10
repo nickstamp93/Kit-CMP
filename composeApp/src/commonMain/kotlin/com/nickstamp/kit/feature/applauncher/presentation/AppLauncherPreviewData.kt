@@ -1,21 +1,28 @@
 package com.nickstamp.kit.feature.applauncher.presentation
 
 import com.nickstamp.kit.feature.config.domain.model.AppUpdateConfig
+import com.nickstamp.kit.feature.config.domain.model.PlatformUpdateConfig
 
 object AppLauncherPreviewData {
 
     fun getAppUpdateConfig(
-        minimumRequiredVersion: Int = 0,
-        latestVersionGoogle: Int = 0,
-        latestVersionApple: Int = 0,
-        latestVersionCDN: Int = 0,
-        cdnApkUrl: String = ""
+        iosMinimumRequiredVersion: Int = 0,
+        iosLatestVersion: Int = 0,
+        iosDownloadUrl: String = "",
+        androidMinimumRequiredVersion: Int = 0,
+        androidLatestVersion: Int = 0,
+        androidDownloadUrl: String = ""
     ) = AppUpdateConfig(
-        minimumRequiredVersion = minimumRequiredVersion,
-        latestVersionGoogle = latestVersionGoogle,
-        latestVersionApple = latestVersionApple,
-        latestVersionCDN = latestVersionCDN,
-        cdnApkUrl = cdnApkUrl
+        ios = PlatformUpdateConfig(
+            minimumRequiredVersion = iosMinimumRequiredVersion,
+            latestVersion = iosLatestVersion,
+            downloadUrl = iosDownloadUrl
+        ),
+        android = PlatformUpdateConfig(
+            minimumRequiredVersion = androidMinimumRequiredVersion,
+            latestVersion = androidLatestVersion,
+            downloadUrl = androidDownloadUrl
+        )
     )
 
 }

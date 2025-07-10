@@ -343,7 +343,7 @@ private class AppLaunchPreviewStateProvider : PreviewParameterProvider<State> {
                 type = AppUpdateType.MANDATORY,
                 store = AppUpdateStore.Google("")
             ),
-            updateConfig = AppLauncherPreviewData.getAppUpdateConfig(minimumRequiredVersion = 2)
+            updateConfig = AppLauncherPreviewData.getAppUpdateConfig(androidMinimumRequiredVersion = 2)
 
         ),
         State.UpdateAvailable(
@@ -351,7 +351,7 @@ private class AppLaunchPreviewStateProvider : PreviewParameterProvider<State> {
                 type = AppUpdateType.OPTIONAL,
                 store = AppUpdateStore.Google("")
             ),
-            updateConfig = AppLauncherPreviewData.getAppUpdateConfig(latestVersionGoogle = 2)
+            updateConfig = AppLauncherPreviewData.getAppUpdateConfig(androidLatestVersion = 2)
 
         ),
         State.AnnouncementAvailable(

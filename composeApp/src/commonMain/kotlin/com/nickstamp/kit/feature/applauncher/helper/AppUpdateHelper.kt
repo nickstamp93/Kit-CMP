@@ -16,26 +16,35 @@ class AppUpdateHelper(
     fun getAppUpdateStatus(updateConfig: AppUpdateConfig): AppUpdateStatus {
 
         println(updateConfig.toString())
+        
+        // Get platform-specific config
+        val platformConfig = if (systemHelper.isAppleEnvironment()) {
+            updateConfig.ios
+        } else {
+            updateConfig.android
+        }
+
+        // Determine update type based on minimum required version
         val updateType = when {
-            currentVersion < updateConfig.minimumRequiredVersion -> AppUpdateType.MANDATORY
+            currentVersion < platformConfig.minimumRequiredVersion -> AppUpdateType.MANDATORY
             else -> AppUpdateType.OPTIONAL
         }
 
-        val latestStoreVersion = if (systemHelper.isAppleEnvironment()) {
-            updateConfig.latestVersionApple
+        // Check if update is available
+        val store = if (currentVersion < platformConfig.latestVersion) {
+            // Use CDN URL if available, otherwise use official store URL
+            val updateUrl = platformConfig.downloadUrl.ifEmpty { appStoreUrl }
+            
+            if (systemHelper.isAppleEnvironment()) {
+                AppUpdateStore.Apple(updateUrl)
+            } else {
+                if (platformConfig.downloadUrl.isNotEmpty()) {
+                    AppUpdateStore.CDN(updateUrl)
+                } else {
+                    AppUpdateStore.Google(updateUrl)
+                }
+            }
         } else {
-            updateConfig.latestVersionGoogle
-        }
-
-        val store = if (currentVersion < latestStoreVersion && systemHelper.isAppleEnvironment()) {
-            AppUpdateStore.Apple(appStoreUrl)
-        } else if (currentVersion < latestStoreVersion) {
-            AppUpdateStore.Google(appStoreUrl)
-        } else if (currentVersion < updateConfig.latestVersionCDN) {
-            AppUpdateStore.CDN(updateConfig.cdnApkUrl)
-        } else {
-            // in this case, there is a minimum version requirement but no update available
-            // in any store so cannot force update
             null
         }
 

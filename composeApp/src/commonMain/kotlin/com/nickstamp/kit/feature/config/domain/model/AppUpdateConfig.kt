@@ -3,10 +3,14 @@ package com.nickstamp.kit.feature.config.domain.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AppUpdateConfig(
+data class PlatformUpdateConfig(
     val minimumRequiredVersion: Int,
-    val latestVersionGoogle: Int,
-    val latestVersionApple: Int,
-    val latestVersionCDN: Int,
-    val cdnApkUrl: String
+    val latestVersion: Int,
+    val downloadUrl: String
+)
+
+@Serializable
+data class AppUpdateConfig(
+    val ios: PlatformUpdateConfig,
+    val android: PlatformUpdateConfig
 )

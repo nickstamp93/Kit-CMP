@@ -4,21 +4,26 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AppUpdateConfigDto(
+data class PlatformUpdateConfigDto(
     @SerialName("mrv") internal val _minimumRequiredVersion: Int? = 0,
-    @SerialName("lvg") internal val _latestVersionGoogle: Int? = 0,
-    @SerialName("lva") internal val _latestVersionApple: Int? = 0,
-    @SerialName("lvc") internal val _latestVersionCDN: Int? = 0,
-    @SerialName("cu") internal val _cdnApkUrl: String? = "",
+    @SerialName("lv") internal val _latestVersion: Int? = 0,
+    @SerialName("url") internal val _downloadUrl: String? = "",
 ) {
     val minimumRequiredVersion: Int
         get() = _minimumRequiredVersion ?: 0
-    val latestVersionGoogle: Int
-        get() = _latestVersionGoogle ?: 0
-    val latestVersionApple: Int
-        get() = _latestVersionApple ?: 0
-    val latestVersionCDN: Int
-        get() = _latestVersionCDN ?: 0
-    val cdnApkUrl: String
-        get() = _cdnApkUrl.orEmpty()
+    val latestVersion: Int
+        get() = _latestVersion ?: 0
+    val downloadUrl: String
+        get() = _downloadUrl.orEmpty()
+}
+
+@Serializable
+data class AppUpdateConfigDto(
+    @SerialName("ios") internal val _ios: PlatformUpdateConfigDto? = null,
+    @SerialName("android") internal val _android: PlatformUpdateConfigDto? = null,
+) {
+    val ios: PlatformUpdateConfigDto
+        get() = _ios ?: PlatformUpdateConfigDto()
+    val android: PlatformUpdateConfigDto
+        get() = _android ?: PlatformUpdateConfigDto()
 }

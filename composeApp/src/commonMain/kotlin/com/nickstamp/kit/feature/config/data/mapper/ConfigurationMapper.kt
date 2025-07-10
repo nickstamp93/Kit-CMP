@@ -7,6 +7,7 @@ import com.nickstamp.kit.feature.config.data.dto.AppRateConfigDto
 import com.nickstamp.kit.feature.config.data.dto.AppUpdateConfigDto
 import com.nickstamp.kit.feature.config.data.dto.ConfigurationDto
 import com.nickstamp.kit.feature.config.data.dto.CtaActionDto
+import com.nickstamp.kit.feature.config.data.dto.PlatformUpdateConfigDto
 import com.nickstamp.kit.feature.config.domain.model.AdPlacementConfig
 import com.nickstamp.kit.feature.config.domain.model.Announcement
 import com.nickstamp.kit.feature.config.domain.model.AppIntroConfig
@@ -14,6 +15,7 @@ import com.nickstamp.kit.feature.config.domain.model.AppRateConfig
 import com.nickstamp.kit.feature.config.domain.model.AppUpdateConfig
 import com.nickstamp.kit.feature.config.domain.model.Configuration
 import com.nickstamp.kit.feature.config.domain.model.CtaAction
+import com.nickstamp.kit.feature.config.domain.model.PlatformUpdateConfig
 
 fun ConfigurationDto.toDomain(): Configuration {
     return Configuration(
@@ -28,11 +30,16 @@ fun ConfigurationDto.toDomain(): Configuration {
 
 fun AppUpdateConfigDto.toDomain(): AppUpdateConfig {
     return AppUpdateConfig(
+        ios = ios.toDomain(),
+        android = android.toDomain()
+    )
+}
+
+fun PlatformUpdateConfigDto.toDomain(): PlatformUpdateConfig {
+    return PlatformUpdateConfig(
         minimumRequiredVersion = minimumRequiredVersion,
-        latestVersionGoogle = latestVersionGoogle,
-        latestVersionApple = latestVersionApple,
-        latestVersionCDN = latestVersionCDN,
-        cdnApkUrl = cdnApkUrl
+        latestVersion = latestVersion,
+        downloadUrl = downloadUrl
     )
 }
 
