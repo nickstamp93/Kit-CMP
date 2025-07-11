@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
@@ -20,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
@@ -40,16 +40,16 @@ fun KitFilterButton(
             .clip(shapes.default)
             .border(
                 width = 2.dp,
-                color = colorScheme.surfaceVariant,
+                color = colors.surfaceVariant,
                 shape = shapes.default
             )
             .background(
-                color = colorScheme.surface
+                color = colors.surface
             )
             .clickable(
                 onClick = onClick,
                 interactionSource = remember { MutableInteractionSource() },
-                indication = ripple(color = colorScheme.onSurface)
+                indication = ripple(color = colors.onSurface)
             )
             .padding(
                 horizontal = spacing.default,
@@ -58,7 +58,7 @@ fun KitFilterButton(
     ) {
         Text(
             text = text,
-            style = typography.bold14.copy(color = colorScheme.onBackground.highEmphasis()),
+            style = typography.bold14.copy(color = colors.onBackground.highEmphasis()),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.weight(1f)
@@ -68,7 +68,7 @@ fun KitFilterButton(
 
         Icon(
             painter = painterResource(Res.drawable.ic_arrow_down),
-            tint = colorScheme.onSurface.highEmphasis(),
+            tint = colors.onSurface.highEmphasis(),
             contentDescription = null,
             modifier = Modifier.size(20.dp)
         )

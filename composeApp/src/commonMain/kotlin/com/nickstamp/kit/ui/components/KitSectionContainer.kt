@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,6 +19,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
 import com.nickstamp.kit.ui.theme.highEmphasis
@@ -32,7 +32,7 @@ fun KitSectionContainer(
     contentHorizontalPadding: Dp = spacing.none,
     action: @Composable (() -> Unit)? = null,
     iconRes: ImageVector? = null,
-    iconTint: Color = colorScheme.onBackground.highEmphasis(),
+    iconTint: Color = colors.onBackground.highEmphasis(),
     content: @Composable () -> Unit,
 ) {
     Column(
@@ -56,7 +56,7 @@ fun KitSectionContainer(
                 text = title,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                style = typography.bold18.copy(color = colorScheme.onBackground.highEmphasis()),
+                style = typography.bold18.copy(color = colors.onBackground.highEmphasis()),
                 modifier = Modifier.weight(1f)
             )
 
@@ -76,4 +76,3 @@ fun KitSectionContainer(
     }
 
 }
-

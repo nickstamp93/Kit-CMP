@@ -8,7 +8,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,7 +20,8 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.colors
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.ic_star_empty
 import kit_cmp.composeapp.generated.resources.ic_star_filled
@@ -32,11 +32,11 @@ fun KitFavoriteButton(
     isFavorite: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    defaultColor: Color = colorScheme.onSurface,
+    defaultColor: Color = colors.onSurface,
     size: Dp = 40.dp,
-    innerPadding: Dp = AppTheme.spacing.small
+    innerPadding: Dp = spacing.small
 ) {
-    val enabledColor = colorScheme.primary
+    val enabledColor = colors.primary
 
     val (icon, tint, description) = remember(isFavorite) {
         if (isFavorite) {

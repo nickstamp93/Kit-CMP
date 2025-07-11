@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
@@ -31,8 +30,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
+import com.nickstamp.kit.ui.theme.AppTheme.typography
 
 @Composable
 fun KitButtonGroupRow(
@@ -78,26 +79,26 @@ object KitGroupButtonDefaults {
 
     @Composable
     fun primaryColors() = KitGroupButtonColors(
-        containerColor = colorScheme.primaryContainer,
-        contentColor = colorScheme.onPrimaryContainer,
-        selectedContainerColor = colorScheme.primary,
-        selectedContentColor = colorScheme.onPrimary,
-        disabledContainerColor = colorScheme.primaryContainer.copy(alpha = 0.6f),
-        disabledContentColor = colorScheme.onPrimary.copy(alpha = 0.8f),
-        disabledSelectedContainerColor = colorScheme.primary.copy(alpha = 0.8f),
-        disabledSelectedContentColor = colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+        containerColor = colors.primaryContainer,
+        contentColor = colors.onPrimaryContainer,
+        selectedContainerColor = colors.primary,
+        selectedContentColor = colors.onPrimary,
+        disabledContainerColor = colors.primaryContainer.copy(alpha = 0.6f),
+        disabledContentColor = colors.onPrimary.copy(alpha = 0.8f),
+        disabledSelectedContainerColor = colors.primary.copy(alpha = 0.8f),
+        disabledSelectedContentColor = colors.onPrimaryContainer.copy(alpha = 0.8f)
     )
 
     @Composable
     fun secondaryColors() = KitGroupButtonColors(
-        containerColor = colorScheme.surface,
-        contentColor = colorScheme.onSurface,
-        selectedContainerColor = colorScheme.secondary,
-        selectedContentColor = colorScheme.onSecondary,
-        disabledContainerColor = colorScheme.surfaceVariant.copy(alpha = 0.6f),
-        disabledContentColor = colorScheme.onSurface.copy(alpha = 0.8f),
-        disabledSelectedContainerColor = colorScheme.secondary.copy(alpha = 0.6f),
-        disabledSelectedContentColor = colorScheme.onSecondary.copy(alpha = 0.8f)
+        containerColor = colors.surface,
+        contentColor = colors.onSurface,
+        selectedContainerColor = colors.secondary,
+        selectedContentColor = colors.onSecondary,
+        disabledContainerColor = colors.surfaceVariant.copy(alpha = 0.6f),
+        disabledContentColor = colors.onSurface.copy(alpha = 0.8f),
+        disabledSelectedContainerColor = colors.secondary.copy(alpha = 0.6f),
+        disabledSelectedContentColor = colors.onSecondary.copy(alpha = 0.8f)
     )
 }
 
@@ -110,7 +111,7 @@ sealed class KitGroupButtonSize {
         @Composable
         override fun getSizes(): KitGroupButtonSizes {
             return KitGroupButtonSizes(
-                textStyle = AppTheme.typography.bold10,
+                textStyle = typography.bold10,
                 iconSize = 10.dp,
             )
         }
@@ -121,7 +122,7 @@ sealed class KitGroupButtonSize {
         @Composable
         override fun getSizes(): KitGroupButtonSizes {
             return KitGroupButtonSizes(
-                textStyle = AppTheme.typography.bold12,
+                textStyle = typography.bold12,
                 iconSize = 12.dp,
             )
         }
@@ -132,7 +133,7 @@ sealed class KitGroupButtonSize {
         @Composable
         override fun getSizes(): KitGroupButtonSizes {
             return KitGroupButtonSizes(
-                textStyle = AppTheme.typography.bold14,
+                textStyle = typography.bold14,
                 iconSize = 14.dp,
             )
         }
@@ -153,7 +154,7 @@ fun KitGroupButton(
     enabled: Boolean = true,
     colors: KitGroupButtonColors = KitGroupButtonDefaults.primaryColors(),
     icon: ImageVector? = null,
-    contentPadding: PaddingValues = PaddingValues(AppTheme.spacing.medium),
+    contentPadding: PaddingValues = PaddingValues(spacing.medium),
     onClick: () -> Unit = {}
 ) {
     val sizes = size.getSizes()
@@ -212,7 +213,7 @@ fun KitGroupButton(
                 modifier = Modifier.size(sizes.iconSize)
             )
 
-            Spacer(modifier = Modifier.width(AppTheme.spacing.small))
+            Spacer(modifier = Modifier.width(spacing.small))
         }
 
         Text(
@@ -258,7 +259,7 @@ fun KitGroupButtonContainer(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     colors: KitGroupButtonColors = KitGroupButtonDefaults.primaryColors(),
-    contentPadding: PaddingValues = PaddingValues(AppTheme.spacing.medium),
+    contentPadding: PaddingValues = PaddingValues(spacing.medium),
     onClick: () -> Unit = {}
 ) {
 
@@ -307,7 +308,3 @@ fun KitGroupButtonContainer(
         content(contentColor)
     }
 }
-
-
-
-

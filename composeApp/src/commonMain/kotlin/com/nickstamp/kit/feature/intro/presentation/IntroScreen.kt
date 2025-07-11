@@ -23,7 +23,6 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -44,6 +43,7 @@ import com.nickstamp.kit.feature.intro.presentation.components.AcceptTermsButton
 import com.nickstamp.kit.feature.intro.presentation.components.IntroNavButton
 import com.nickstamp.kit.feature.intro.presentation.components.PagerIndicator
 import com.nickstamp.kit.ui.components.HtmlWebView
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
@@ -85,7 +85,7 @@ fun IntroScreen(
 
     Box(
         modifier = Modifier
-            .background(colorScheme.primary)
+            .background(colors.primary)
             .safeContentPadding()
             .fillMaxSize()
     ) {
@@ -206,7 +206,7 @@ private fun IntroPageContent(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxWidth()
-            .background(colorScheme.primary)
+            .background(colors.primary)
             .padding(
                 bottom = 80.dp,
                 start = spacing.default,
@@ -260,7 +260,7 @@ private fun TermsPageContent(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxWidth()
-            .background(colorScheme.primary)
+            .background(colors.primary)
             .padding(
                 bottom = 80.dp,
                 start = spacing.large,

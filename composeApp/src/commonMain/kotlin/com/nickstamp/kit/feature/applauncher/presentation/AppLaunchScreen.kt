@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,6 +37,7 @@ import com.nickstamp.kit.feature.applauncher.presentation.AppLauncherContract.St
 import com.nickstamp.kit.feature.config.domain.model.Announcement
 import com.nickstamp.kit.feature.config.domain.model.CtaAction
 import com.nickstamp.kit.shared.composables.animatedOpacity
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
 import com.nickstamp.kit.ui.theme.highEmphasis
@@ -72,7 +72,7 @@ fun AppLaunchScreen(
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .fillMaxSize()
-            .background(color = colorScheme.primary)
+            .background(color = colors.primary)
             .padding(horizontal = spacing.large)
     ) {
         when (state) {
@@ -218,7 +218,7 @@ fun AnnouncementContent(
             painter = painterResource(Res.drawable.ic_announcement),
             contentDescription = null,
             contentScale = ContentScale.Fit,
-            colorFilter = ColorFilter.tint(colorScheme.onPrimary),
+            colorFilter = ColorFilter.tint(colors.onPrimary),
             modifier = Modifier.size(120.dp)
         )
 
@@ -227,7 +227,7 @@ fun AnnouncementContent(
         Text(
             text = stringResource(Res.string.announcement),
             style = typography.bold16,
-            color = colorScheme.onPrimary,
+            color = colors.onPrimary,
         )
 
         Spacer(modifier = Modifier.height(spacing.small))
@@ -235,7 +235,7 @@ fun AnnouncementContent(
         Text(
             text = announcement.message,
             style = typography.regular14,
-            color = colorScheme.onPrimary.highEmphasis(),
+            color = colors.onPrimary.highEmphasis(),
             textAlign = TextAlign.Center
         )
 
@@ -244,8 +244,8 @@ fun AnnouncementContent(
         Button(
             onClick = onCtaClick,
             colors = ButtonDefaults.buttonColors(
-                contentColor = colorScheme.onSecondary,
-                containerColor = colorScheme.secondary.highEmphasis()
+                contentColor = colors.onSecondary,
+                containerColor = colors.secondary.highEmphasis()
             ),
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -278,7 +278,7 @@ private fun MessageWithActionsContent(
             painter = painterResource(imageRes),
             contentDescription = null,
             contentScale = ContentScale.Fit,
-            colorFilter = ColorFilter.tint(colorScheme.onPrimary),
+            colorFilter = ColorFilter.tint(colors.onPrimary),
             modifier = Modifier.size(120.dp)
         )
 
@@ -287,7 +287,7 @@ private fun MessageWithActionsContent(
         Text(
             text = title,
             style = typography.bold16,
-            color = colorScheme.onPrimary,
+            color = colors.onPrimary,
         )
 
         Spacer(modifier = Modifier.height(spacing.small))
@@ -295,7 +295,7 @@ private fun MessageWithActionsContent(
         Text(
             text = message,
             style = typography.regular14,
-            color = colorScheme.onPrimary.highEmphasis(),
+            color = colors.onPrimary.highEmphasis(),
             textAlign = TextAlign.Center
         )
 
@@ -309,12 +309,12 @@ private fun MessageWithActionsContent(
             OutlinedButton(
                 onClick = onLeftButtonClick,
                 colors = ButtonDefaults.outlinedButtonColors(
-                    contentColor = colorScheme.onPrimary,
+                    contentColor = colors.onPrimary,
                     containerColor = Color.Transparent
                 ),
                 border = BorderStroke(
                     width = 1.dp,
-                    color = colorScheme.onPrimary
+                    color = colors.onPrimary
                 ),
                 modifier = Modifier.weight(1f)
             ) {
@@ -323,8 +323,8 @@ private fun MessageWithActionsContent(
             Button(
                 onClick = onRightButtonClick,
                 colors = ButtonDefaults.buttonColors(
-                    contentColor = colorScheme.onSecondary,
-                    containerColor = colorScheme.secondary.highEmphasis()
+                    contentColor = colors.onSecondary,
+                    containerColor = colors.secondary.highEmphasis()
                 ),
                 modifier = Modifier.weight(1f)
             ) {

@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -19,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.highEmphasis
 import com.nickstamp.kit.ui.theme.lowEmphasis
@@ -30,8 +30,8 @@ fun KitVerticalProgressBar(
     animate: Boolean = false,
     width: Dp = 10.dp,
     shape: Shape = shapes.rounded50,
-    color: Color = colorScheme.primary.highEmphasis(),
-    backgroundColor: Color = colorScheme.primary.lowEmphasis()
+    color: Color = colors.primary.highEmphasis(),
+    backgroundColor: Color = colors.primary.lowEmphasis()
 ) {
 
     val percent = remember(progress()) { Animatable(if (animate) 0f else progress()) }
@@ -66,4 +66,3 @@ fun KitVerticalProgressBar(
 
     }
 }
-

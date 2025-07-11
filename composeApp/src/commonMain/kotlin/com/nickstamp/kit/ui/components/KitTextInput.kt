@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -29,6 +28,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import kotlinx.coroutines.delay
@@ -43,15 +43,15 @@ object KitTextInputDefaults {
     @Composable
     fun surfaceColors(): TextFieldColors {
         return TextFieldDefaults.colors().copy(
-            focusedTextColor = colorScheme.onSurface,
-            unfocusedTextColor = colorScheme.onSurface,
-            disabledTextColor = colorScheme.onSurface,
-            disabledContainerColor = colorScheme.surface,
-            focusedContainerColor = colorScheme.surface,
-            unfocusedContainerColor = colorScheme.surface,
-            unfocusedPlaceholderColor = colorScheme.onSurface,
-            focusedPlaceholderColor = colorScheme.onSurface,
-            cursorColor = colorScheme.onSurface
+            focusedTextColor = colors.onSurface,
+            unfocusedTextColor = colors.onSurface,
+            disabledTextColor = colors.onSurface,
+            disabledContainerColor = colors.surface,
+            focusedContainerColor = colors.surface,
+            unfocusedContainerColor = colors.surface,
+            unfocusedPlaceholderColor = colors.onSurface,
+            focusedPlaceholderColor = colors.onSurface,
+            cursorColor = colors.onSurface
         )
     }
 }
@@ -63,7 +63,7 @@ fun KitTextInput(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    colors: TextFieldColors = KitTextInputDefaults.defaultColors(),
+    inputColors: TextFieldColors = KitTextInputDefaults.defaultColors(),
     visualTransformation: VisualTransformation = VisualTransformation.None,
     enabled: Boolean = true,
     readOnly: Boolean = false,
@@ -84,7 +84,7 @@ fun KitTextInput(
 ) {
     val interactionSource = remember { MutableInteractionSource() }
 
-    val innerColors = colors.copy(
+    val innerColors = inputColors.copy(
         focusedIndicatorColor = Color.Transparent,
         unfocusedIndicatorColor = Color.Transparent,
         disabledIndicatorColor = Color.Transparent
@@ -106,7 +106,7 @@ fun KitTextInput(
         maxLines = maxLines,
         minLines = minLines,
         textStyle = textStyle,
-        cursorBrush = SolidColor(colorScheme.onSurface),
+        cursorBrush = SolidColor(colors.onSurface),
         modifier = modifier.widthIn(min = 40.dp),
         decorationBox = { innerTextField ->
             Column(
@@ -176,4 +176,3 @@ fun KitTextInput(
         onValueChange(textValue)
     }
 }
-

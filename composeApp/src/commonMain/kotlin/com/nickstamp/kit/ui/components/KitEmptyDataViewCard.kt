@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,15 +15,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.elevation
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
 import com.nickstamp.kit.ui.theme.mediumEmphasis
 import kit_cmp.composeapp.generated.resources.Res
+import kit_cmp.composeapp.generated.resources.ic_info
 import kit_cmp.composeapp.generated.resources.no_data_available
 import kit_cmp.composeapp.generated.resources.try_again
-import kit_cmp.composeapp.generated.resources.ic_info
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -35,7 +35,7 @@ fun KitEmptyDataViewCard(
     onTryAgainClick: (() -> Unit)? = null,
     text: String = stringResource(Res.string.no_data_available),
     icon: DrawableResource = Res.drawable.ic_info,
-    tint: Color = colorScheme.onBackground.mediumEmphasis()
+    tint: Color = colors.onBackground.mediumEmphasis()
 ) {
     Surface(
         shape = shapes.large,
@@ -65,7 +65,7 @@ fun KitEmptyDataView(
     onActionClick: (() -> Unit)? = null,
     text: String = stringResource(Res.string.no_data_available),
     icon: DrawableResource = Res.drawable.ic_info,
-    tint: Color = colorScheme.onBackground.mediumEmphasis()
+    tint: Color = colors.onBackground.mediumEmphasis()
 ) {
     Column(
         verticalArrangement = Arrangement.Center,
@@ -96,4 +96,3 @@ fun KitEmptyDataView(
         }
     }
 }
-

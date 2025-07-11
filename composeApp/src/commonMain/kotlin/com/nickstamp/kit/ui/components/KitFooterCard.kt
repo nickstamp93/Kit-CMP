@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,16 +27,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.components.ImageSource.Companion.toImageSource
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.elevation
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
+import com.nickstamp.kit.ui.theme.PreviewWrapper
 import com.nickstamp.kit.ui.theme.highEmphasis
 import com.nickstamp.kit.ui.theme.highestEmphasis
 import com.nickstamp.kit.ui.theme.mediumEmphasis
-import com.nickstamp.kit.ui.components.ImageSource.Companion.toImageSource
-import com.nickstamp.kit.ui.theme.PreviewWrapper
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.ic_info
 import kit_cmp.composeapp.generated.resources.ic_next
@@ -64,7 +63,7 @@ fun KitFooterCard(
         shadowElevation = elevation.large,
         border = BorderStroke(
             width = 2.dp,
-            color = colorScheme.surface
+            color = colors.surface
         )
     ) {
 
@@ -118,8 +117,8 @@ fun KitFooterCard(
                     Button(
                         onClick = onSecondaryActionText,
                         colors = ButtonDefaults.buttonColors().copy(
-                            containerColor = colorScheme.surface,
-                            contentColor = colorScheme.onSurface
+                            containerColor = colors.surface,
+                            contentColor = colors.onSurface
                         ),
                         shape = shapes.default,
                         modifier = Modifier.weight(1f)
@@ -141,8 +140,8 @@ fun KitFooterCard(
                     Button(
                         onClick = onPrimaryAction,
                         colors = ButtonDefaults.buttonColors().copy(
-                            containerColor = colorScheme.secondary,
-                            contentColor = colorScheme.onSecondary
+                            containerColor = colors.secondary,
+                            contentColor = colors.onSecondary
                         ),
                         shape = shapes.default,
                         modifier = Modifier.weight(1f)
@@ -181,7 +180,7 @@ private fun FooterCardPreview() {
             backgroundImageUrl = "",
             modifier = Modifier
                 .fillMaxWidth()
-                .background(color = colorScheme.background)
+                .background(color = colors.background)
                 .padding(16.dp)
         )
     }

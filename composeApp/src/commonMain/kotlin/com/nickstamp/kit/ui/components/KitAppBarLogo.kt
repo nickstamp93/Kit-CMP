@@ -8,15 +8,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.components.ImageSource.Companion.toImageSource
+import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.shapes
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun KitAppBarLogo(
     imageSource: ImageSource,
     modifier: Modifier = Modifier,
-    shape: Shape? = AppTheme.shapes.default
+    shape: Shape? = shapes.default
 ) {
     when (imageSource) {
         is ImageSource.LocalResource -> {
@@ -25,7 +27,7 @@ fun KitAppBarLogo(
                 contentDescription = "App Logo",
                 modifier = modifier
                     .size(40.dp)
-                    .padding(AppTheme.spacing.small)
+                    .padding(spacing.small)
             )
         }
 
@@ -37,7 +39,7 @@ fun KitAppBarLogo(
                 contentDescription = "App Logo",
                 modifier = modifier
                     .size(40.dp)
-                    .padding(AppTheme.spacing.small)
+                    .padding(spacing.small)
             )
         }
     }

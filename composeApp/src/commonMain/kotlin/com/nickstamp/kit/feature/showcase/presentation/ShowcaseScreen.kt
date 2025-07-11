@@ -18,7 +18,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -54,7 +53,10 @@ import com.nickstamp.kit.ui.components.KitTextWithIcon
 import com.nickstamp.kit.ui.components.KitVerticalProgressBar
 import com.nickstamp.kit.ui.components.LabelSize
 import com.nickstamp.kit.ui.components.SearchCatalogButtonRow
-import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.colors
+import com.nickstamp.kit.ui.theme.AppTheme.shapes
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
+import com.nickstamp.kit.ui.theme.AppTheme.typography
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.compose_multiplatform
 import kit_cmp.composeapp.generated.resources.ic_back
@@ -164,19 +166,19 @@ fun ShowcaseScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(AppTheme.spacing.large)
+                .padding(spacing.large)
                 .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.large)
+            verticalArrangement = Arrangement.spacedBy(spacing.large)
         ) {
             Text(
                 text = stringResource(Res.string.showcase_subtitle),
-                style = AppTheme.typography.bold24,
-                color = colorScheme.onSurface
+                style = typography.bold24,
+                color = colors.onSurface
             )
 
             HorizontalDivider(
-                modifier = Modifier.padding(vertical = AppTheme.spacing.medium),
-                color = colorScheme.outline
+                modifier = Modifier.padding(vertical = spacing.medium),
+                color = colors.outline
             )
 
             // KitInfoLabel Demo
@@ -185,19 +187,19 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_info_label_description)
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.small),
+                    horizontalArrangement = Arrangement.spacedBy(spacing.small),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     KitInfoLabel(text = stringResource(Res.string.showcase_kit_info_label_new))
                     KitInfoLabel(
                         text = stringResource(Res.string.showcase_kit_info_label_beta),
-                        backgroundColor = colorScheme.secondary,
-                        textColor = colorScheme.onSecondary
+                        backgroundColor = colors.secondary,
+                        textColor = colors.onSecondary
                     )
                     KitInfoLabel(
                         text = stringResource(Res.string.showcase_kit_info_label_hot),
-                        backgroundColor = colorScheme.error,
-                        textColor = colorScheme.onError
+                        backgroundColor = colors.error,
+                        textColor = colors.onError
                     )
                 }
             }
@@ -208,7 +210,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_key_value_chip_description)
             ) {
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                    verticalArrangement = Arrangement.spacedBy(spacing.small)
                 ) {
                     KitKeyValueChip(
                         caption = stringResource(Res.string.showcase_kit_key_value_chip_status_caption),
@@ -231,7 +233,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_icon_button_description)
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
+                    horizontalArrangement = Arrangement.spacedBy(spacing.medium),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     KitIconButton(
@@ -239,21 +241,21 @@ fun ShowcaseScreen(
                         onClickAction = {
                             onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitIconButton - Favorite"))
                         },
-                        tint = colorScheme.error
+                        tint = colors.error
                     )
                     KitIconButton(
                         icon = Res.drawable.ic_star_filled,
                         onClickAction = {
                             onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitIconButton - Star"))
                         },
-                        tint = colorScheme.primary
+                        tint = colors.primary
                     )
                     KitIconButton(
                         icon = Res.drawable.ic_info,
                         onClickAction = {
                             onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitIconButton - Info"))
                         },
-                        tint = colorScheme.secondary
+                        tint = colors.secondary
                     )
                 }
             }
@@ -264,11 +266,11 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_skeleton_item_description)
             ) {
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                    verticalArrangement = Arrangement.spacedBy(spacing.small)
                 ) {
                     val skeletonColor by animatedSkeletonColor()
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.small),
+                        horizontalArrangement = Arrangement.spacedBy(spacing.small),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         KitSkeletonItem(
@@ -283,7 +285,7 @@ fun ShowcaseScreen(
                                 height = 16.dp,
                                 color = { skeletonColor }
                             )
-                            Spacer(modifier = Modifier.height(AppTheme.spacing.xsmall))
+                            Spacer(modifier = Modifier.height(spacing.xsmall))
                             KitSkeletonItem(
                                 width = 80.dp,
                                 height = 12.dp,
@@ -294,7 +296,7 @@ fun ShowcaseScreen(
                     KitSkeletonItem(
                         modifier = Modifier.fillMaxWidth(),
                         height = 100.dp,
-                        shape = AppTheme.shapes.large,
+                        shape = shapes.large,
                         color = { skeletonColor }
                     )
                 }
@@ -306,7 +308,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_app_bar_icon_description)
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
+                    horizontalArrangement = Arrangement.spacedBy(spacing.medium),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     KitAppBarIcon(
@@ -314,21 +316,21 @@ fun ShowcaseScreen(
                         onClickAction = {
                             onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBarIcon - Menu"))
                         },
-                        tint = colorScheme.primary
+                        tint = colors.primary
                     )
                     KitAppBarIcon(
                         icon = Res.drawable.ic_settings,
                         onClickAction = {
                             onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBarIcon - Settings"))
                         },
-                        tint = colorScheme.secondary
+                        tint = colors.secondary
                     )
                     KitAppBarIcon(
                         icon = Res.drawable.ic_share,
                         onClickAction = {
                             onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBarIcon - Share"))
                         },
-                        tint = colorScheme.tertiary
+                        tint = colors.tertiary
                     )
                 }
             }
@@ -339,13 +341,13 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_network_image_description)
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
+                    horizontalArrangement = Arrangement.spacedBy(spacing.medium),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     KitNetworkImage(
                         imageSource = "https://picsum.photos/100/100?random=1".toImageSource(),
                         modifier = Modifier.height(80.dp).width(80.dp),
-                        shape = AppTheme.shapes.default
+                        shape = shapes.default
                     )
                     KitNetworkImage(
                         imageSource = "https://picsum.photos/100/100?random=2".toImageSource(),
@@ -355,7 +357,7 @@ fun ShowcaseScreen(
                     KitNetworkImage(
                         imageSource = "https://picsum.photos/100/100?random=3".toImageSource(),
                         modifier = Modifier.height(80.dp).width(80.dp),
-                        shape = AppTheme.shapes.large
+                        shape = shapes.large
                     )
                 }
             }
@@ -368,7 +370,7 @@ fun ShowcaseScreen(
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     colors = CardDefaults.cardColors(
-                        containerColor = colorScheme.surface
+                        containerColor = colors.surface
                     )
                 ) {
                     KitAppBar(
@@ -382,7 +384,7 @@ fun ShowcaseScreen(
                                 onClickAction = {
                                     onEvent(ShowcaseContract.Event.OnDemoButtonClick("KitAppBar - Home Action"))
                                 },
-                                tint = colorScheme.onPrimary
+                                tint = colors.onPrimary
                             )
                         }
                     )
@@ -395,7 +397,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_favorite_button_description)
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
+                    horizontalArrangement = Arrangement.spacedBy(spacing.medium),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     KitFavoriteButton(
@@ -419,10 +421,10 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_label_description)
             ) {
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                    verticalArrangement = Arrangement.spacedBy(spacing.small)
                 ) {
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.small),
+                        horizontalArrangement = Arrangement.spacedBy(spacing.small),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         KitLabel(
@@ -459,7 +461,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_text_with_icon_description)
             ) {
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                    verticalArrangement = Arrangement.spacedBy(spacing.small)
                 ) {
                     KitTextWithIcon(
                         text = stringResource(Res.string.showcase_kit_text_with_icon_start),
@@ -488,7 +490,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_pulsating_circle_description)
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
+                    horizontalArrangement = Arrangement.spacedBy(spacing.medium),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     KitPulsatingCircle(
@@ -496,7 +498,7 @@ fun ShowcaseScreen(
                     )
                     KitPulsatingCircle(
                         modifier = Modifier.size(40.dp),
-                        color = colorScheme.error.copy(alpha = 0.3f)
+                        color = colors.error.copy(alpha = 0.3f)
                     )
                 }
             }
@@ -507,7 +509,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_text_input_description)
             ) {
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                    verticalArrangement = Arrangement.spacedBy(spacing.small)
                 ) {
                     KitTextInput(
                         value = stringResource(Res.string.showcase_kit_text_input_sample_text),
@@ -540,7 +542,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_vertical_progress_bar_description)
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium),
+                    horizontalArrangement = Arrangement.spacedBy(spacing.medium),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     KitVerticalProgressBar(
@@ -551,13 +553,13 @@ fun ShowcaseScreen(
                         progress = { 0.7f },
                         modifier = Modifier.height(100.dp),
                         animate = true,
-                        color = colorScheme.secondary
+                        color = colors.secondary
                     )
                     KitVerticalProgressBar(
                         progress = { 1.0f },
                         modifier = Modifier.height(100.dp),
                         width = 20.dp,
-                        color = colorScheme.error
+                        color = colors.error
                     )
                 }
             }
@@ -568,7 +570,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_horizontal_progress_bar_description)
             ) {
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                    verticalArrangement = Arrangement.spacedBy(spacing.small)
                 ) {
                     KitHorizontalProgressBar(
                         progress = { 0.3f },
@@ -578,13 +580,13 @@ fun ShowcaseScreen(
                         progress = { 0.7f },
                         modifier = Modifier.fillMaxWidth(),
                         animate = true,
-                        color = colorScheme.secondary
+                        color = colors.secondary
                     )
                     KitHorizontalProgressBar(
                         progress = { 1.0f },
                         modifier = Modifier.fillMaxWidth(),
                         height = 20.dp,
-                        color = colorScheme.error
+                        color = colors.error
                     )
                 }
             }
@@ -595,7 +597,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_button_group_description)
             ) {
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium)
+                    verticalArrangement = Arrangement.spacedBy(spacing.medium)
                 ) {
                     KitButtonGroupRow {
                         KitGroupButton(
@@ -634,7 +636,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_filter_button_description)
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                    horizontalArrangement = Arrangement.spacedBy(spacing.small)
                 ) {
                     KitFilterButton(
                         text = stringResource(Res.string.showcase_kit_filter_button_filter),
@@ -658,7 +660,7 @@ fun ShowcaseScreen(
             ) {
                 KitEmptyResultsMessage(
                     icon = Res.drawable.ic_star_empty,
-                    iconTint = colorScheme.primary
+                    iconTint = colors.primary
                 )
             }
 
@@ -682,7 +684,7 @@ fun ShowcaseScreen(
                 description = stringResource(Res.string.showcase_kit_section_container_description)
             ) {
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium)
+                    verticalArrangement = Arrangement.spacedBy(spacing.medium)
                 ) {
                     KitSectionContainer(
                         title = stringResource(Res.string.showcase_kit_section_container_simple_section),
@@ -696,7 +698,7 @@ fun ShowcaseScreen(
                         action = {
                             Text(
                                 stringResource(Res.string.showcase_kit_section_container_with_action_view_all),
-                                color = colorScheme.primary,
+                                color = colors.primary,
                                 style = MaterialTheme.typography.labelMedium
                             )
                         },
@@ -754,22 +756,22 @@ fun ComponentDemoCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = colorScheme.surface
+            containerColor = colors.surface
         )
     ) {
         Column(
-            modifier = Modifier.padding(AppTheme.spacing.large)
+            modifier = Modifier.padding(spacing.large)
         ) {
             Text(
                 text = title,
-                style = AppTheme.typography.bold16,
-                color = colorScheme.onSurface
+                style = typography.bold16,
+                color = colors.onSurface
             )
             Text(
                 text = description,
-                style = AppTheme.typography.regular12,
-                color = colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(bottom = AppTheme.spacing.medium)
+                style = typography.regular12,
+                color = colors.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = spacing.medium)
             )
             content()
         }

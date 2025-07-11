@@ -12,15 +12,15 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import com.nickstamp.kit.feature.settings.presentation.SettingsContract
-import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.colors
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
+import com.nickstamp.kit.ui.theme.AppTheme.typography
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.app_name
 import kit_cmp.composeapp.generated.resources.ic_dark_mode
@@ -50,13 +50,13 @@ fun ThemeSettingsCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = colors.surface
         )
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(AppTheme.spacing.large),
+                .padding(spacing.large),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -66,21 +66,21 @@ fun ThemeSettingsCard(
                 Icon(
                     painter = painterResource(Res.drawable.ic_dark_mode),
                     contentDescription = stringResource(Res.string.settings_theme_icon_content_description),
-                    tint = MaterialTheme.colorScheme.primary
+                    tint = colors.primary
                 )
-                Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
+                Spacer(modifier = Modifier.width(spacing.medium))
                 Column {
                     Text(
                         text = stringResource(Res.string.settings_dark_theme_title),
-                        style = AppTheme.typography.bold16,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = typography.bold16,
+                        color = colors.onSurface
                     )
                     Text(
                         text = if (isDarkTheme) stringResource(Res.string.settings_dark_theme_enabled) else stringResource(
                             Res.string.settings_dark_theme_disabled
                         ),
-                        style = AppTheme.typography.regular14,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        style = typography.regular14,
+                        color = colors.onSurfaceVariant
                     )
                 }
             }
@@ -100,14 +100,14 @@ fun AppInfoCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = colors.surface
         )
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(AppTheme.spacing.large),
-            verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium)
+                .padding(spacing.large),
+            verticalArrangement = Arrangement.spacedBy(spacing.medium)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically
@@ -115,20 +115,20 @@ fun AppInfoCard(
                 Icon(
                     painter = painterResource(Res.drawable.ic_info),
                     contentDescription = stringResource(Res.string.settings_app_info_icon_content_description),
-                    tint = MaterialTheme.colorScheme.primary
+                    tint = colors.primary
                 )
-                Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
+                Spacer(modifier = Modifier.width(spacing.medium))
                 Text(
                     text = stringResource(Res.string.settings_app_info_title),
-                    style = AppTheme.typography.bold16,
-                    color = MaterialTheme.colorScheme.onSurface
+                    style = typography.bold16,
+                    color = colors.onSurface
                 )
             }
 
-            Spacer(modifier = Modifier.height(AppTheme.spacing.small))
+            Spacer(modifier = Modifier.height(spacing.small))
 
             Column(
-                verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.small)
+                verticalArrangement = Arrangement.spacedBy(spacing.small)
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -136,13 +136,13 @@ fun AppInfoCard(
                 ) {
                     Text(
                         text = stringResource(Res.string.settings_app_info_name),
-                        style = AppTheme.typography.regular14,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        style = typography.regular14,
+                        color = colors.onSurfaceVariant
                     )
                     Text(
                         text = stringResource(Res.string.app_name),
-                        style = AppTheme.typography.bold14,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = typography.bold14,
+                        color = colors.onSurface
                     )
                 }
 
@@ -152,22 +152,22 @@ fun AppInfoCard(
                 ) {
                     Text(
                         text = stringResource(Res.string.settings_app_info_version),
-                        style = AppTheme.typography.regular14,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        style = typography.regular14,
+                        color = colors.onSurfaceVariant
                     )
                     Text(
                         text = appVersion,
-                        style = AppTheme.typography.bold14,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = typography.bold14,
+                        color = colors.onSurface
                     )
                 }
 
-                Spacer(modifier = Modifier.height(AppTheme.spacing.small))
+                Spacer(modifier = Modifier.height(spacing.small))
 
                 Text(
                     text = stringResource(Res.string.settings_app_info_developer),
-                    style = AppTheme.typography.bold14,
-                    color = MaterialTheme.colorScheme.primary,
+                    style = typography.bold14,
+                    color = colors.primary,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -183,13 +183,13 @@ fun DeveloperToolsCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = colors.surface
         )
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(AppTheme.spacing.large),
+                .padding(spacing.large),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -200,23 +200,23 @@ fun DeveloperToolsCard(
                 Icon(
                     painter = painterResource(Res.drawable.ic_settings),
                     contentDescription = stringResource(Res.string.settings_developer_tools_icon_content_description),
-                    tint = MaterialTheme.colorScheme.secondary
+                    tint = colors.secondary
                 )
-                Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
+                Spacer(modifier = Modifier.width(spacing.medium))
                 Column {
                     Text(
                         text = stringResource(Res.string.settings_developer_tools_title),
-                        style = AppTheme.typography.bold16,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = typography.bold16,
+                        color = colors.onSurface
                     )
                     Text(
                         text = stringResource(Res.string.settings_developer_tools_description),
-                        style = AppTheme.typography.regular14,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        style = typography.regular14,
+                        color = colors.onSurfaceVariant
                     )
                 }
             }
-            Spacer(modifier = Modifier.width(AppTheme.spacing.default))
+            Spacer(modifier = Modifier.width(spacing.default))
 
             Button(
                 onClick = { onNavigateToDeveloperTools() }

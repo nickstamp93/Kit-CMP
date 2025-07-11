@@ -6,17 +6,17 @@ import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.ui.graphics.Color
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.lowestEmphasis
 import com.nickstamp.kit.ui.theme.mediumEmphasis
 
 @Composable
 fun animatedSkeletonColor(
-    initialColor: Color = colorScheme.onSurface.mediumEmphasis(),
-    targetColor: Color = colorScheme.onSurface.lowestEmphasis()
+    initialColor: Color = colors.onSurface.mediumEmphasis(),
+    targetColor: Color = colors.onSurface.lowestEmphasis()
 ): State<Color> {
     val infiniteTransition = rememberInfiniteTransition(label = "Shimmer")
 

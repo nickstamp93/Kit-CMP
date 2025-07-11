@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -25,7 +24,7 @@ import com.nickstamp.kit.shared.composables.animatedSkeletonColor
 import com.nickstamp.kit.ui.components.KitAppBar
 import com.nickstamp.kit.ui.components.KitAppBarIcon
 import com.nickstamp.kit.ui.components.KitSkeletonItem
-import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
 import kit_cmp.composeapp.generated.resources.Res
@@ -77,7 +76,7 @@ private fun LoadingContent() {
         modifier = Modifier
             .fillMaxSize()
             .padding(spacing.large),
-        verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.medium)
+        verticalArrangement = Arrangement.spacedBy(spacing.medium)
     ) {
         val skeletonColor by animatedSkeletonColor()
         repeat(5) {
@@ -99,35 +98,35 @@ private fun ErrorContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(AppTheme.spacing.large),
+            .padding(spacing.large),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Icon(
             painter = painterResource(Res.drawable.ic_settings),
             contentDescription = null,
-            tint = colorScheme.error,
+            tint = colors.error,
             modifier = Modifier.size(64.dp)
         )
 
-        Spacer(modifier = Modifier.height(AppTheme.spacing.medium))
+        Spacer(modifier = Modifier.height(spacing.medium))
 
         Text(
             text = "Error",
             style = typography.regular16,
-            color = colorScheme.error
+            color = colors.error
         )
 
-        Spacer(modifier = Modifier.height(AppTheme.spacing.small))
+        Spacer(modifier = Modifier.height(spacing.small))
 
         Text(
             text = error,
             style = typography.bold14,
-            color = colorScheme.onSurface,
+            color = colors.onSurface,
             textAlign = TextAlign.Center
         )
 
-        Spacer(modifier = Modifier.height(AppTheme.spacing.large))
+        Spacer(modifier = Modifier.height(spacing.large))
 
         Button(onClick = onRetry) {
             Text("Retry")
@@ -148,7 +147,7 @@ private fun HomeContent(
         Text(
             text = "Welcome to $appName!",
             style = typography.bold20,
-            color = colorScheme.onSurface,
+            color = colors.onSurface,
             textAlign = TextAlign.Center
         )
     }

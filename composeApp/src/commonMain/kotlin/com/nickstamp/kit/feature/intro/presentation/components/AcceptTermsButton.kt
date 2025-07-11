@@ -2,12 +2,12 @@ package com.nickstamp.kit.feature.intro.presentation.components
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.typography
 import com.nickstamp.kit.ui.theme.lowEmphasis
 import kit_cmp.composeapp.generated.resources.Res
@@ -21,9 +21,9 @@ fun AcceptTermsButton(
 ) {
     Button(
         colors = ButtonColors(
-            containerColor = colorScheme.secondary,
+            containerColor = colors.secondary,
             contentColor = Color.White,
-            disabledContainerColor = colorScheme.secondary.lowEmphasis(),
+            disabledContainerColor = colors.secondary.lowEmphasis(),
             disabledContentColor = Color.White.lowEmphasis()
         ),
         onClick = onClick,

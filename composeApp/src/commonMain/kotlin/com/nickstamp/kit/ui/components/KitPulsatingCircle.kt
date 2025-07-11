@@ -9,7 +9,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -17,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 
 @Composable
 fun KitPulsatingCircle(
@@ -24,7 +24,7 @@ fun KitPulsatingCircle(
     minScale: Float = 1.5f,
     maxScale: Float = 2f,
     pulseDuration: Int = 500,
-    color: Color = colorScheme.tertiary.copy(alpha = 0.3f),
+    color: Color = colors.tertiary.copy(alpha = 0.3f),
 ) {
     Box(
         modifier = modifier,

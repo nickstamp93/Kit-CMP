@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -18,18 +17,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.colors
+import com.nickstamp.kit.ui.theme.AppTheme.shapes
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
+import com.nickstamp.kit.ui.theme.AppTheme.typography
 
 object KitKeyValueChipDefaults {
 
     val textStyle: TextStyle
-        @Composable get() = AppTheme.typography.regular12
+        @Composable get() = typography.regular12
 
     val keyValueChipColors: KitKeyValueChipColors
         @Composable get() = KitKeyValueChipColors(
-            captionColor = MaterialTheme.colorScheme.onPrimary,
-            captionContainerColor = MaterialTheme.colorScheme.primary,
-            valueColor = MaterialTheme.colorScheme.onSecondary,
-            valueContainerColor = MaterialTheme.colorScheme.secondary
+            captionColor = colors.onPrimary,
+            captionContainerColor = colors.primary,
+            valueColor = colors.onSecondary,
+            valueContainerColor = colors.secondary
         )
 }
 
@@ -50,7 +53,7 @@ fun KitKeyValueChip(
     colors: KitKeyValueChipColors = KitKeyValueChipDefaults.keyValueChipColors,
 ) {
     Row(
-        modifier = modifier.clip(AppTheme.shapes.rounded25)
+        modifier = modifier.clip(shapes.rounded25)
     ) {
         Text(
             text = caption,
@@ -59,7 +62,7 @@ fun KitKeyValueChip(
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .drawBehind { drawRect(colors.captionContainerColor) }
-                .padding(AppTheme.spacing.small)
+                .padding(spacing.small)
         )
         Text(
             text = value,
@@ -72,8 +75,8 @@ fun KitKeyValueChip(
             modifier = Modifier
                 .drawBehind { drawRect(colors.valueContainerColor) }
                 .padding(
-                    vertical = AppTheme.spacing.small,
-                    horizontal = AppTheme.spacing.default
+                    vertical = spacing.small,
+                    horizontal = spacing.default
                 )
         )
     }
@@ -88,7 +91,7 @@ fun KitKeyValueIconChip(
     colors: KitKeyValueChipColors = KitKeyValueChipDefaults.keyValueChipColors,
 ) {
     Row(
-        modifier = modifier.clip(AppTheme.shapes.small)
+        modifier = modifier.clip(shapes.small)
     ) {
         Icon(
             painter = painter,
@@ -97,7 +100,7 @@ fun KitKeyValueIconChip(
             modifier = Modifier
                 .size(23.dp)
                 .drawBehind { drawRect(colors.captionContainerColor) }
-                .padding(AppTheme.spacing.small)
+                .padding(spacing.small)
         )
         Text(
             text = value,
@@ -110,8 +113,8 @@ fun KitKeyValueIconChip(
             modifier = Modifier
                 .drawBehind { drawRect(colors.valueContainerColor) }
                 .padding(
-                    vertical = AppTheme.spacing.small,
-                    horizontal = AppTheme.spacing.default
+                    vertical = spacing.small,
+                    horizontal = spacing.default
                 )
         )
     }

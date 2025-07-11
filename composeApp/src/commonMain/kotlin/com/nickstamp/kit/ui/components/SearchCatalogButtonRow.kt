@@ -14,13 +14,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.AppTheme.typography
@@ -58,7 +58,7 @@ fun KitSearchCatalogButtonRow(
                 .clip(shape = shapes.rounded50)
                 .border(
                     width = 2.dp,
-                    color = colorScheme.onBackground.lowEmphasis(),
+                    color = colors.onBackground.lowEmphasis(),
                     shape = shapes.rounded50
                 )
                 .clickable(
@@ -68,9 +68,9 @@ fun KitSearchCatalogButtonRow(
             KitTextWithIcon(
                 text = hintText,
                 icon = Res.drawable.ic_search,
-                tint = colorScheme.onBackground.mediumEmphasis(),
+                tint = colors.onBackground.mediumEmphasis(),
                 iconSize = 20.dp,
-                style = typography.regular12.copy(color = colorScheme.onBackground.mediumEmphasis()),
+                style = typography.regular12.copy(color = colors.onBackground.mediumEmphasis()),
                 modifier = Modifier
                     .padding(
                         vertical = spacing.medium,
@@ -81,11 +81,11 @@ fun KitSearchCatalogButtonRow(
 
         Icon(
             painter = painterResource(catalogIconRes),
-            tint = colorScheme.onSurface.highEmphasis(),
+            tint = colors.onSurface.highEmphasis(),
             contentDescription = null,
             modifier = Modifier
                 .size(40.dp)
-                .background(color = colorScheme.surface, shape = shapes.default)
+                .background(color = colors.surface, shape = shapes.default)
                 .padding(spacing.default)
                 .clickable(
                     onClick = onCatalogClick,
@@ -121,7 +121,7 @@ private fun KitSearchCatalogButtonRowPreview() {
             onCatalogClick = {},
             modifier = Modifier
                 .fillMaxWidth()
-                .background(color = colorScheme.background)
+                .background(color = colors.background)
                 .padding(spacing.large)
         )
     }

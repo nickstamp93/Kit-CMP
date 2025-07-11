@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -24,8 +23,10 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import com.nickstamp.kit.ui.components.ImageSource.Companion.toImageSource
 import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.theme.AppTheme.shapes
 import com.nickstamp.kit.ui.theme.AppTheme.spacing
+import com.nickstamp.kit.ui.theme.AppTheme.typography
 import com.nickstamp.kit.ui.theme.PreviewWrapper
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.compose_multiplatform
@@ -44,8 +45,8 @@ fun KitAppBar(
     title: String = "",
     subtitle: AnnotatedString? = null,
     onBack: (() -> Unit)? = null,
-    containerColor: Color = colorScheme.primary,
-    onContainerColor: Color = colorScheme.onPrimary,
+    containerColor: Color = colors.primary,
+    onContainerColor: Color = colors.onPrimary,
     shape: Shape = shapes.bottomRoundedLarge,
     actions: @Composable RowScope.() -> Unit = {},
     logo: ImageSource? = null,
@@ -83,12 +84,12 @@ fun KitAppBar(
                         Text(
                             text = title,
                             maxLines = 1,
-                            style = AppTheme.typography.bold14.copy(color = onContainerColor),
+                            style = typography.bold14.copy(color = onContainerColor),
                         )
                         Text(
                             text = subtitle,
                             maxLines = 1,
-                            style = AppTheme.typography.regular12.copy(
+                            style = typography.regular12.copy(
                                 color = onContainerColor.copy(
                                     alpha = 0.7f
                                 )
@@ -100,7 +101,7 @@ fun KitAppBar(
                         text = title,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
-                        style = AppTheme.typography.bold16.copy(color = onContainerColor)
+                        style = typography.bold16.copy(color = onContainerColor)
                     )
                 }
             }
@@ -159,7 +160,7 @@ private fun XAppBarPreview() {
                 actions = {
                     KitAppBarIcon(
                         iconRes = Res.drawable.ic_dark_mode,
-                        tint = colorScheme.error,
+                        tint = colors.error,
                         onClickAction = { }
                     )
                 }
@@ -173,7 +174,7 @@ private fun XAppBarPreview() {
                 actions = {
                     KitAppBarIcon(
                         iconRes = Res.drawable.ic_dark_mode,
-                        tint = colorScheme.error,
+                        tint = colors.error,
                         onClickAction = { }
                     )
                 },

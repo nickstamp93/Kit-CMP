@@ -16,6 +16,7 @@ import com.nickstamp.kit.ui.components.ImageSource.Companion.toImageSource
 import com.nickstamp.kit.ui.components.KitAppBar
 import com.nickstamp.kit.ui.components.KitSectionContainer
 import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
 import com.nickstamp.kit.ui.theme.PreviewWrapper
 import kit_cmp.composeapp.generated.resources.Res
 import kit_cmp.composeapp.generated.resources.compose_multiplatform
@@ -43,9 +44,9 @@ fun SettingsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(AppTheme.spacing.default)
+                .padding(spacing.default)
                 .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.large)
+            verticalArrangement = Arrangement.spacedBy(spacing.large)
         ) {
             ThemeSettingsCard(
                 isDarkTheme = state.isDarkTheme,

@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,6 +18,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.colors
+import com.nickstamp.kit.ui.theme.AppTheme.shapes
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
+import com.nickstamp.kit.ui.theme.AppTheme.typography
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
@@ -45,9 +48,9 @@ enum class LabelSize(
 
     val textStyle: TextStyle
         @Composable get() = when (this) {
-            XSMALL -> AppTheme.typography.regular10
-            SMALL -> AppTheme.typography.regular12
-            LARGE -> AppTheme.typography.regular14
+            XSMALL -> typography.regular10
+            SMALL -> typography.regular12
+            LARGE -> typography.regular14
         }
 }
 
@@ -55,11 +58,11 @@ enum class LabelSize(
 fun KitLabel(
     text: String,
     modifier: Modifier = Modifier,
-    containerColor: Color = colorScheme.surfaceVariant,
-    textColor: Color = colorScheme.onSurfaceVariant,
+    containerColor: Color = colors.surfaceVariant,
+    textColor: Color = colors.onSurfaceVariant,
     iconStart: DrawableResource? = null,
     iconEnd: DrawableResource? = null,
-    shape: Shape = AppTheme.shapes.rounded50,
+    shape: Shape = shapes.rounded50,
     size: LabelSize = LabelSize.SMALL
 ) {
     Row(
@@ -69,14 +72,14 @@ fun KitLabel(
             .padding(vertical = size.verticalPadding)
     ) {
         iconStart?.let {
-            Spacer(modifier = Modifier.width(AppTheme.spacing.small))
+            Spacer(modifier = Modifier.width(spacing.small))
             Icon(
                 painter = painterResource(it),
                 contentDescription = null,
                 tint = textColor,
                 modifier = Modifier.size(size.iconSize)
             )
-            Spacer(modifier = Modifier.width(AppTheme.spacing.small))
+            Spacer(modifier = Modifier.width(spacing.small))
         } ?: kotlin.run {
             Spacer(modifier = Modifier.width(size.horizontalPadding))
         }
@@ -90,17 +93,16 @@ fun KitLabel(
         )
 
         iconEnd?.let {
-            Spacer(modifier = Modifier.width(AppTheme.spacing.small))
+            Spacer(modifier = Modifier.width(spacing.small))
             Icon(
                 painter = painterResource(it),
                 contentDescription = null,
                 tint = textColor,
                 modifier = Modifier.size(size.iconSize)
             )
-            Spacer(modifier = Modifier.width(AppTheme.spacing.small))
+            Spacer(modifier = Modifier.width(spacing.small))
         } ?: kotlin.run {
             Spacer(modifier = Modifier.width(size.horizontalPadding))
         }
     }
 }
-

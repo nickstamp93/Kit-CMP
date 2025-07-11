@@ -5,18 +5,19 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 
 @Composable
 fun PreviewWrapper(content: @Composable () -> Unit) {
     AppTheme {
         Box(
             modifier = Modifier.fillMaxSize()
-                .background(color = colorScheme.background)
+                .background(color = colors.background)
         ) {
             content()
         }
@@ -34,6 +35,22 @@ fun AppTheme(
     } else {
         LightColorScheme
     }
+    
+    val extendedColors = ExtendedColors(
+        success = SemanticColorTokens.Success,
+        onSuccess = SemanticColorTokens.OnSuccess,
+        successContainer = SemanticColorTokens.SuccessContainer,
+        onSuccessContainer = SemanticColorTokens.OnSuccessContainer,
+        warning = SemanticColorTokens.Warning,
+        onWarning = SemanticColorTokens.OnWarning,
+        warningContainer = SemanticColorTokens.WarningContainer,
+        onWarningContainer = SemanticColorTokens.OnWarningContainer,
+        info = SemanticColorTokens.Info,
+        onInfo = SemanticColorTokens.OnInfo,
+        infoContainer = SemanticColorTokens.InfoContainer,
+        onInfoContainer = SemanticColorTokens.OnInfoContainer,
+    )
+    
     CompositionLocalProvider(
         LocalTypography provides Typography(),
         LocalOpacity provides Opacity(),
@@ -41,20 +58,7 @@ fun AppTheme(
         LocalRadius provides Radius(),
         LocalShapes provides Shapes(),
         LocalElevation provides Elevation(),
-        LocalExtendedColors provides ExtendedColors(
-            success = SemanticColorTokens.Success,
-            onSuccess = SemanticColorTokens.OnSuccess,
-            successContainer = SemanticColorTokens.SuccessContainer,
-            onSuccessContainer = SemanticColorTokens.OnSuccessContainer,
-            warning = SemanticColorTokens.Warning,
-            onWarning = SemanticColorTokens.OnWarning,
-            warningContainer = SemanticColorTokens.WarningContainer,
-            onWarningContainer = SemanticColorTokens.OnWarningContainer,
-            info = SemanticColorTokens.Info,
-            onInfo = SemanticColorTokens.OnInfo,
-            infoContainer = SemanticColorTokens.InfoContainer,
-            onInfoContainer = SemanticColorTokens.OnInfoContainer,
-        )
+        LocalPaletteColors provides paletteColors(colorScheme, extendedColors)
     ) {
         MaterialTheme(
             colorScheme = colorScheme
@@ -96,9 +100,14 @@ object AppTheme {
         @ReadOnlyComposable
         get() = LocalElevation.current
 
-    val extendedColors: ExtendedColors
+    val colors: PaletteColors
         @Composable
         @ReadOnlyComposable
-        get() = LocalExtendedColors.current
+        get() = LocalPaletteColors.current
 
+}
+
+// CompositionLocal for UnifiedColors
+private val LocalPaletteColors = staticCompositionLocalOf<PaletteColors> {
+    error("No UnifiedColors provided")
 }

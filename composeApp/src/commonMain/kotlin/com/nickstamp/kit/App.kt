@@ -1,7 +1,6 @@
 package com.nickstamp.kit
 
 import androidx.compose.foundation.background
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -12,6 +11,7 @@ import com.nickstamp.kit.navigation.AppNavigation
 import com.nickstamp.kit.di.KoinConfig
 import com.nickstamp.kit.feature.settings.domain.usecase.GetAppThemeUseCase
 import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.utils.EffectHandler
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.koinInject
@@ -36,7 +36,7 @@ private fun AppContent() {
         val effectHandler: EffectHandler = koinInject()
 
         Scaffold(
-            modifier = Modifier.background(colorScheme.background)
+            modifier = Modifier.background(colors.background)
         ) {
             AppNavigation(
                 navController = navController,

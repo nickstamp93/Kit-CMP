@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,6 +14,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.AppTheme.colors
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
+import com.nickstamp.kit.ui.theme.AppTheme.typography
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
@@ -28,11 +30,11 @@ fun KitTextWithIcon(
     icon: DrawableResource,
     modifier: Modifier = Modifier,
     maxLines: Int = 2,
-    tint: Color = colorScheme.onSurface,
-    style: TextStyle = AppTheme.typography.regular14,
+    tint: Color = colors.onSurface,
+    style: TextStyle = typography.regular14,
     iconGravity: IconGravity = IconGravity.START,
     iconSize: Dp = 24.dp,
-    iconSpacing: Dp = AppTheme.spacing.medium
+    iconSpacing: Dp = spacing.medium
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
