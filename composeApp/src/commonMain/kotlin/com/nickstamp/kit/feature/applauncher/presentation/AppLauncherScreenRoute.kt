@@ -5,6 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.utils.EffectHandler
 import com.nickstamp.kit.ui.utils.ToastInfo
 import com.nickstamp.kit.ui.utils.ToastDuration
@@ -40,8 +41,10 @@ fun AppLauncherScreenRoute(
         }
     }
 
-    AppLaunchScreen(
-        state = state,
-        onEvent = viewModel::onEvent
-    )
+    AppTheme(useDarkTheme = false) {
+        AppLaunchScreen(
+            state = state,
+            onEvent = viewModel::onEvent
+        )
+    }
 }

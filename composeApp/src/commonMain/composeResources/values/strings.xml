@@ -19,6 +19,12 @@
     <string name="text_update_optional">Optional Update</string>
     <string name="text_update_optional_message">A new version of the app is available. Would you like to update now?</string>
 
+    <!-- HOME -->
+    <string name="home_screen_title">Home</string>
+    <string name="home_welcome_message">Welcome to</string>
+    <string name="home_getting_started_title">Getting Started</string>
+    <string name="home_getting_started_message">This is your new app built with the Kit CMP framework. Customize it by adding your own features and content.</string>
+
     <!-- SETTINGS -->
     <string name="settings_title">Settings</string>
     <string name="settings_theme_icon_content_description">Theme icon</string>

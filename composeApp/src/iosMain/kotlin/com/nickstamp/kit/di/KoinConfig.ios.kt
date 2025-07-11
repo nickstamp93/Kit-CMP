@@ -9,6 +9,7 @@ import com.nickstamp.kit.feature.config.di.configModule
 import com.nickstamp.kit.feature.intro.di.introModule
 import com.nickstamp.kit.feature.applauncher.di.appLauncherModule
 import com.nickstamp.kit.feature.developertools.di.developerToolsModule
+import com.nickstamp.kit.feature.home.di.homeModule
 
 @Composable
 actual fun KoinConfig(content: @Composable () -> Unit) {
@@ -19,6 +20,7 @@ actual fun KoinConfig(content: @Composable () -> Unit) {
             appModule,
             coreModule,
             configModule,
+            homeModule,
             settingsModule,
             showcaseModule,
             introModule,

@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.nickstamp.kit.feature.applauncher.presentation.AppLauncherScreenRoute
 import com.nickstamp.kit.feature.developertools.presentation.DeveloperToolsScreenRoute
+import com.nickstamp.kit.feature.home.presentation.HomeScreenRoute
 import com.nickstamp.kit.feature.intro.presentation.IntroScreenRoute
 import com.nickstamp.kit.feature.settings.presentation.SettingsScreenRoute
 import com.nickstamp.kit.feature.showcase.presentation.ShowcaseScreenRoute
@@ -22,8 +23,18 @@ fun AppNavigation(
         navController = navController,
         startDestination = AppRoutes.AppLauncher
     ) {
+        composable<AppRoutes.Home> {
+            HomeScreenRoute(
+                onNavigateToSettings = {
+                    navController.navigate(AppRoutes.Settings)
+                },
+                effectHandler = effectHandler
+            )
+        }
+
         composable<AppRoutes.Settings> {
             SettingsScreenRoute(
+                onNavigateBack = { navController.popBackStack() },
                 effectHandler = effectHandler,
                 onThemeChange = onThemeChange,
                 currentTheme = currentTheme,
@@ -43,7 +54,7 @@ fun AppNavigation(
         composable<AppRoutes.Intro> {
             IntroScreenRoute(
                 onNavigateToHome = {
-                    navController.navigate(AppRoutes.Settings) {
+                    navController.navigate(AppRoutes.Home) {
                         popUpTo(0) { inclusive = true }
                         launchSingleTop = true
                     }
@@ -68,7 +79,7 @@ fun AppNavigation(
         composable<AppRoutes.AppLauncher> {
             AppLauncherScreenRoute(
                 onNavigateToHome = {
-                    navController.navigate(AppRoutes.Settings) {
+                    navController.navigate(AppRoutes.Home) {
                         popUpTo(0) { inclusive = true }
                         launchSingleTop = true
                     }

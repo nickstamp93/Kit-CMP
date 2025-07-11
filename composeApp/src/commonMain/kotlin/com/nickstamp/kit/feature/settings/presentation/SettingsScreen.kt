@@ -2,7 +2,6 @@ package com.nickstamp.kit.feature.settings.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -28,13 +27,15 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 fun SettingsScreen(
     state: SettingsContract.State,
-    onEvent: (SettingsContract.Event) -> Unit
+    onEvent: (SettingsContract.Event) -> Unit,
+    onNavigateBack: () -> Unit
 ) {
     Scaffold(
         topBar = {
             KitAppBar(
                 title = stringResource(Res.string.settings_title),
-                logo = Res.drawable.compose_multiplatform.toImageSource()
+                logo = Res.drawable.compose_multiplatform.toImageSource(),
+                onBack = onNavigateBack
             )
         }
     ) { paddingValues ->
@@ -74,6 +75,7 @@ private fun SettingsScreenPreview() {
         SettingsScreen(
             state = SettingsContract.State(),
             onEvent = {},
+            onNavigateBack = {}
         )
     }
 }

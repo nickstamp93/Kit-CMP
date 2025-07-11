@@ -8,6 +8,9 @@ sealed class AppRoutes {
     data object AppLauncher : AppRoutes()
     
     @Serializable
+    data object Home : AppRoutes()
+    
+    @Serializable
     data object Settings : AppRoutes()
     
     @Serializable

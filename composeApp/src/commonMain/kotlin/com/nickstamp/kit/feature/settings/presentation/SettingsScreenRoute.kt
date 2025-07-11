@@ -9,6 +9,7 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun SettingsScreenRoute(
+    onNavigateBack: () -> Unit,
     effectHandler: EffectHandler,
     onThemeChange: (Boolean) -> Unit,
     currentTheme: Boolean,
@@ -42,6 +43,7 @@ fun SettingsScreenRoute(
 
     SettingsScreen(
         state = state,
-        onEvent = viewModel::onEvent
+        onEvent = viewModel::onEvent,
+        onNavigateBack = onNavigateBack
     )
 }
