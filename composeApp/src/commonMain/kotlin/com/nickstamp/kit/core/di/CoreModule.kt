@@ -26,7 +26,7 @@ val coreModule = module {
 
 
     // Analytics implementation - Replace NoOpAnalytics with your actual implementation
-    single<Analytics> { DefaultAnalytics() }
+    singleOf(::DefaultAnalytics) bind Analytics::class
 
     // Use cases
     singleOf(::SendAnalyticsEventUseCase)
