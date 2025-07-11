@@ -2,6 +2,8 @@ package com.nickstamp.kit.feature.settings.presentation
 
 import com.nickstamp.kit.core.arch.BaseViewModel
 import com.nickstamp.kit.core.helpers.SystemHelper
+import com.nickstamp.kit.feature.analytics.domain.model.AnalyticsEvent
+import com.nickstamp.kit.feature.analytics.domain.usecase.SendAnalyticsEventUseCase
 import com.nickstamp.kit.feature.config.domain.usecase.GetConfigurationUseCase
 import com.nickstamp.kit.feature.settings.domain.usecase.GetAppThemeUseCase
 import com.nickstamp.kit.feature.settings.domain.usecase.SetAppThemeUseCase
@@ -10,7 +12,8 @@ class SettingsViewModel(
     private val getAppThemeUseCase: GetAppThemeUseCase,
     private val setAppThemeUseCase: SetAppThemeUseCase,
     private val systemHelper: SystemHelper,
-    private val getConfigurationUseCase: GetConfigurationUseCase
+    private val getConfigurationUseCase: GetConfigurationUseCase,
+    private val sendAnalyticsEvent: SendAnalyticsEventUseCase
 ) : BaseViewModel<SettingsContract.Event, SettingsContract.Effect, SettingsContract.State>(
     initialState = SettingsContract.State()
 ) {
