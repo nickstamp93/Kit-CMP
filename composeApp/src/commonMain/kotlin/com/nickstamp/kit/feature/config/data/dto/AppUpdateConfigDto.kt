@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class PlatformUpdateConfigDto(
     @SerialName("mrv") internal val _minimumRequiredVersion: Int? = 0,
     @SerialName("lv") internal val _latestVersion: Int? = 0,
-    @SerialName("url") internal val _downloadUrl: String? = "",
+    @SerialName("u") internal val _downloadUrl: String? = "",
 ) {
     val minimumRequiredVersion: Int
         get() = _minimumRequiredVersion ?: 0
@@ -19,8 +19,8 @@ data class PlatformUpdateConfigDto(
 
 @Serializable
 data class AppUpdateConfigDto(
-    @SerialName("ios") internal val _ios: PlatformUpdateConfigDto? = null,
-    @SerialName("android") internal val _android: PlatformUpdateConfigDto? = null,
+    @SerialName("i") internal val _ios: PlatformUpdateConfigDto? = null,
+    @SerialName("a") internal val _android: PlatformUpdateConfigDto? = null,
 ) {
     val ios: PlatformUpdateConfigDto
         get() = _ios ?: PlatformUpdateConfigDto()

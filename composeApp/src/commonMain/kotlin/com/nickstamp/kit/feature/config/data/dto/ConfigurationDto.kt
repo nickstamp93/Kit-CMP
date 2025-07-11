@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ConfigurationDto(
     @SerialName("utd") internal val _upToDate: Boolean? = false,
-    @SerialName("update") internal val _appUpdateConfig: AppUpdateConfigDto? = AppUpdateConfigDto(),
+    @SerialName("u") internal val _appUpdateConfig: AppUpdateConfigDto? = AppUpdateConfigDto(),
     @SerialName("r") internal val _appRateConfig: AppRateConfigDto? = AppRateConfigDto(),
     @SerialName("a") internal val _adPlacements: List<AdPlacementConfigDto>? = null,
     @SerialName("ala") internal val _appLaunchAnnouncement: AnnouncementDto? = AnnouncementDto(),
