@@ -23,11 +23,11 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = libs.versions.appDisplayName.get().replace(" ", "")
             isStatic = true
             
             // Configure bundle ID to avoid linker warnings
-            freeCompilerArgs += listOf("-Xbinary=bundleId=com.nickstamp.kit.ComposeApp")
+            freeCompilerArgs += listOf("-Xbinary=bundleId=${libs.versions.appBundleId.get()}.ComposeApp")
         }
     }
     
@@ -75,15 +75,15 @@ kotlin {
 }
 
 android {
-    namespace = "com.nickstamp.kit"
+    namespace = libs.versions.appPackageName.get()
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.nickstamp.kit"
+        applicationId = libs.versions.appPackageName.get()
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = libs.versions.appVersionCode.get().toInt()
+        versionName = libs.versions.appVersionName.get()
     }
     packaging {
         resources {

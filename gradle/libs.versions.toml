@@ -3,6 +3,14 @@ agp = "8.7.3"
 android-compileSdk = "35"
 android-minSdk = "24"
 android-targetSdk = "35"
+
+# App Configuration
+appPackageName = "com.nickstamp.kit"
+appVersionCode = "1"
+appVersionName = "1.0.0"
+appBundleId = "com.nickstamp.kit"
+appDisplayName = "Kit CMP"
+
 androidx-activity = "1.10.1"
 androidx-appcompat = "1.7.1"
 androidx-constraintlayout = "2.2.1"
