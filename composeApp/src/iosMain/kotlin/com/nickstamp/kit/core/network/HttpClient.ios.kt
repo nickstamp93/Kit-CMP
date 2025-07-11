@@ -5,6 +5,7 @@ import io.ktor.client.engine.darwin.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
+import platform.Foundation.NSLog
 
 actual fun httpClient(): HttpClient = HttpClient(Darwin) {
     install(ContentNegotiation) {
@@ -12,6 +13,10 @@ actual fun httpClient(): HttpClient = HttpClient(Darwin) {
     }
     install(Logging) {
         level = LogLevel.ALL
-        logger = Logger.DEFAULT
+        logger = object : Logger {
+            override fun log(message: String) {
+                NSLog("HttpClient: %s", message)
+            }
+        }
     }
 }

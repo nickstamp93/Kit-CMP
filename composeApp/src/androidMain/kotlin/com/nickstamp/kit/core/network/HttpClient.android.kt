@@ -1,5 +1,6 @@
 package com.nickstamp.kit.core.network
 
+import android.util.Log
 import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
 import io.ktor.client.plugins.contentnegotiation.*
@@ -12,6 +13,10 @@ actual fun httpClient(): HttpClient = HttpClient(OkHttp) {
     }
     install(Logging) {
         level = LogLevel.ALL
-        logger = Logger.DEFAULT
+        logger = object : Logger {
+            override fun log(message: String) {
+                Log.d("HttpClient", message)
+            }
+        }
     }
 }

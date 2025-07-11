@@ -17,7 +17,7 @@ val coreModule = module {
     single<HttpClient> { httpClient() }
     singleOf(::ApiService)
     single { createDataStore() }
-    single<DatastoreManager> { DatastoreManagerImpl(get()) }
+    singleOf(::DatastoreManagerImpl) bind DatastoreManager::class
     singleOf(::DefaultDatastoreManager)
     singleOf(::DateTimeHelperImpl) bind DateTimeHelper::class
 }

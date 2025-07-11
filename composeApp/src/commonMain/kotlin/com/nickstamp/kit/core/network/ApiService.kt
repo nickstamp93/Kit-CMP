@@ -1,11 +1,15 @@
 package com.nickstamp.kit.core.network
 
-import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.request.*
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.delete
+import io.ktor.client.request.get
+import io.ktor.client.request.post
+import io.ktor.client.request.put
+import io.ktor.client.request.setBody
 import io.ktor.client.statement.bodyAsText
-import io.ktor.http.*
-import kotlinx.serialization.json.Json
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
 
 class ApiService(
     @PublishedApi
@@ -48,7 +52,7 @@ class ApiService(
         baseUrl: String? = null
     ): T {
         val url = EndpointBuilder.create(endpoint, baseUrl).build()
-        return  JsonConfig.instance.decodeFromString<T>(httpClient.put(url) {
+        return JsonConfig.instance.decodeFromString<T>(httpClient.put(url) {
             contentType(ContentType.Application.Json)
             setBody(body)
         }.bodyAsText())
@@ -64,9 +68,9 @@ class ApiService(
 
     // Overloaded methods for more advanced endpoint building
     suspend inline fun <reified T> get(endpointBuilder: EndpointBuilder): T {
-        println("GET: ${endpointBuilder.build()}")
-        println("Response: ${httpClient.get(endpointBuilder.build()).bodyAsText()}")
-        return JsonConfig.instance.decodeFromString<T>(httpClient.get(endpointBuilder.build()).bodyAsText())
+        return JsonConfig.instance.decodeFromString<T>(
+            httpClient.get(endpointBuilder.build()).bodyAsText()
+        )
     }
 
     suspend inline fun <reified T> post(endpointBuilder: EndpointBuilder, body: Any): T {
@@ -84,6 +88,8 @@ class ApiService(
     }
 
     suspend inline fun <reified T> delete(endpointBuilder: EndpointBuilder): T {
-        return JsonConfig.instance.decodeFromString<T>(httpClient.delete(endpointBuilder.build()).body())
+        return JsonConfig.instance.decodeFromString<T>(
+            httpClient.delete(endpointBuilder.build()).body()
+        )
     }
 }
