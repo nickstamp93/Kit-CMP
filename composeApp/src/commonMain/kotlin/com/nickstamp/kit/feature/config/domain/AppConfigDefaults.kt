@@ -7,50 +7,48 @@ object AppConfigDefaults {
         <html lang="en">
         <body>
             <h1>Terms of Use - Backup</h1>
-            <p>Welcome to <strong>TV Lite</strong>. By using this app, you agree to the following terms. Please read them carefully.</p>
+            <p>Welcome to <strong>[APP_NAME]</strong>. By using this application, you agree to the following terms. Please read them carefully.</p>
         
             <br/>
         
             <section>
-                <h2>Disclaimer</h2>
-                <p>TV Lite provides access to publicly available channels distributed by their providers. The app does not host or stream any content and has no control over channel availability or geo-restrictions, which may vary based on your location. The developer has no affiliation or connection with any channel or provider, ensuring full independence from their operations.</p>
+                <h2>Application Usage</h2>
+                <p>This application is provided for your use under the following terms and conditions. By installing and using the app, you accept these terms in full.</p>
             </section>
             
             <br/>
         
             <section>
-                <h2>Application Distribution</h2>
-                <p>This app is distributed free of charge through authorized platforms like the Google Play Store. No subscription or payment is required to use the app. It is intended solely for personal, non-commercial use.</p>
+                <h2>Distribution</h2>
+                <p>This application is distributed through authorized platforms such as the App Store and Google Play Store. It is intended for personal, non-commercial use unless otherwise specified.</p>
             </section>
             
             <br/>
         
             <section>
-                <h2>No Liability</h2>
-                <p>The developer is not responsible for issues arising from channel availability, geo-blocking, or content changes made by providers. Users assume all responsibility for ensuring lawful use of the app. If a channel provider requests removal of their content, the app will comply upon receiving valid communication.</p>
+                <h2>User Responsibilities</h2>
+                <p>Users are responsible for ensuring their use of the application complies with applicable laws and regulations. Misuse of the application is prohibited.</p>
             </section>
         
             <section>
-                <h2>Use of the App</h2>
-                <p>TV Lite must be used in compliance with applicable laws. Users are prohibited from modifying, redistributing, or reproducing any channel content in violation of provider rights. Responsibility for lawful use lies solely with the user.</p>
+                <h2>Liability</h2>
+                <p>The application is provided "as is" without warranty of any kind. The developers are not liable for any damages resulting from the use or inability to use the application.</p>
             </section>
             
             <br/>
         
             <section>
                 <h2>Acceptance of Terms</h2>
-                <p>By installing or using TV Lite, you acknowledge that you have read, understood, and agreed to these terms. If you do not agree, uninstall the app immediately. These terms may be updated without prior notice, and continued use of the app constitutes acceptance of any changes.</p>
+                <p>By installing or using [APP_NAME], you acknowledge that you have read, understood, and agreed to these terms. If you do not agree, please uninstall the application immediately.</p>
             </section>
             
             <br/>
         
             <section>
                 <h2>Contact Information</h2>
-                <p>If you have questions or wish to request content removal, contact us at <a href="mailto:nickdevarmy@gmail.com">nickdevarmy@gmail.com</a>.</p>
+                <p>For questions or concerns regarding these terms, please contact us at <a href="mailto:[CONTACT_EMAIL]">[CONTACT_EMAIL]</a>.</p>
             </section>
         </body>
         </html>
-
-
         """
 }

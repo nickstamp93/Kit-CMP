@@ -12,6 +12,6 @@ class ConfigurationService(
 ) {
 
     suspend fun getConfiguration(): ApiResult<ConfigurationDto> = safeApiCall {
-        apiService.get< ApiResponse<ConfigurationDto>>(ConfigurationEndpoints.getConfiguration()).data
+        apiService.get<ApiResponse<ConfigurationDto>>(ConfigurationEndpoints.getConfiguration()).data
     }
 }

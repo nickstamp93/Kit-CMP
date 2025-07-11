@@ -6,9 +6,9 @@
     <string name="terms_and_conditions">Terms and Conditions</string>
     <string name="accept_terms_caps">ACCEPT TERMS</string>
     <string name="intro_page_title_1">Welcome!</string>
-    <string name="intro_page_title_2">Channels</string>
-    <string name="intro_page_content_1">Welcome to Greek TV Lite, the fastest and easiest way to watch Greek TV!</string>
-    <string name="intro_page_content_2">Watch more than 250+ Greek TV channels on the go!</string>
+    <string name="intro_page_title_2">Features</string>
+    <string name="intro_page_content_1">Welcome to your new app! This framework provides everything you need to get started.</string>
+    <string name="intro_page_content_2">Enjoy a comprehensive set of features and components ready for customization!</string>
 
     <!-- APP LAUNCHER -->
     <string name="fetch_config_error">Server Communication Failed</string>
@@ -29,7 +29,7 @@
     <string name="settings_app_info_title">App Information</string>
     <string name="settings_app_info_name">App Name:</string>
     <string name="settings_app_info_version">Version:</string>
-    <string name="settings_app_info_developer">Developed by Nick Stampoulis</string>
+    <string name="settings_app_info_developer">Framework Template</string>
     <string name="settings_developer_tools_icon_content_description">Developer tools icon</string>
     <string name="settings_developer_tools_title">Developer Tools</string>
     <string name="settings_developer_tools_description">Access development features and utilities</string>

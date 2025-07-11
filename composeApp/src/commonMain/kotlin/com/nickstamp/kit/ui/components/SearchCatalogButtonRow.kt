@@ -102,7 +102,7 @@ fun SearchCatalogButtonRow(
     modifier: Modifier = Modifier
 ) {
     KitSearchCatalogButtonRow(
-        hintText = "Search movies...",
+        hintText = "Search...",
         onSearchClick = onClick,
         catalogIconRes = Res.drawable.ic_search,
         onCatalogClick = onClick,

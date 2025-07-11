@@ -766,8 +766,9 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 2. **Customize for Your Project**:
    - Change package name from `com.nickstamp.kit` to `com.yourcompany.yourapp`
    - Update app name in `composeResources/values/strings.xml`
-   - Configure your API endpoints in `NetworkConfig.kt`
-   - Set up your remote configuration JSON structure
+   - Replace placeholder content in string resources with your app's content
+   - Configure your API endpoints in `ConfigurationEndpoints.kt` (replace placeholder URL)
+   - Update terms of service placeholders `[APP_NAME]` and `[CONTACT_EMAIL]` with your values
 
 3. **Add Your First Feature**:
    ```kotlin
@@ -784,9 +785,20 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
    ```
 
 4. **Configure Remote Settings**:
-   - Set up your configuration API endpoint
+   - Set up your configuration API endpoint in `ConfigurationEndpoints.kt`
    - Customize configuration models for your needs
    - Update JSON response format in DTO classes
+   - Replace example.json placeholders with your actual configuration structure
+
+### Framework Customization Checklist
+- [ ] Update package name throughout the project
+- [ ] Replace `Kit-CMP` app name with your app name
+- [ ] Configure your configuration API endpoint
+- [ ] Replace `[APP_NAME]` placeholders in terms of service
+- [ ] Replace `[CONTACT_EMAIL]` placeholders with your contact email
+- [ ] Update app store URLs in configuration examples
+- [ ] Customize intro page content for your app's purpose
+- [ ] Add your app-specific features following the established patterns
 
 ### Best Practices
 - **Always use the design system**: Access colors, spacing, typography through `AppTheme`

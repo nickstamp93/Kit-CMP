@@ -8,13 +8,9 @@ import kotlinx.serialization.json.Json
 
 expect fun httpClient(): HttpClient
 
-fun createHttpClient(): HttpClient {
-    return HttpClient {
-        install(ContentNegotiation) {
-            JsonConfig.instance
-        }
-        install(Logging) {
-            level = LogLevel.ALL
-        }
+object JsonConfig {
+    val instance = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
     }
 }

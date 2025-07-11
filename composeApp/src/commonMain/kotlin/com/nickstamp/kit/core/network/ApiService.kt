@@ -7,13 +7,6 @@ import io.ktor.client.statement.bodyAsText
 import io.ktor.http.*
 import kotlinx.serialization.json.Json
 
-object JsonConfig {
-    val instance = Json {
-        ignoreUnknownKeys = true
-        isLenient = true
-    }
-}
-
 class ApiService(
     @PublishedApi
     internal val httpClient: HttpClient
@@ -71,6 +64,8 @@ class ApiService(
 
     // Overloaded methods for more advanced endpoint building
     suspend inline fun <reified T> get(endpointBuilder: EndpointBuilder): T {
+        println("GET: ${endpointBuilder.build()}")
+        println("Response: ${httpClient.get(endpointBuilder.build()).bodyAsText()}")
         return JsonConfig.instance.decodeFromString<T>(httpClient.get(endpointBuilder.build()).bodyAsText())
     }
 
