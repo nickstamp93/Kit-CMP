@@ -270,11 +270,76 @@ fun [ScreenName]Screen(
 The framework includes a comprehensive design system with:
 
 #### Color System
+- **Unified Color Access**: Single entry point through `AppTheme.colors` for all colors
 - **Light/Dark themes**: Complete Material 3 color schemes
 - **Semantic colors**: Success, Warning, Info, Error with containers
-- **Extended colors**: Beyond Material 3 palette
+- **Extended colors**: Beyond Material 3 palette integrated into unified system
 - **Emphasis levels**: 5 levels of opacity for content hierarchy
 - **Platform flavor colors**: Blue primary, Green secondary, Orange tertiary
+
+**IMPORTANT**: Always use `AppTheme.colors` for all color access. Never use `MaterialTheme.colorScheme` or `AppTheme.extendedColors` directly.
+
+#### Unified Color System Usage
+The framework provides a unified color system that combines Material Design colors with semantic colors through a single access point:
+
+```kotlin
+// ✅ CORRECT - Import and use abbreviated form
+import com.nickstamp.kit.ui.theme.AppTheme.colors
+
+// Then use:
+colors.primary          // Material colors
+colors.surface          // Surface colors
+colors.success          // Semantic colors
+colors.warning          // Semantic colors
+colors.info             // Semantic colors
+colors.error            // Error colors
+
+// ❌ INCORRECT - Never use these patterns
+AppTheme.colors.primary           // Don't use full path
+MaterialTheme.colorScheme.primary // Never use
+AppTheme.extendedColors.success   // Never use
+```
+
+**Available Color Categories:**
+- **Primary/Secondary/Tertiary**: Brand colors with container variants
+- **Surface/Background**: Layout and background colors
+- **Semantic**: `success`, `warning`, `info`, `error` with containers
+- **Text**: `onSurface`, `onBackground`, `onPrimary`, etc.
+- **Emphasis**: Use `.mediumEmphasis()`, `.highEmphasis()`, `.lowEmphasis()` extensions
+
+**Color Usage Examples:**
+```kotlin
+// Import at the top of your file
+import com.nickstamp.kit.ui.theme.AppTheme.colors
+
+// Cards and surfaces
+Card(
+    colors = CardDefaults.cardColors(
+        containerColor = colors.surface,
+        contentColor = colors.onSurface
+    )
+)
+
+// Semantic colors for status
+Text(
+    text = "Success message",
+    color = colors.success
+)
+
+// Buttons with proper contrast
+Button(
+    colors = ButtonDefaults.buttonColors(
+        containerColor = colors.primary,
+        contentColor = colors.onPrimary
+    )
+)
+
+// Emphasis for hierarchy
+Text(
+    text = "Secondary text",
+    color = colors.onSurface.mediumEmphasis()
+)
+```
 
 #### Typography System
 - **18 font sizes**: From 8sp to 36sp
@@ -801,7 +866,9 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 - [ ] Add your app-specific features following the established patterns
 
 ### Best Practices
-- **Always use the design system**: Access colors, spacing, typography through `AppTheme`
+- **Always use the unified design system**: Import and use abbreviated forms (`import AppTheme.colors`, `import AppTheme.spacing`, `import AppTheme.typography`)
+- **NEVER use full paths**: Don't use `AppTheme.colors.primary`, instead import `AppTheme.colors` and use `colors.primary`
+- **NEVER use MaterialTheme.colorScheme or AppTheme.extendedColors directly**: Always use the abbreviated `colors` import
 - **Follow MVI strictly**: Keep business logic in ViewModels, UI logic in Composables
 - **Inject everything**: No direct instantiation, use Koin for all dependencies
 - **Platform abstraction**: Use expect/actual for platform-specific code
@@ -855,8 +922,81 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 ### Shared Components Rules
 - **Showcase integration**: When adding new shared components, always demonstrate them in `ShowcaseScreen.kt`
 - **Design system compliance**: All components must use the established color, spacing, and typography tokens
+- **Unified color system**: Always use `AppTheme.colors` for all color properties, never MaterialTheme.colorScheme or AppTheme.extendedColors
 - **Composable guidelines**: Follow Compose best practices for reusability and performance
 - **Documentation**: Include kdoc comments explaining component purpose and usage
+
+### Component Development Template
+When creating new components, follow this template:
+
+```kotlin
+// Import abbreviated forms at the top
+import com.nickstamp.kit.ui.theme.AppTheme.colors
+import com.nickstamp.kit.ui.theme.AppTheme.shapes
+import com.nickstamp.kit.ui.theme.AppTheme.spacing
+import com.nickstamp.kit.ui.theme.AppTheme.typography
+
+@Composable
+fun YourComponent(
+    modifier: Modifier = Modifier,
+    // Use colors for default colors
+    backgroundColor: Color = colors.surface,
+    contentColor: Color = colors.onSurface,
+    // Use shapes for default shapes
+    shape: Shape = shapes.medium,
+    // Other parameters...
+) {
+    // Component implementation using:
+    // - colors for all colors
+    // - spacing for all spacing
+    // - typography for all text styles
+    // - shapes for all shapes
+}
+```
+
+### Color Usage in Components
+```kotlin
+// ✅ CORRECT - Using abbreviated imports
+import com.nickstamp.kit.ui.theme.AppTheme.colors
+import com.nickstamp.kit.ui.theme.AppTheme.typography
+
+@Composable
+fun MyCard(
+    backgroundColor: Color = colors.surface,
+    contentColor: Color = colors.onSurface,
+    successColor: Color = colors.success
+) {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = backgroundColor,
+            contentColor = contentColor
+        )
+    ) {
+        Text(
+            text = "Success!",
+            color = successColor,
+            style = typography.bold14
+        )
+    }
+}
+
+// ❌ INCORRECT - Don't use these patterns
+@Composable
+fun MyCard() {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = AppTheme.colors.surface,         // ❌ Don't use full path
+            contentColor = MaterialTheme.colorScheme.onSurface // ❌ Never use
+        )
+    ) {
+        Text(
+            text = "Success!",
+            color = AppTheme.extendedColors.success, // ❌ Never use
+            style = AppTheme.typography.bold14       // ❌ Don't use full path
+        )
+    }
+}
+```
 
 ### Configuration System Guidelines
 - **Platform awareness**: Update configurations should be platform-specific (iOS/Android)
