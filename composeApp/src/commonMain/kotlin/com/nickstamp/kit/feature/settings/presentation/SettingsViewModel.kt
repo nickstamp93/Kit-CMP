@@ -54,12 +54,6 @@ class SettingsViewModel(
         }
     }
 
-    fun updateTheme(isDarkTheme: Boolean) {
-        setState {
-            copy(isDarkTheme = isDarkTheme)
-        }
-    }
-
     private fun navigateToDeveloperTools() {
         launchInViewModelScope { getConfigurationUseCase(forceFetch = true) }
         setEffect(SettingsContract.Effect.NavigateToDeveloperTools)

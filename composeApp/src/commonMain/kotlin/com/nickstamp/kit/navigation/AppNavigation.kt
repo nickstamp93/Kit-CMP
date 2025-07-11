@@ -16,8 +16,6 @@ import com.nickstamp.kit.ui.utils.EffectHandler
 fun AppNavigation(
     navController: NavHostController,
     effectHandler: EffectHandler,
-    onThemeChange: (Boolean) -> Unit,
-    currentTheme: Boolean
 ) {
     NavHost(
         navController = navController,
@@ -36,8 +34,6 @@ fun AppNavigation(
             SettingsScreenRoute(
                 onNavigateBack = { navController.popBackStack() },
                 effectHandler = effectHandler,
-                onThemeChange = onThemeChange,
-                currentTheme = currentTheme,
                 onNavigateToDeveloperTools = {
                     navController.navigate(AppRoutes.DeveloperTools)
                 }
@@ -55,7 +51,7 @@ fun AppNavigation(
             IntroScreenRoute(
                 onNavigateToHome = {
                     navController.navigate(AppRoutes.Home) {
-                        popUpTo(0) { inclusive = true }
+                        popUpTo(AppRoutes.Intro) { inclusive = true }
                         launchSingleTop = true
                     }
                 },
@@ -80,11 +76,11 @@ fun AppNavigation(
             AppLauncherScreenRoute(
                 onNavigateToHome = {
                     navController.navigate(AppRoutes.Home) {
-                        popUpTo(0) { inclusive = true }
+                        popUpTo(AppRoutes.AppLauncher) { inclusive = true }
                         launchSingleTop = true
                     }
                 },
-                onNavigateToIntro = { 
+                onNavigateToIntro = {
                     navController.navigate(AppRoutes.Intro) {
                         popUpTo(AppRoutes.AppLauncher) { inclusive = true }
                         launchSingleTop = true

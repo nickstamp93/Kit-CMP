@@ -7,9 +7,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.nickstamp.kit.navigation.AppNavigation
 import com.nickstamp.kit.di.KoinConfig
 import com.nickstamp.kit.feature.settings.domain.usecase.GetAppThemeUseCase
+import com.nickstamp.kit.navigation.AppNavigation
 import com.nickstamp.kit.ui.theme.AppTheme
 import com.nickstamp.kit.ui.theme.AppTheme.colors
 import com.nickstamp.kit.ui.utils.EffectHandler
@@ -41,8 +41,6 @@ private fun AppContent() {
             AppNavigation(
                 navController = navController,
                 effectHandler = effectHandler,
-                onThemeChange = { /* Theme changes handled by DataStore */ },
-                currentTheme = isDarkTheme
             )
         }
     }

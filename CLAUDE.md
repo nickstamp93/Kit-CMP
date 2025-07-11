@@ -347,6 +347,53 @@ Text(
 - **Consistent line heights**: Optimized for readability
 - **Accessible text styles**: Following Material Design guidelines
 
+### Theme Override System
+The framework includes an elegant theme override system for screens that need to force a specific theme:
+
+```kotlin
+// Available theme override options
+enum class ThemeOverride {
+    UserPreference,  // Use user's selected theme
+    ForcedLight,     // Force light theme
+    ForcedDark       // Force dark theme
+}
+
+// Usage in navigation
+composable<AppRoutes.Intro> {
+    ThemedContent(
+        override = ThemeOverride.ForcedLight
+    ) {
+        IntroScreenRoute(/* ... */)
+    }
+}
+```
+
+**When to Use Theme Overrides:**
+- **App launcher screens**: Usually force light theme for consistency
+- **Intro/onboarding screens**: Force light theme for better readability
+- **Specific branding screens**: Force theme to match brand guidelines
+- **Error/critical screens**: Force appropriate theme for visibility
+
+**Theme Override Examples:**
+```kotlin
+// Force light theme for intro screens
+ThemedContent(
+    override = ThemeOverride.ForcedLight
+) {
+    IntroScreen()
+}
+
+// Force dark theme for media screens
+ThemedContent(
+    override = ThemeOverride.ForcedDark
+) {
+    VideoPlayerScreen()
+}
+
+// Use user preference (default behavior - no ThemedContent wrapper needed)
+RegularScreen()
+```
+
 #### Spacing System
 ```kotlin
 data class Dimens(
@@ -591,6 +638,7 @@ sealed class AppUpdateStatus {
   - App version display
   - Settings persistence with DataStore
 - **Theme management**: Real-time theme switching with DataStore persistence
+- **Per-screen theme overrides**: Support for forcing light/dark theme on specific screens
 
 ### Developer Tools Feature
 - **Purpose**: Debug utilities and development aids

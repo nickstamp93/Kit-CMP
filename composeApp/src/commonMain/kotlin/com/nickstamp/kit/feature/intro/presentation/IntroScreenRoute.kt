@@ -4,7 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nickstamp.kit.ui.theme.AppTheme
+import com.nickstamp.kit.ui.theme.ThemeOverride
+import com.nickstamp.kit.ui.theme.ThemedContent
 import com.nickstamp.kit.ui.utils.EffectHandler
 import com.nickstamp.kit.ui.utils.ToastInfo
 import org.koin.compose.viewmodel.koinViewModel
@@ -29,7 +30,9 @@ fun IntroScreenRoute(
     }
 
 
-    AppTheme(useDarkTheme = false) {
+    ThemedContent(
+        override = ThemeOverride.Light
+    ) {
         IntroScreen(
             state = state,
             onEvent = viewModel::onEvent

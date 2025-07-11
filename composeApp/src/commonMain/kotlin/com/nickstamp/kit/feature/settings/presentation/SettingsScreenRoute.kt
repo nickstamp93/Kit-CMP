@@ -11,22 +11,10 @@ import org.koin.compose.viewmodel.koinViewModel
 fun SettingsScreenRoute(
     onNavigateBack: () -> Unit,
     effectHandler: EffectHandler,
-    onThemeChange: (Boolean) -> Unit,
-    currentTheme: Boolean,
     onNavigateToDeveloperTools: () -> Unit,
     viewModel: SettingsViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    
-    // Sync the external theme state with the ViewModel
-    LaunchedEffect(currentTheme) {
-        viewModel.updateTheme(currentTheme)
-    }
-    
-    // Handle theme changes
-    LaunchedEffect(state.isDarkTheme) {
-        onThemeChange(state.isDarkTheme)
-    }
 
     LaunchedEffect(viewModel) {
         viewModel.effect.collect { effect ->
@@ -34,6 +22,7 @@ fun SettingsScreenRoute(
                 is SettingsContract.Effect.ShowMessage -> {
                     // Handle showing message if needed - could show toast or snackbar
                 }
+
                 is SettingsContract.Effect.NavigateToDeveloperTools -> {
                     onNavigateToDeveloperTools()
                 }
