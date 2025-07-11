@@ -2,9 +2,9 @@ package com.nickstamp.kit.feature.settings.presentation
 
 import com.nickstamp.kit.core.arch.BaseViewModel
 import com.nickstamp.kit.core.helpers.SystemHelper
-import com.nickstamp.kit.feature.analytics.domain.model.AnalyticsEvent
-import com.nickstamp.kit.feature.analytics.domain.usecase.SendAnalyticsEventUseCase
+import com.nickstamp.kit.core.analytics.domain.usecase.SendAnalyticsEventUseCase
 import com.nickstamp.kit.feature.config.domain.usecase.GetConfigurationUseCase
+import com.nickstamp.kit.feature.settings.analytics.SettingsAnalytics
 import com.nickstamp.kit.feature.settings.domain.usecase.GetAppThemeUseCase
 import com.nickstamp.kit.feature.settings.domain.usecase.SetAppThemeUseCase
 
@@ -55,6 +55,7 @@ class SettingsViewModel(
                 setEffect(SettingsContract.Effect.ShowMessage("Failed to change theme"))
             }
         }
+        sendAnalyticsEvent(SettingsAnalytics.getThemeChangedEvent(newTheme))
     }
 
     private fun navigateToDeveloperTools() {
