@@ -13,7 +13,7 @@ class ConfigurationLocalDataSourceImpl(
 
     override suspend fun getConfiguration(): ConfigurationDto? {
         return try {
-            val configString = datastoreManager.getString(CONFIG_KEY)
+            val configString = datastoreManager.getString(CONFIG_KEY).takeIf { it.isNotBlank() }
             configString?.let { json.decodeFromString<ConfigurationDto>(it) }
         } catch (e: Exception) {
             null

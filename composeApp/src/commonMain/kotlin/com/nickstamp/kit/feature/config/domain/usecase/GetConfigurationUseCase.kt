@@ -51,35 +51,4 @@ class GetConfigurationUseCase(
         
         return (currentTime - lastFetchTime) < cacheValidityMillis
     }
-
-    suspend fun getCachedConfiguration(): Configuration? {
-        return mutex.withLock {
-            cachedConfiguration
-        }
-    }
-
-    suspend fun clearCache() {
-        mutex.withLock {
-            cachedConfiguration = null
-            lastFetchTime = 0
-        }
-    }
-
-    suspend fun getCacheInfo(): CacheInfo {
-        return mutex.withLock {
-            CacheInfo(
-                hasCachedData = cachedConfiguration != null,
-                lastFetchTime = lastFetchTime,
-                isCacheValid = isCacheValid(),
-                cacheValidityMinutes = cacheValidityMinutes
-            )
-        }
-    }
-    
-    data class CacheInfo(
-        val hasCachedData: Boolean,
-        val lastFetchTime: Long,
-        val isCacheValid: Boolean,
-        val cacheValidityMinutes: Int
-    )
 }
