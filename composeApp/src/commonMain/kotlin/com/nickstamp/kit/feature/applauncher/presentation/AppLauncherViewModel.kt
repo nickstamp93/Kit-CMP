@@ -1,7 +1,10 @@
 package com.nickstamp.kit.feature.applauncher.presentation
 
+import com.nickstamp.kit.core.analytics.domain.usecase.SendAnalyticsEventUseCase
 import com.nickstamp.kit.core.arch.BaseViewModel
+import com.nickstamp.kit.feature.applauncher.analytics.AppLauncherAnalytics
 import com.nickstamp.kit.feature.applauncher.domain.AppUpdateStatus
+import com.nickstamp.kit.feature.applauncher.domain.AppUpdateStore
 import com.nickstamp.kit.feature.applauncher.helper.AppUpdateHelper
 import com.nickstamp.kit.feature.applauncher.presentation.AppLauncherContract.Effect
 import com.nickstamp.kit.feature.applauncher.presentation.AppLauncherContract.Event
@@ -14,7 +17,8 @@ import com.nickstamp.kit.feature.intro.domain.usecase.IsIntroSeenUseCase
 class AppLauncherViewModel(
     private val getConfigurationUseCase: GetConfigurationUseCase,
     private val updateHelper: AppUpdateHelper,
-    private val isIntroSeen: IsIntroSeenUseCase
+    private val isIntroSeen: IsIntroSeenUseCase,
+    private val sendAnalyticsEvent: SendAnalyticsEventUseCase
 ) : BaseViewModel<Event, Effect, State>(
     initialState = State.Loading
 ) {
@@ -25,12 +29,32 @@ class AppLauncherViewModel(
 
     override fun onEvent(event: Event) {
         when (event) {
-            is Event.OnCloseAppClick -> setEffect(Effect.CloseApp)
-            is Event.OnTryAgainConfigClick -> fetchConfiguration()
-            is Event.OnUpdateAppClick -> setEffect(Effect.OpenWebUrl(event.store.rawUrl))
-            is Event.OnUpdateLaterClick -> goToAppIntroOrMainApp()
+            is Event.OnCloseAppClick -> closeApp()
+            is Event.OnTryAgainConfigClick -> tryAgainFetchConfig()
+            is Event.OnUpdateAppClick -> updateApp(event.store)
+            is Event.OnUpdateLaterClick -> updateLater()
             is Event.OnAnnouncementCtaClick -> handleAnnouncementCtaClick(event.announcement)
         }
+    }
+
+    private fun closeApp() {
+        setEffect(Effect.CloseApp)
+        sendAnalyticsEvent(AppLauncherAnalytics.getCloseAppEvent())
+    }
+
+    private fun tryAgainFetchConfig() {
+        fetchConfiguration()
+        sendAnalyticsEvent(AppLauncherAnalytics.getErrorTryAgainEvent())
+    }
+
+    private fun updateApp(store: AppUpdateStore) {
+        setEffect(Effect.OpenWebUrl(store.rawUrl))
+        sendAnalyticsEvent(AppLauncherAnalytics.getUpdateAppEvent())
+    }
+
+    private fun updateLater() {
+        goToAppIntroOrMainApp()
+        sendAnalyticsEvent(AppLauncherAnalytics.getUpdateLaterEvent())
     }
 
     private fun fetchConfiguration() = launchInViewModelScope {
@@ -100,5 +124,6 @@ class AppLauncherViewModel(
         } else {
             checkForUpdates()
         }
+        sendAnalyticsEvent(AppLauncherAnalytics.getAnnouncementCtaEvent())
     }
 }
